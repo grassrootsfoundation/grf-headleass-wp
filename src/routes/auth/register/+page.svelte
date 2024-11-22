@@ -1,0 +1,83 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { register as apiRegister } from '$lib/api/auth/register';
+	import Error from '$src/lib/components/auth/errors/errors.svelte';
+
+	// Bindable fields
+	let name = '';
+	let email = '';
+	let password = '';
+	let confirmPassword = '';
+	let errorMessages: string[] = [];
+
+	export async function register() {
+		try {
+			const response = await apiRegister(name, email, password);
+
+			if (response.ok) {
+				alert('Registration successful!');
+
+				window.location.reload();
+
+				goto('/auth/login');
+			} else {
+				const errorData = await response.json();
+				errorMessages = errorData.message.message;
+			}
+		} catch (error) {
+			alert('An error occurred while registering the user, please try again.');
+		}
+	}
+</script>
+
+<h1>Register</h1>
+<form on:submit|preventDefault={register}>
+	<label for="name">Name:</label>
+	<input id="name" name="name" type="text" bind:value={name} />
+
+	<label for="email">Email:</label>
+	<input id="email" name="email" type="email" bind:value={email} />
+
+	<label for="password">Password:</label>
+	<input id="password" name="password" type="password" bind:value={password} />
+
+	<label for="confirmPassword">Confirm Password:</label>
+	<input id="confirmPassword" type="password" name="confirmPassword" bind:value={confirmPassword} />
+
+	<Error errors={errorMessages} />
+
+	<button type="submit">Register</button>
+</form>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		max-width: 400px;
+		margin: auto;
+		gap: 1rem;
+	}
+
+	input {
+		padding: 0.5rem;
+		font-size: 1rem;
+	}
+
+	button {
+		padding: 0.75rem;
+		font-size: 1rem;
+		color: #fff;
+		background-color: #007bff;
+		border: none;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: #0056b3;
+	}
+
+	p[style='color: red;'] {
+		margin: 0;
+		font-size: 0.875rem;
+	}
+</style>
