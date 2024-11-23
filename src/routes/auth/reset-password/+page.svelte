@@ -6,23 +6,24 @@
 	import Error from '$src/lib/components/auth/errors/errors.svelte';
 
 	let newPassword = '';
-	let confirmPassword = '';
+	let confirmNewPassword = '';
 	let token = '';
 	let errorMessages: string[] = [];
 
 	$: token = $page.url.searchParams.get('token') || '';
 
 	async function resetPassword() {
-		if (newPassword !== confirmPassword) {
+		console.log(newPassword, confirmNewPassword);
+		if (String(newPassword) !== String(confirmNewPassword)) {
 			errorMessages = ['Passwords do not match.'];
 			return;
 		}
 
 		try {
-			const response = await apiResetPassword(newPassword, token);
+			const response = await apiResetPassword(token, newPassword, confirmNewPassword);
 
 			if (response.ok) {
-				errorMessages = ['Password reset successfully. Redirecting to login...'];
+				alert('Password reset successfully. Redirecting to login...');
 				setTimeout(() => goto('/auth/login'), 2000);
 			} else {
 				const errorData = await response.json();
@@ -36,19 +37,18 @@
 
 <h1>Password Reset</h1>
 <form on:submit|preventDefault={resetPassword}>
-	<label for="password">New Password:</label>
+	<label for="newPassword">New Password:</label>
 	<input type="password" id="newPassword" name="newPassword" bind:value={newPassword} required />
 
 	<label for="confirmPassword">Confirm New Password:</label>
 	<input
 		type="password"
-		id="confirmPassword"
-		name="confirmPassword"
-		bind:value={confirmPassword}
+		id="confirmNewPassword"
+		name="confirmNewPassword"
+		bind:value={confirmNewPassword}
 		required
 	/>
 
-	<Error errors={errorMessages} />
-
 	<button type="submit">Reset Password</button>
+	<Error errors={errorMessages} />
 </form>

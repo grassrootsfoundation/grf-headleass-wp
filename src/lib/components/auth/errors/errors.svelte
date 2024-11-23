@@ -1,12 +1,37 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	export let errors: string[] = [];
+	export let errors: string[] | string | { [key: string]: any } = [];
+
+	$: normalizedErrors = normalizeErrors(errors);
+
+	function normalizeErrors(errors: string[] | string | { [key: string]: any }): string[] {
+		if (typeof errors === 'string') {
+			return [errors];
+		}
+		if (Array.isArray(errors)) {
+			return errors.map((err) => (typeof err === 'string' ? err : JSON.stringify(err)));
+		}
+		if (errors && typeof errors === 'object') {
+			if (errors.message) {
+				if (typeof errors.message === 'string') {
+					return [errors.message];
+				}
+				if (Array.isArray(errors.message)) {
+					return errors.message;
+				}
+			}
+			return Object.values(errors).map((err) =>
+				typeof err === 'string' ? err : JSON.stringify(err)
+			);
+		}
+		return ['An unknown error occurred'];
+	}
 </script>
 
-{#if errors.length > 0}
+{#if normalizedErrors.length > 0}
 	<div class="error-container" transition:fade>
 		<ul>
-			{#each errors as error}
+			{#each normalizedErrors as error}
 				<li>{error}</li>
 			{/each}
 		</ul>

@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { login as apiLogin } from '$lib/api/auth/login';
 	import { goto } from '$app/navigation';
 	import { setUser } from '$src/stores/auth';
-	import Error from '$src/lib/components/auth/errors/errors.svelte';
+
+	import { login as apiLogin } from '$lib/api/auth/login';
+
+	import Error from '$components/auth/errors/errors.svelte';
+	import RequestReset from '$components/auth/request-reset/request-reset.svelte';
 
 	let email = '';
 	let password = '';
@@ -41,4 +44,4 @@
 	<Error errors={errorMessages} />
 </form>
 
-<a href="/auth/reset-password">I forgot my password</a>
+<RequestReset />

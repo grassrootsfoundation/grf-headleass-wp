@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { register as apiRegister } from '$lib/api/auth/register';
+
 	import Error from '$src/lib/components/auth/errors/errors.svelte';
 
 	// Bindable fields
@@ -12,14 +13,11 @@
 
 	export async function register() {
 		try {
-			const response = await apiRegister(name, email, password);
+			const response = await apiRegister(name, email, password, confirmPassword);
 
 			if (response.ok) {
 				alert('Registration successful!');
-
-				window.location.reload();
-
-				goto('/auth/login');
+				setTimeout(() => goto('/auth/login'), 2000);
 			} else {
 				const errorData = await response.json();
 				errorMessages = errorData.message.message;
