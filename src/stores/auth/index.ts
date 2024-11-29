@@ -1,13 +1,9 @@
+import type { UserDocument as User } from '$src/shared/types/types';
 import { writable } from 'svelte/store';
 
-export interface User {
-	token: string | null;
-	role: string | null;
-}
+export const user = writable<User | null>(null);
 
-export const user = writable<{ id: string; role: string } | null>(null);
-
-export function setUser(userData: { id: string; role: string } | null) {
+export function setUser(userData: User | null) {
 	user.set(userData);
 }
 

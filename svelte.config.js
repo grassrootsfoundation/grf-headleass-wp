@@ -16,7 +16,8 @@ const config = {
 			'$src/*': './src/*',
 			'$lib/*': './src/lib/*',
 			'$utils/*': './src/lib/utils/*',
-			'$components/*': './src/lib/components/*'
+			'$components/*': './src/lib/components/*',
+			'$types/*': './src/shared/types/*'
 		}
 	}
 };
