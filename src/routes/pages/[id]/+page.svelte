@@ -4,11 +4,11 @@
 	import { goto } from '$app/navigation';
 	import { canEditOrDeletePost } from '$utils/auth/permissions';
 
-	import type { Post, UserDocument as User } from '$src/types/api-types';
+	import type { Page, UserDocument as User } from '$src/types/api-types';
 
 	export let params: { id: string };
 
-	let post: Post | null = null;
+	let post: Page | null = null;
 	let errorMessage = '';
 	let currentUser: User | null = null;
 

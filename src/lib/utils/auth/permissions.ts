@@ -1,6 +1,6 @@
-import type { Post, UserDocument as User } from '$src/shared/types/types';
+import type { Post, UserDocument } from '$src/types/api-types';
 
-export function canEditOrDeletePost(user: User | null, post: Post | null) {
+export function canEditOrDeletePost(user: UserDocument | null, post: Post | null) {
 	if (!user || !post) {
 		return false;
 	}

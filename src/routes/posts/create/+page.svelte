@@ -23,6 +23,17 @@
 			errorMessage = 'An error occurred while creating the post.';
 		}
 	}
+
+	interface Block {
+		id: number;
+		content: string;
+	}
+
+	let items: Block[] = [
+		{ id: 1, content: 'Block 1' },
+		{ id: 2, content: 'Block 2' },
+		{ id: 3, content: 'Block 3' }
+	];
 </script>
 
 <main>

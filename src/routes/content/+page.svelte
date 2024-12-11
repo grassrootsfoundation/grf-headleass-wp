@@ -1,14 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { user } from '../../stores/auth';
 
 	let contentItems: any[] = [];
 
 	onMount(async () => {
-		const { token } = $user;
-
 		const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/content`, {
-			headers: { Authorization: `Bearer ${token}` }
+			credentials: 'include'
 		});
 
 		contentItems = await response.json();

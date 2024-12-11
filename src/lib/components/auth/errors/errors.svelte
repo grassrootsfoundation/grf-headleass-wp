@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	export let errors: string[] | string | { [key: string]: any } = [];
+	export let errors: Errors = [];
+
+	import type { Errors } from '$src/types/errors';
 
 	$: normalizedErrors = normalizeErrors(errors);
 
-	function normalizeErrors(errors: string[] | string | { [key: string]: any }): string[] {
+	function normalizeErrors(errors: Errors): string[] {
 		if (typeof errors === 'string') {
 			return [errors];
 		}

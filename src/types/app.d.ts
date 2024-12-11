@@ -1,10 +1,16 @@
+import { User } from '$src/types/api-types';
+
 declare namespace App {
-	interface UserPayload {
-		id: string;
-		email: string;
-		role: string;
+	interface locals {
+		user: User | null;
 	}
-	interface Locals {
-		user: App.UserPayload | null; // You can adjust this to fit your user structure
+
+	interface PageData {
+		user?: User | null;
+	}
+
+	interface Platform {
+		env: Record<string, string>;
+		context: Record<string, unknown>;
 	}
 }

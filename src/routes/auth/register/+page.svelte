@@ -73,9 +73,4 @@
 	button:hover {
 		background-color: #0056b3;
 	}
-
-	p[style='color: red;'] {
-		margin: 0;
-		font-size: 0.875rem;
-	}
 </style>

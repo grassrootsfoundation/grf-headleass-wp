@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { user } from '../../../stores/auth';
 	import { goto } from '$app/navigation';
 
 	let title = '';
@@ -7,14 +6,12 @@
 	let content = '';
 
 	async function createContent() {
-		const { token } = $user;
-
 		const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/content`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`
+				'Content-Type': 'application/json'
 			},
+			credentials: 'include',
 			body: JSON.stringify({ title, slug, content })
 		});
 
@@ -28,13 +25,13 @@
 
 <h1>Create Content</h1>
 <form on:submit|preventDefault={createContent}>
-	<label>Title</label>
+	<label id="title" for="title">Title</label>
 	<input type="text" bind:value={title} required />
 
-	<label>Slug</label>
+	<label id="slug" for="slug">Slug</label>
 	<input type="text" bind:value={slug} required />
 
-	<label>Content</label>
+	<label id="content" for="content">Content</label>
 	<textarea bind:value={content} required></textarea>
 
 	<button type="submit">Create</button>

@@ -1,16 +1,20 @@
+import eslint from '@eslint/js';
 import prettier from 'eslint-config-prettier';
-import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
-import ts from 'typescript-eslint';
+import tseslint from 'typescript-eslint';
+import importPlugin from 'eslint-plugin-import'; // Import the plugin
 
-export default ts.config(
-	js.configs.recommended,
-	...ts.configs.recommended,
+export default tseslint.config(
+	eslint.configs.recommended,
+	...tseslint.configs.recommended,
 	...svelte.configs['flat/recommended'],
 	prettier,
 	...svelte.configs['flat/prettier'],
 	{
+		plugins: {
+			import: importPlugin // Add the plugin here
+		},
 		languageOptions: {
 			globals: {
 				...globals.browser,
@@ -20,10 +24,9 @@ export default ts.config(
 	},
 	{
 		files: ['**/*.svelte'],
-
 		languageOptions: {
 			parserOptions: {
-				parser: ts.parser
+				parser: tseslint.parser
 			}
 		}
 	},
@@ -32,6 +35,10 @@ export default ts.config(
 	},
 	{
 		rules: {
+			'@typescript-eslint/no-unused-vars': [
+				'warn',
+				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+			],
 			'import/order': [
 				'warn',
 				{

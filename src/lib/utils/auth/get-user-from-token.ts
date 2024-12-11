@@ -1,11 +1,21 @@
 import jwt from 'jsonwebtoken';
 
+import type { User } from '$src/types/api-types';
+
 const VITE_JWT_SECRET = import.meta.env.VITE_JWT_SECRET;
 
-export function getUserFromToken(token: string): App.UserPayload {
+if (!VITE_JWT_SECRET) {
+	throw new Error('VITE_JWT_SECRET is not defined in the environment variables');
+}
+
+export function getUserFromToken(token: string): User | null {
 	try {
-		return jwt.verify(token, `${VITE_JWT_SECRET}`) as App.UserPayload;
+		const user = jwt.verify(token, VITE_JWT_SECRET) as User;
+		return user;
 	} catch (error) {
-		throw new Error('Invalid token');
+		if (error instanceof Error) {
+			console.error(`Token verification failed: ${error.message}`);
+		}
+		return null;
 	}
 }

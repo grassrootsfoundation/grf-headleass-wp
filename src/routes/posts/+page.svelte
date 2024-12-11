@@ -1,22 +1,32 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { user } from '$src/stores/auth';
 	import { goto } from '$app/navigation';
-	import { canEditOrDeletePost } from '$lib/utils/auth/permissions';
+	import { fetchPosts as apiFetchPosts } from '$lib/api/posts/fetch-posts';
 
-	let posts: any[] = [];
-	let user = null;
+	// import { canEditOrDeletePost } from '$lib/utils/auth/permissions';
+	import type { Post, UserDocument as User } from '$src/types/api-types';
+
+	let posts: Post[] = [];
+	let currentUser: User | null = null;
 	let errorMessage = '';
+
+	$: user.subscribe((value) => {
+		currentUser = value;
+	});
 
 	// Fetch all posts
 	async function fetchPosts() {
 		try {
-			const response = await fetch('/api/posts');
+			const response = await apiFetchPosts();
+
 			if (response.ok) {
 				posts = await response.json();
 			} else {
 				errorMessage = 'Failed to fetch posts.';
 			}
 		} catch (error) {
+			console.log(error);
 			errorMessage = 'An error occurred while fetching posts.';
 		}
 	}
@@ -44,18 +54,19 @@
 	{#if errorMessage}
 		<p>{errorMessage}</p>
 	{/if}
-	<ul>
+
+	<!-- <ul>
 		{#each posts as post}
 			<li>
 				<a href={`/posts/${post._id}`}>{post.title}</a>
-				{#if canEditOrDeletePost(user, post)}
+				{#if canEditOrDeletePost(currentUser, post)}
 					<button on:click={() => goto(`/posts/${post._id}/edit`)}>Edit</button>
 					<button on:click={() => deletePost(post._id)}>Delete</button>
 				{/if}
 			</li>
 		{/each}
 	</ul>
-	{#if ['admin', 'editor', 'author'].includes(user?.role)}
+	{#if ['admin', 'editor', 'author'].includes(currentUser?.role)}
 		<button on:click={() => goto('/posts/new')}>Create New Post</button>
-	{/if}
+	{/if} -->
 </main>
