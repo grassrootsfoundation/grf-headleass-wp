@@ -10,7 +10,7 @@
 			const response = await fetch('/api/posts', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ title, content })
+				body: JSON.stringify({ title, content }),
 			});
 
 			if (response.ok) {
@@ -20,20 +20,22 @@
 				errorMessage = error.message || 'Failed to create the post.';
 			}
 		} catch (error) {
-			errorMessage = 'An error occurred while creating the post.';
+			if (error instanceof Error) {
+				errorMessage = 'An error occurred while creating the post.';
+			}
 		}
 	}
 
-	interface Block {
-		id: number;
-		content: string;
-	}
+	// interface Block {
+	// 	id: number;
+	// 	content: string;
+	// }
 
-	let items: Block[] = [
-		{ id: 1, content: 'Block 1' },
-		{ id: 2, content: 'Block 2' },
-		{ id: 3, content: 'Block 3' }
-	];
+	// let items: Block[] = [
+	// 	{ id: 1, content: 'Block 1' },
+	// 	{ id: 2, content: 'Block 2' },
+	// 	{ id: 3, content: 'Block 3' },
+	// ];
 </script>
 
 <main>

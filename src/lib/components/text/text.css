@@ -1,0 +1,20 @@
+.text {
+	position: relative;
+	color: var(--text-color);
+	font-family: var(--font-sans);
+	font-size: var(--text-font-size);
+	font-weight: var(--text-font-weight, var(--font-weight-normal));
+	line-height: var(--text-leading, var(--leading-relaxed));
+	text-transform: var(--text-transform);
+	letter-spacing: var(--text-tracking, var(--tracking-normal));
+	text-align: var(--text-align);
+	margin: 0;
+
+	&[data-underline='true'] {
+		text-decoration: underline;
+	}
+
+	a {
+		color: inherit;
+	}
+}

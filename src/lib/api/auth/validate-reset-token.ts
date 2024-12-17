@@ -5,7 +5,7 @@ export async function validateResetToken(token: string): Promise<boolean> {
 		const response = await fetch(`${API_BASE_URL}/auth/validate-reset-token`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ token })
+			body: JSON.stringify({ token }),
 		});
 
 		if (!response.ok) {

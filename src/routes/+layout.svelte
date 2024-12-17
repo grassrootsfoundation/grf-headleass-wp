@@ -1,24 +1,24 @@
 <script lang="ts">
 	import '@fontsource/almarai';
-	import { setUser, user } from '$src/stores/auth';
-
-	import {
-		Button,
-		ButtonUnstyled,
-		GenericBlock,
-		Heading,
-		Page,
-		PageBody,
-		PageSection,
-		Stack
-	} from '@grassrootsfoundation/trusty-ui';
-
-	import Logout from '$src/lib/components/auth/logout/logout.svelte';
-	import Login from '$src/lib/components/auth/login/login.svelte';
-	import Register from '$src/lib/components/auth/register/register.svelte';
+	import 'trusty-css/dist/index.css';
 
 	import '$src/public/globals.css';
-	import type { UserDocument } from '$src/types/api-types';
+
+	import Login from '$components/auth/login/login.svelte';
+	import Logout from '$components/auth/logout/logout.svelte';
+	import Register from '$components/auth/register/register.svelte';
+	import ButtonUnstyled from '$components/button/button-unstyled.svelte';
+	import Button from '$components/button/button.svelte';
+	import GenericBlock from '$components/generic-block/generic-block.svelte';
+	import Heading from '$components/heading/heading.svelte';
+	import PageBody from '$components/page/page-body.svelte';
+	import PageSection from '$components/page/page-section.svelte';
+	import Page from '$components/page/page.svelte';
+	import Stack from '$components/stack/stack.svelte';
+
+	import type { UserDocument } from '$src/lib/types/api-types';
+
+	import { setUser, user } from '$src/stores/auth';
 
 	export let data: { user: UserDocument | null };
 
@@ -26,28 +26,28 @@
 </script>
 
 <Page>
-	<GenericBlock as="header" spacingBlock="3" spacingInline="3" bgColor="neutral-200">
-		<Stack direction="row" align="center" justify="space-between">
-			<ButtonUnstyled>
-				<Heading level="1" display="5" weight="black">GRF</Heading>
-			</ButtonUnstyled>
+	<GenericBlock as="header" spacingBlock="3" spacingInline="8" bgColor="neutral-200">
+		<PageSection as="header">
+			<Stack direction="row" align="center" justify="space-between">
+				<ButtonUnstyled>
+					<Heading level="1" display="3" weight="black">GRF</Heading>
+				</ButtonUnstyled>
 
-			{#if $user}
-				<Stack direction="row">
-					<Button href="/">Home</Button>
-					<Button href="/dashboard">Dashboard</Button>
-					<Logout />
-				</Stack>
-			{:else}
-				<Stack direction="row">
-					<Button variant="pill" appearance="primary" bgColor="blue-400" shadow="xl" href="/">
-						Home
-					</Button>
-					<Login />
-					<Register />
-				</Stack>
-			{/if}
-		</Stack>
+				{#if $user}
+					<Stack direction="row">
+						<Button href="/">Home</Button>
+						<Button href="/dashboard">Dashboard</Button>
+						<Logout />
+					</Stack>
+				{:else}
+					<Stack direction="row">
+						<Button href="/">Home</Button>
+						<Login />
+						<Register />
+					</Stack>
+				{/if}
+			</Stack>
+		</PageSection>
 	</GenericBlock>
 	<PageBody>
 		<PageSection>

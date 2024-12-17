@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let contentItems: any[] = [];
+	interface ContentItemProps {
+		_id: string;
+		title: string;
+	}
+
+	let contentItems: ContentItemProps[] = [];
 
 	onMount(async () => {
 		const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/content`, {
-			credentials: 'include'
+			credentials: 'include',
 		});
 
 		contentItems = await response.json();
@@ -16,7 +21,10 @@
 
 <ul>
 	{#each contentItems as item}
-		<li>{item.title} - <a href={`/content/edit/${item._id}`}>Edit</a></li>
+		<li>
+			{item.title} -
+			<a href={`/content/edit/${item._id}`}>Edit</a>
+		</li>
 	{/each}
 </ul>
 

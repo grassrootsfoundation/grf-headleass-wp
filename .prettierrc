@@ -1,15 +1,41 @@
 {
 	"useTabs": true,
 	"singleQuote": true,
-	"trailingComma": "none",
+	"trailingComma": "es5",
 	"printWidth": 100,
-	"plugins": ["prettier-plugin-svelte"],
 	"overrides": [
 		{
-			"files": "*.svelte",
+			"files": "*.html",
 			"options": {
-				"parser": "svelte"
+				"parser": "html"
+			}
+		},
+		{
+			"files": "*.json",
+			"options": {
+				"parser": "json"
+			}
+		},
+		{
+			"files": "*.css",
+			"options": {
+				"parser": "css"
+			}
+		},
+		{
+			"files": "*.ts",
+			"options": {
+				"parser": "typescript"
+			}
+		},
+		{
+			"files": "*.js",
+			"options": {
+				"parser": "babel"
 			}
 		}
-	]
+	],
+	"htmlWhitespaceSensitivity": "ignore",
+	"proseWrap": "never",
+	"endOfLine": "lf"
 }

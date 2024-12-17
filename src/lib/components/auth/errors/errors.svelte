@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	export let errors: Errors = [];
 
-	import type { Errors } from '$src/types/errors';
+	import type { Errors } from '$src/lib/types/errors';
 
 	$: normalizedErrors = normalizeErrors(errors);
 

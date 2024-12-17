@@ -6,9 +6,9 @@ export async function fetchContent(contentId: string) {
 	const response = await fetch(`${API_BASE_URL}/content/${contentId}`, {
 		method: 'GET',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
 		},
-		credentials: 'include'
+		credentials: 'include',
 	});
 
 	return response;
@@ -26,7 +26,7 @@ export async function createContent(
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ title, blocks, associatedType, associatedId, user }),
-		credentials: 'include'
+		credentials: 'include',
 	});
 
 	return await response.json();

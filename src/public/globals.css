@@ -1,4 +1,15 @@
-@import 'trusty-css/dist/index.css';
+@custom-media --media-xs (min-width: 0);
+@custom-media --media-sm (min-width: 640px);
+@custom-media --media-md (min-width: 768px);
+@custom-media --media-lg (min-width: 1024px);
+@custom-media --media-xl (min-width: 1280px);
+
+:root {
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+}
 
 :root {
 	--body-text-color: var(--color-grey-900);
@@ -6,9 +17,50 @@
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+html {
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+
+	&:focus-within {
+		scroll-behavior: smooth;
+	}
+}
+
 body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	text-rendering: optimizeSpeed;
 	font-family: var(--font-sans);
 	color: var(--body-text-color);
-	margin-block: 0;
-	margin-inline: 0;
+	margin: 0;
+}
+
+:is(a, button, input, textarea, select) {
+	outline-width: 0;
+	outline-color: transparent;
+	background-color: transparent;
+	border: none;
+	transition: outline-color var(--duration-normal);
+}
+
+:is(a, button, input, textarea, select):focus-visible {
+	outline-width: var(--a11y-outline-width);
+	outline-color: var(--a11y-outline-color);
+	outline-style: solid;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }

@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { user } from '$src/stores/auth';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+
 	import { canEditOrDeletePost } from '$utils/auth/permissions';
 
-	import type { Page, UserDocument as User } from '$src/types/api-types';
+	import type { Page, UserDocument as User } from '$src/lib/types/api-types';
+
+	import { goto } from '$app/navigation';
+	import { user } from '$src/stores/auth';
 
 	export let params: { id: string };
 
@@ -32,7 +34,7 @@
 	async function deletePost() {
 		try {
 			const response = await fetch(`/api/posts/${params.id}`, {
-				method: 'DELETE'
+				method: 'DELETE',
 			});
 			if (response.ok) {
 				goto('/posts'); // Redirect to the posts list

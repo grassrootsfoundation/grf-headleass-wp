@@ -28,7 +28,9 @@ export async function checkSession(): Promise<{ valid: boolean }> {
 		console.error('Unexpected response format:', data);
 		return { valid: false };
 	} catch (error) {
-		console.error('Error checking session:', error);
+		if (error instanceof Error) {
+			console.error('Error checking session:', error);
+		}
 		return { valid: false };
 	}
 }

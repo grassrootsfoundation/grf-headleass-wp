@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { user } from '$src/stores/auth';
-	import { goto } from '$app/navigation';
+
+	import type { Post, UserDocument as User } from '$src/lib/types/api-types';
+
 	import { fetchPosts as apiFetchPosts } from '$lib/api/posts/fetch-posts';
+	import { user } from '$src/stores/auth';
 
 	// import { canEditOrDeletePost } from '$lib/utils/auth/permissions';
-	import type { Post, UserDocument as User } from '$src/types/api-types';
 
 	let posts: Post[] = [];
 	let currentUser: User | null = null;
@@ -34,7 +35,7 @@
 	async function deletePost(id: string) {
 		try {
 			const response = await fetch(`/api/posts/${id}`, {
-				method: 'DELETE'
+				method: 'DELETE',
 			});
 			if (response.ok) {
 				posts = posts.filter((post) => post._id !== id); // Remove the deleted post from the list
@@ -42,7 +43,9 @@
 				errorMessage = 'Failed to delete the post.';
 			}
 		} catch (error) {
-			errorMessage = 'An error occurred while deleting the post.';
+			if (error instanceof Error) {
+				errorMessage = 'An error occurred while deleting the post.';
+			}
 		}
 	}
 

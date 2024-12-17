@@ -1,0 +1,43 @@
+.logo {
+	--logo-color-light: #27af4b;
+	--logo-color-medium: #1b6e38;
+	--logo-color-dark: #123f20;
+	/* --logo-color-light: var(--color-green-a700);
+	--logo-color-medium: var(--color-green-600);
+	--logo-color-dark: var(--color-green-900); */
+	--logo-color-offset: var(--color-white);
+	--logo-height: var(--size-4);
+
+	.color-light {
+		fill: var(--logo-color-light);
+	}
+	.color-medium {
+		fill: var(--logo-color-medium);
+	}
+	.color-dark {
+		fill: var(--logo-color-dark);
+	}
+	.color-primary-offset {
+		fill: var(--logo-color-offset);
+	}
+
+	svg {
+		height: var(--logo-height);
+	}
+
+	&[data-appearance='dark'] {
+		--logo-color-offset: var(--logo-color-dark);
+	}
+	&[data-size='xs'] svg {
+		height: var(--size-3);
+	}
+	&[data-size='sm'] svg {
+		height: var(--size-4);
+	}
+	&[data-size='md'] svg {
+		height: var(--size-5);
+	}
+	&[data-size='lg'] svg {
+		height: var(--size-6);
+	}
+}

@@ -3,6 +3,11 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+	vite: {
+		ssr: {
+			noExternal: ['@grassrootsfoundation/trusty-ui'], // Prevent SSR processing for trusty-ui
+		},
+	},
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
@@ -17,9 +22,9 @@ const config = {
 			'$lib/*': './src/lib/*',
 			'$utils/*': './src/lib/utils/*',
 			'$components/*': './src/lib/components/*',
-			'$types/*': './src/shared/types/*'
-		}
-	}
+			'$types/*': './src/lib/types/*',
+		},
+	},
 };
 
 export default config;

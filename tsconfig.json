@@ -11,9 +11,17 @@
 		"strict": true,
 		"moduleResolution": "bundler",
 		"allowSyntheticDefaultImports": true,
-		"types": ["svelte", "unplugin-icons/types/svelte", "@testing-library/jest-dom"]
+		"types": [
+			"svelte",
+			"unplugin-icons/types/svelte",
+			"vitest",
+			"vite/client",
+			"node",
+			"vitest/globals",
+			"@testing-library/jest-dom"
+		]
 	},
-	"include": ["./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.svelte", "node_modules/*"],
+	"include": ["./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.svelte"],
 	"exclude": ["node_modules", "build", "dist", ".svelte-kit"]
 
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias

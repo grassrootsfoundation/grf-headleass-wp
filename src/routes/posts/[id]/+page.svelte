@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { user } from '$src/stores/auth';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+
 	import { canEditOrDeletePost } from '$utils/auth/permissions';
 
-	import type { Post, UserDocument as User } from '$src/types/api-types';
+	import type { Post, UserDocument as User } from '$src/lib/types/api-types';
+
+	import { goto } from '$app/navigation';
+	import { user } from '$src/stores/auth';
 
 	export let params: { id: string };
 
@@ -25,14 +27,16 @@
 				errorMessage = 'Failed to fetch the post.';
 			}
 		} catch (error) {
-			errorMessage = 'An error occurred while fetching the post.';
+			if (error instanceof Error) {
+				errorMessage = 'An error occurred while fetching the post.';
+			}
 		}
 	}
 
 	async function deletePost() {
 		try {
 			const response = await fetch(`/api/posts/${params.id}`, {
-				method: 'DELETE'
+				method: 'DELETE',
 			});
 			if (response.ok) {
 				goto('/posts'); // Redirect to the posts list
@@ -40,7 +44,9 @@
 				errorMessage = 'Failed to delete the post.';
 			}
 		} catch (error) {
-			errorMessage = 'An error occurred while deleting the post.';
+			if (error instanceof Error) {
+				errorMessage = 'An error occurred while deleting the post.';
+			}
 		}
 	}
 

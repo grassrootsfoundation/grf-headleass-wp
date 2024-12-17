@@ -1,0 +1,28 @@
+.divider {
+	--divider-color: var(--color-neutral-200);
+	--divider-height: var(--size-px);
+	--divider-width: var(--size-px);
+	--divider-spacing: var(--size-4);
+	--divider-gap: var(--size-2);
+
+	margin-block: var(--divider-spacing);
+	margin-inline: auto;
+	height: var(--divider-height);
+	width: 100%;
+	background-repeat: repeat-x;
+
+	&[data-appearance='dotted'] {
+		background-size: var(--divider-width) var(--divider-width);
+		background-image: radial-gradient(circle, var(--divider-color) 50%, transparent 0%);
+	}
+
+	&[data-appearance='solid'] {
+		background-color: var(--divider-color);
+	}
+
+	&[data-appearance='dashed'] {
+		background-size: var(--divider-gap) var(--divider-height);
+		background-position: calc(-0.25 * var(--divider-width)) bottom;
+		background-image: linear-gradient(to right, var(--divider-color) 50%, transparent 0%);
+	}
+}

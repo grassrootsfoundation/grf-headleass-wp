@@ -12,7 +12,7 @@ interface ContentStoreState {
 const initialState: ContentStoreState = {
 	isLoading: false,
 	error: null,
-	data: null
+	data: null,
 };
 
 // Create the store with proper typing
@@ -27,7 +27,7 @@ export async function fetchContent(contentId: string, apiBaseUrl: string): Promi
 		// Fetch the content from the backend
 		const response = await fetch(`${apiBaseUrl}/content/${contentId}`, {
 			method: 'GET',
-			credentials: 'include'
+			credentials: 'include',
 		});
 
 		if (!response.ok) {
@@ -41,7 +41,7 @@ export async function fetchContent(contentId: string, apiBaseUrl: string): Promi
 			...state,
 			data: fetchedData,
 			isLoading: false,
-			error: null
+			error: null,
 		}));
 	} catch (error) {
 		if (error instanceof Error) {
@@ -52,7 +52,7 @@ export async function fetchContent(contentId: string, apiBaseUrl: string): Promi
 		contentStore.update((state) => ({
 			...state,
 			isLoading: false,
-			error: error instanceof Error ? error.message : 'An error occurred while fetching content'
+			error: error instanceof Error ? error.message : 'An error occurred while fetching content',
 		}));
 	}
 }
@@ -68,7 +68,7 @@ export async function saveContent(
 			method: 'PATCH',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(updatedData),
-			credentials: 'include'
+			credentials: 'include',
 		});
 
 		if (!response.ok) {
@@ -81,7 +81,7 @@ export async function saveContent(
 		contentStore.update((state) => ({
 			...state,
 			data: savedData,
-			error: null
+			error: null,
 		}));
 	} catch (error) {
 		if (error instanceof Error) {
@@ -92,7 +92,7 @@ export async function saveContent(
 		contentStore.update((state) => ({
 			...state,
 			error:
-				error instanceof Error ? error.message : 'An unknown error occurred while saving content'
+				error instanceof Error ? error.message : 'An unknown error occurred while saving content',
 		}));
 	}
 }

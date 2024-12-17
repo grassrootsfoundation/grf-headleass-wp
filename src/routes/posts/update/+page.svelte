@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+
 	import { goto } from '$app/navigation';
 
 	export let params: { id: string };
@@ -19,7 +20,9 @@
 				errorMessage = 'Failed to fetch the post.';
 			}
 		} catch (error) {
-			errorMessage = 'An error occurred while fetching the post.';
+			if (error instanceof Error) {
+				errorMessage = 'An error occurred while fetching the post.';
+			}
 		}
 	}
 
@@ -28,7 +31,7 @@
 			const response = await fetch(`/api/posts/${params.id}`, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ title, content })
+				body: JSON.stringify({ title, content }),
 			});
 
 			if (response.ok) {
@@ -38,7 +41,9 @@
 				errorMessage = error.message || 'Failed to update the post.';
 			}
 		} catch (error) {
-			errorMessage = 'An error occurred while updating the post.';
+			if (error instanceof Error) {
+				errorMessage = 'An error occurred while updating the post.';
+			}
 		}
 	}
 

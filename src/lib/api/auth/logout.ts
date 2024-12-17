@@ -5,7 +5,7 @@ export async function logout(): Promise<boolean> {
 		// Call the logout endpoint
 		const response = await fetch(`${API_BASE_URL}/auth/logout`, {
 			method: 'POST',
-			credentials: 'include' // Include cookies in the request
+			credentials: 'include', // Include cookies in the request
 		});
 
 		if (response.ok) {

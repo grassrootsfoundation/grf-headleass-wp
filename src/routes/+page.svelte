@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { contentStore, fetchContent } from '$src/stores/content';
-	import { user } from '$src/stores/auth';
-	import Editor from '$lib/components/editor/editor.svelte';
 	import { onMount } from 'svelte';
 
-	import type { Block, Content } from '$src/types/api-types';
+	import Editor from '$lib/components/editor/editor.svelte';
+	import RawHtml from '$src/lib/components/raw-html/raw-html.svelte';
+	import { user } from '$src/stores/auth';
+	import { contentStore, fetchContent } from '$src/stores/content';
 
 	const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -23,7 +23,9 @@
 		try {
 			await fetchContent(contentId, API_BASE_URL);
 		} catch (error) {
-			console.error('Error fetching content:', error);
+			if (error instanceof Error) {
+				console.error('Error fetching content:', error);
+			}
 		}
 	});
 
@@ -43,23 +45,29 @@
 		{#if content.data}
 			{#each content.data.blocks as block}
 				{#if block.type === 'header'}
-					<h1>{@html block?.data?.text}</h1>
+					<h1>
+						<RawHtml html={block?.data?.text} />
+					</h1>
 				{:else if block.type === 'paragraph'}
-					<p>{@html block?.data?.text}</p>
+					<p>
+						<RawHtml html={block?.data?.text} />
+					</p>
 				{:else if block.type === 'list'}
 					<ul>
 						{#each block?.data?.items ?? [] as item}
 							<li>
-								<!-- {#if item.items}
-									{@html item?.content}
+								{#if item?.items}
+									<RawHtml html={item.content} />
 									<ul>
 										{#each item.items ?? [] as subitem}
-											<li>{@html subitem}</li>
+											<li>
+												<RawHtml html={subitem} />
+											</li>
 										{/each}
 									</ul>
-								{:else} -->
-								{@html item}
-								<!-- {/if} -->
+								{:else}
+									<RawHtml html={item} />
+								{/if}
 							</li>
 						{/each}
 					</ul>

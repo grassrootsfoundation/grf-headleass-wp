@@ -4,7 +4,7 @@ export async function fetchPosts() {
 	const response = await fetch(`${API_BASE_URL}/posts`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },
-		credentials: 'include'
+		credentials: 'include',
 	});
 
 	return response;

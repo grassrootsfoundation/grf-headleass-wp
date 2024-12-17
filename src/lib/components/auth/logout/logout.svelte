@@ -1,7 +1,9 @@
 <script lang="ts">
+	import Button from '$components/button/button.svelte';
+
 	import { goto } from '$app/navigation';
-	import { clearUser } from '$src/stores/auth';
 	import { logout as apiLogout } from '$lib/api/auth/logout';
+	import { clearUser } from '$src/stores/auth';
 
 	async function logout() {
 		try {
@@ -22,4 +24,4 @@
 </script>
 
 <!-- Logout Button -->
-<button on:click={logout}>Logout</button>
+<Button on:click={logout}>Logout</Button>

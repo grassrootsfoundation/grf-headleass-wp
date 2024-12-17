@@ -1,14 +1,7 @@
 <script lang="ts">
-	import { Button } from '@grassrootsfoundation/trusty-ui';
+	import Button from '$components/button/button.svelte';
 </script>
 
-<Button
-	size="sm"
-	appearance="primary"
-	variant="pill"
-	invert
-	href="/auth/register"
-	aria-label="Navigate to the registration page"
->
+<Button bgColor="red-200" href="/auth/register" aria-label="Navigate to the registration page">
 	Register
 </Button>

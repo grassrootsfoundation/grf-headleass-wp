@@ -4,7 +4,7 @@ export async function fetchPages() {
 	const response = await fetch(`${API_BASE_URL}/pages`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },
-		credentials: 'include'
+		credentials: 'include',
 	});
 
 	return response;
