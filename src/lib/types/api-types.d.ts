@@ -33,6 +33,7 @@ export interface UserDocument {
   avatarUrl?: string;
   bio?: string;
   socialLinks?: { [key: string]: string };
+  comparePassword: (password: string) => Promise<boolean>;
 }
 
 // Extracted from categories/category.schema.ts

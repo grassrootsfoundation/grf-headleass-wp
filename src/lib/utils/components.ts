@@ -1,11 +1,10 @@
 import { SUPPORTED_BREAKPOINT_KEYS } from './constants';
 import { tok } from './style';
 
-import type { DesignTokenCategory } from './style';
-
 import type { TColor } from '$types/color';
 import type { ResponsiveProp } from '$types/media';
 import type { TRadius } from '$types/radius';
+import type { ResponsiveConfig } from '$types/responsive-config';
 import type { TShadow } from '$types/shadow';
 import type { TSize } from '$types/size';
 import type { TTextSize } from '$types/text';
@@ -58,11 +57,6 @@ export function inlineStyles(styles: Record<string, unknown>): string {
     })
     .join(' ');
 }
-
-export type ResponsiveConfig = Record<
-  string,
-  { name: string; category: DesignTokenCategory }
->;
 
 export function generateCustomProperties(
   props: Partial<Record<string, ResponsiveProp<string | number> | undefined>>,

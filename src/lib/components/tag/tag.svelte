@@ -9,7 +9,8 @@
   import './tag.css';
 
   import { generateCustomProperties, inlineStyles } from '$utils/components';
-  import type { ResponsiveConfig } from '$utils/components';
+
+  import type { ResponsiveConfig } from '$types/responsive-config';
 
   export let color: TagProps['color'] = undefined,
     bgColor: TagProps['bgColor'] = undefined;

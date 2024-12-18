@@ -1,10 +1,11 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
 
-  import Button from '$components/button/button.svelte';
-
-  import { logout as apiLogout } from '$src/lib/api/auth/logout';
   import { clearUser } from '$src/stores/auth';
+
+  import { logout as apiLogout } from '$lib/api/auth/logout';
+
+  import Button from '$components/button/button.svelte';
 
   async function logout() {
     try {

@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-import type { Block, Content } from '$src/types/api-types';
+import type { Block, Content } from '$types/api-types';
 
 // Define the initial state of the store with proper typing
 interface ContentStoreState {

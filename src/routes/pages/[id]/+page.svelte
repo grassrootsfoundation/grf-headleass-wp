@@ -3,11 +3,11 @@
 
   import { onMount } from 'svelte';
 
+  import { user } from '$src/stores/auth';
+
   import { canEditOrDeletePost } from '$utils/auth/permissions';
 
-  import type { Page, UserDocument as User } from '$lib/types/api-types';
-
-  import { user } from '$src/stores/auth';
+  import type { Page, UserDocument as User } from '$types/api-types';
 
   export let params: { id: string };
 

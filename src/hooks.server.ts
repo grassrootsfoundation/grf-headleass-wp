@@ -1,7 +1,8 @@
 import { getUserFromToken } from '$utils/auth/get-user-from-token';
 
-import type { User } from './types/api-types';
 import type { Handle } from '@sveltejs/kit';
+
+import type { User } from '$types/api-types';
 
 export const handle: Handle = async ({ event, resolve }) => {
   const token = event.cookies.get('token');

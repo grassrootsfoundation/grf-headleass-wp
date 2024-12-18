@@ -1,4 +1,4 @@
-import type { Block, User } from '$src/types/api-types';
+import type { Block, User } from '$types/api-types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 

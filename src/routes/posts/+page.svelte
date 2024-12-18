@@ -3,11 +3,12 @@
 
   import { onMount } from 'svelte';
 
+  import { user } from '$src/stores/auth';
+
   import { fetchPosts as apiFetchPosts } from '$lib/api/posts/fetch-posts';
-  import type { Post, UserDocument as User } from '$lib/types/api-types';
   import { canEditOrDeletePost } from '$lib/utils/auth/permissions';
 
-  import { user } from '$src/stores/auth';
+  import type { Post, UserDocument as User } from '$types/api-types';
 
   let posts: Post[] = [];
   let currentUser: User | null = null;

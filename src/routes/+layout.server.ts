@@ -1,5 +1,6 @@
-import type { User } from '$src/types/api-types';
 import type { LayoutServerLoad } from './$types';
+
+import type { User } from '$types/api-types';
 
 export const load: LayoutServerLoad = (event) => {
   return {

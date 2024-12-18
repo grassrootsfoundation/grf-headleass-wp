@@ -1,4 +1,4 @@
-import type { Post, UserDocument } from '$src/types/api-types';
+import type { Post, UserDocument } from '$types/api-types';
 
 export function canEditOrDeletePost(
   user: UserDocument | null,

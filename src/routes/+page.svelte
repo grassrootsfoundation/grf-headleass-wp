@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  import Editor from '$components/editor/editor.svelte';
-  import RawHtml from '$components/raw-html/raw-html.svelte';
-
   import { user } from '$src/stores/auth';
   import { contentStore, fetchContent } from '$src/stores/content';
+
+  import Editor from '$components/editor/editor.svelte';
+  import RawHtml from '$components/raw-html/raw-html.svelte';
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 

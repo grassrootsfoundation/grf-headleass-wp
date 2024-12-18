@@ -15,9 +15,9 @@
 
   import clsx from '$utils/clsx';
   import { generateCustomProperties, inlineStyles } from '$utils/components';
-  import type { ResponsiveConfig } from '$utils/components';
 
   import type { TColor } from '$types/color';
+  import type { ResponsiveConfig } from '$types/responsive-config';
   import type { TSize } from '$types/size';
 
   export let appearance: DividerProps['appearance'] = undefined,

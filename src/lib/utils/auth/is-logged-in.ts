@@ -1,4 +1,4 @@
-import { checkSession } from '$src/lib/api/auth/check-session';
+import { checkSession } from '$lib/api/auth/check-session';
 
 export async function isLoggedIn(): Promise<boolean> {
   try {

@@ -18,11 +18,11 @@
 
   import clsx from '$utils/clsx';
   import { generateCustomProperties, inlineStyles } from '$utils/components';
-  import type { ResponsiveConfig } from '$utils/components';
 
   import type { TColor } from '$types/color';
   import type { TIntent } from '$types/intent';
   import type { TRadius } from '$types/radius';
+  import type { ResponsiveConfig } from '$types/responsive-config';
   import type { TShadow } from '$types/shadow';
   import type { TSize } from '$types/size';
   import type { TTextSize } from '$types/text';

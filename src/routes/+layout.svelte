@@ -4,8 +4,9 @@
 
   import '$src/public/globals.css';
 
-  import type { UserDocument } from '$lib/types/api-types';
+  import { setUser, user } from '$src/stores/auth';
 
+  import Logo from '$components/_layout/logo/logo.svelte';
   import Login from '$components/auth/login/login.svelte';
   import Logout from '$components/auth/logout/logout.svelte';
   import Register from '$components/auth/register/register.svelte';
@@ -18,7 +19,7 @@
   import Page from '$components/page/page.svelte';
   import Stack from '$components/stack/stack.svelte';
 
-  import { setUser, user } from '$src/stores/auth';
+  import type { UserDocument } from '$types/api-types';
 
   export let data: { user: UserDocument | null };
 
@@ -35,12 +36,18 @@
   <GenericBlock
     as="header"
     spacingBlock="3"
-    spacingInline="8"
+    spacingInline="3"
     bgColor="neutral-200">
     <PageSection as="header">
       <Stack direction="row" align="center" justify="space-between">
-        <ButtonUnstyled>
-          <Heading level="1" display="3" weight="black">GRF</Heading>
+        <ButtonUnstyled href="/">
+          <Heading
+            level="1"
+            display="3"
+            weight="black"
+            data-label="Grass Roots Foundation">
+            <Logo width="100" />
+          </Heading>
         </ButtonUnstyled>
 
         {#if $user}

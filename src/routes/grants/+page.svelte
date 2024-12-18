@@ -3,7 +3,7 @@
 
   import { fetchGrants } from '$lib/api/grants';
 
-  let grants: string[] = [];
+  let grants: string | any[] = [];
   let filters = {
     keyword: '',
     agency: '',

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { User } from '$src/types/api-types';
+import { User } from '$types/api-types';
 
 declare namespace App {
   interface locals {

@@ -11,9 +11,9 @@
 
   import clsx from '$utils/clsx';
   import { generateCustomProperties, inlineStyles } from '$utils/components';
-  import type { ResponsiveConfig } from '$utils/components';
 
   import type { TListPosition, TListType } from '$types/list';
+  import type { ResponsiveConfig } from '$types/responsive-config';
 
   export let position: ListProps['position'] = undefined,
     type: ListProps['type'] = undefined;

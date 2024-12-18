@@ -15,12 +15,12 @@
 
   import clsx from '$utils/clsx';
   import { generateCustomProperties, inlineStyles } from '$utils/components';
-  import type { ResponsiveConfig } from '$utils/components';
 
   import When from '$components/when/when.svelte';
 
   import type { TAspectRatio } from '$types/aspect-ratio';
   import type { TRadius } from '$types/radius';
+  import type { ResponsiveConfig } from '$types/responsive-config';
 
   export let alt: ImageProps['alt'],
     aspectRatio: ImageProps['aspectRatio'] = undefined,

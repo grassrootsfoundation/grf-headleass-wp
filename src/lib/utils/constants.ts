@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import type { ResponsivePropObject } from '$lib/types/media';
+import type { ResponsivePropObject } from '$types/media';
 
 /**
  * The media queries used in the app.

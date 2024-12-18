@@ -6,7 +6,7 @@
 
   import './grid.css';
 
-  import type { ResponsiveProp } from '$src/lib/types/component';
+  import type { ResponsiveProp } from '$types/component';
 
   interface GridProps {
     columns?: ResponsiveProp<number>;

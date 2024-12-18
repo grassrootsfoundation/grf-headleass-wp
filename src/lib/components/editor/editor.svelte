@@ -1,15 +1,16 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  import { saveContent } from '$src/stores/content';
+
   import RawHtml from '$components/raw-html/raw-html.svelte';
 
-  import type { Block, Content } from '$src/types/api-types';
   import type {
     default as EditorJSConstructor,
     OutputData,
   } from '@editorjs/editorjs';
 
-  import { saveContent } from '$src/stores/content';
+  import type { Block, Content } from '$types/api-types';
 
   export let contentId: string;
   export let isAuthorized: boolean;

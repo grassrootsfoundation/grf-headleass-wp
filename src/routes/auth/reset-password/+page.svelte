@@ -2,9 +2,9 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores'; // To read query params
 
-  import Error from '$components/auth/errors/errors.svelte';
+  import { resetPassword as apiResetPassword } from '$lib/api/auth/reset-password';
 
-  import { resetPassword as apiResetPassword } from '$src/lib/api/auth/reset-password';
+  import Error from '$components/auth/errors/errors.svelte';
 
   let newPassword = '';
   let confirmNewPassword = '';

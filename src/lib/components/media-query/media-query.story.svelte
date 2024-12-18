@@ -1,12 +1,12 @@
 <script lang="ts">
+  import { useBreakpoints } from '$src/hooks.client';
+
   import { tok } from '$utils/style';
 
   import Heading from '$components/heading/heading.svelte';
   import Text from '$components/text/text.svelte';
 
   import MediaQuery from './media-query.svelte';
-
-  import { useBreakpoints } from '$src/hooks.client';
 
   export let Hst;
 

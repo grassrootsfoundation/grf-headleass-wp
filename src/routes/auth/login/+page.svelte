@@ -1,11 +1,12 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
 
+  import { setUser } from '$src/stores/auth';
+
+  import { login as apiLogin } from '$lib/api/auth/login';
+
   import Error from '$components/auth/errors/errors.svelte';
   import RequestReset from '$components/auth/request-reset/request-reset.svelte';
-
-  import { login as apiLogin } from '$src/lib/api/auth/login';
-  import { setUser } from '$src/stores/auth';
 
   let email = '';
   let password = '';

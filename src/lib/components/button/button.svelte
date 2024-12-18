@@ -31,12 +31,12 @@
 
   import clsx from '$utils/clsx';
   import { generateCustomProperties, inlineStyles } from '$utils/components';
-  import type { ResponsiveConfig } from '$utils/components';
 
   import Spinner from '$components/spinner/spinner.svelte';
   import When from '$components/when/when.svelte';
 
   import type { TRadius } from '$types/radius';
+  import type { ResponsiveConfig } from '$types/responsive-config';
 
   export let active: ButtonProps['active'] = undefined,
     appearance: ButtonProps['appearance'] = undefined,

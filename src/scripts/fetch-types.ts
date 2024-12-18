@@ -16,7 +16,7 @@ async function fetchTypes() {
     }
 
     const typesContent = await response.text();
-    const outputDir = path.resolve(__dirname, '../types');
+    const outputDir = path.resolve(__dirname, '../lib/types');
     fs.mkdirSync(outputDir, { recursive: true });
     fs.writeFileSync(
       path.join(outputDir, 'api-types.d.ts'),

@@ -14,7 +14,6 @@
 <script lang="ts">
   import clsx from '$utils/clsx';
   import { generateCustomProperties, inlineStyles } from '$utils/components';
-  import type { ResponsiveConfig } from '$utils/components';
   import { createInitials } from '$utils/create-initials';
 
   import Image from '$components/image/image.svelte';
@@ -23,6 +22,7 @@
   import './avatar.css';
 
   import type { TColor } from '$types/color';
+  import type { ResponsiveConfig } from '$types/responsive-config';
   import type { TShape } from '$types/shape';
   import type { TSize } from '$types/size';
   import type { TTextSize } from '$types/text';

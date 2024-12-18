@@ -15,7 +15,8 @@
   <svelte:component this={Hst.Variant} title="Tag with color">
     <Tag bgcolor={tok('color', 'success')}>A default Tag</Tag>
     <Tag bgcolor={tok('color', 'warning')}>A default Tag</Tag>
-    <Tag bgcolor={tok('color', 'error')} color={tok('color', 'white')}
-      >A default Tag</Tag>
+    <Tag bgcolor={tok('color', 'error')} color={tok('color', 'white')}>
+      A default Tag
+    </Tag>
   </svelte:component>
 </svelte:component>

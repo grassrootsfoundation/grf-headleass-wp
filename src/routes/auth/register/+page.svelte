@@ -1,9 +1,9 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
 
-  import Error from '$components/auth/errors/errors.svelte';
+  import { register as apiRegister } from '$lib/api/auth/register';
 
-  import { register as apiRegister } from '$src/lib/api/auth/register';
+  import Error from '$components/auth/errors/errors.svelte';
 
   // Bindable fields
   let name = '';

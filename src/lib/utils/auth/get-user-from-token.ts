@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import type { User } from '$src/types/api-types';
+import type { User } from '$types/api-types';
 
 const VITE_JWT_SECRET = import.meta.env.VITE_JWT_SECRET;
 

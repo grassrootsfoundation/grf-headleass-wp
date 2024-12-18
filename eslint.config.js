@@ -100,6 +100,7 @@ export default [
             'type',
           ],
           pathGroups: [
+            { pattern: '$src/**', group: 'internal', position: 'before' },
             { pattern: '$types/**', group: 'type', position: 'after' },
             { pattern: '$app/**', group: 'builtin', position: 'before' },
             { pattern: '$utils/**', group: 'internal', position: 'before' },
@@ -120,6 +121,12 @@ export default [
 
   // Ignore specific directories and files
   {
-    ignores: ['build/', '.svelte-kit/', 'dist/', 'node_modules/'],
+    ignores: [
+      'build/',
+      '.svelte-kit/',
+      'dist/',
+      'node_modules/',
+      'src/lib/types/api-types.d.ts',
+    ],
   },
 ];

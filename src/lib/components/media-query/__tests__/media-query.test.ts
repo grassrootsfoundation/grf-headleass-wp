@@ -1,9 +1,9 @@
 import { render } from '@testing-library/svelte';
 import { describe, it } from 'vitest';
 
-import MediaQuery from '$components/media-query/media-query.svelte';
-
 import { useBreakpoints } from '$src/hooks.client';
+
+import MediaQuery from '$components/media-query/media-query.svelte';
 
 const { xs } = useBreakpoints();
 

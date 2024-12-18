@@ -1,7 +1,6 @@
 <script lang="ts" context="module">
-  import type { ResponsiveConfig } from '$utils/components';
-
   import type { TColor } from '$types/color';
+  import type { ResponsiveConfig } from '$types/responsive-config';
   import type {
     TFontWeight,
     THeadingLevel,
