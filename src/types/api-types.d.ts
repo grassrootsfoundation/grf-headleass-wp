@@ -13,7 +13,7 @@ export interface User {
   additionalEmails?: string[];
   avatarUrl?: string;
   bio?: string;
-  socialLinks?: { [key: string]: string };
+  socialLinks?: { [key: string]: string; };
 }
 
 // Extracted from auth/user.entity.ts
@@ -22,7 +22,7 @@ export interface UserDocument {
   name: string;
   email: string;
   password: string;
-  role: 'admin' | 'editor' | 'viewer';
+  role: "admin" | "editor" | "viewer";
   passwordResetToken?: string;
   passwordResetExpires?: string;
   emailVerificationToken?: string;
@@ -32,7 +32,8 @@ export interface UserDocument {
   additionalEmails?: string[];
   avatarUrl?: string;
   bio?: string;
-  socialLinks?: { [key: string]: string };
+  socialLinks?: { [key: string]: string; };
+  comparePassword: (password: string) => Promise<boolean>;
 }
 
 // Extracted from categories/category.schema.ts
@@ -68,7 +69,7 @@ export interface Content {
   title: string;
   blocks: Block[];
   author: string;
-  associatedType: 'post' | 'page';
+  associatedType: "post" | "page";
   associatedId: string;
   published: boolean;
   publishedAt: string;

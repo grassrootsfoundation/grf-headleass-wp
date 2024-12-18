@@ -1,10 +1,9 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
 
-  import { logout as apiLogout } from '$lib/api/auth/logout';
-
   import Button from '$components/button/button.svelte';
 
+  import { logout as apiLogout } from '$src/lib/api/auth/logout';
   import { clearUser } from '$src/stores/auth';
 
   async function logout() {

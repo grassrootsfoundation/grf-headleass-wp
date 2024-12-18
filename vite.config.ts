@@ -4,14 +4,18 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vitest/config';
 
+import type { PluginOption } from 'vite';
+
 export default defineConfig({
   plugins: [
+    // TODO: Fix these TS Error
     //@ts-expect-error
     sveltekit(),
+    //@ts-expect-error
     Icons({
       compiler: 'svelte',
       autoInstall: true,
-    }) as never,
+    }) as unknown as PluginOption[],
   ],
   resolve: {
     alias: {

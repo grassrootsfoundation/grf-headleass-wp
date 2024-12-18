@@ -1,21 +1,26 @@
 import { checkSession } from '$src/lib/api/auth/check-session';
 
 export async function isLoggedIn(): Promise<boolean> {
-  if (typeof window === 'undefined') {
-    // If running on the server, do not perform client-side checks
-    throw new Error('isLoggedIn should only be used in the browser.');
+  try {
+    if (typeof window === 'undefined') {
+      console.warn('isLoggedIn called in a non-browser environment.');
+      return false; // Return false for SSR
+    }
+
+    // Check for a token cookie on the client side
+    const tokenCookie = document.cookie
+      ?.split('; ')
+      ?.find((row) => row.startsWith('token='));
+
+    if (!tokenCookie) {
+      return false; // No token means the user is not logged in
+    }
+
+    // Verify session with the backend
+    const validSession = await checkSession();
+    return validSession?.valid === true;
+  } catch (error) {
+    console.error('Error during isLoggedIn check:', error);
+    return false; // Gracefully handle unexpected errors
   }
-
-  // Check for a token cookie on the client side
-  const hasCookie = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('token='));
-  if (!hasCookie) {
-    return false; // No token means the user is not logged in
-  }
-
-  // Verify session with the backend
-  const validSession = await checkSession();
-
-  return validSession?.valid === true;
 }

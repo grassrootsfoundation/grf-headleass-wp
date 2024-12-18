@@ -1,9 +1,9 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
 
-  import { requestResetPassword as apiRequestResetPassword } from '$lib/api/auth/request-reset-password';
-
   import Error from '$components/auth/errors/errors.svelte';
+
+  import { requestResetPassword as apiRequestResetPassword } from '$src/lib/api/auth/request-reset-password';
 
   let email = '';
   let errorMessages: string[] = [];

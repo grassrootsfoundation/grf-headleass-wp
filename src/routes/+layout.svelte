@@ -22,7 +22,13 @@
 
   export let data: { user: UserDocument | null };
 
-  $: setUser(data.user);
+  $: {
+    if (data && data.user) {
+      setUser(data.user);
+    } else {
+      console.warn('data.user is undefined or null');
+    }
+  }
 </script>
 
 <Page>
@@ -68,3 +74,7 @@
     <PageSection>Test Footer</PageSection>
   </GenericBlock>
 </Page>
+
+<main>
+  <h1>SvelteKit Layout</h1>
+</main>

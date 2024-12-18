@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-import type { UserDocument as User } from '$src/types/api-types';
+import type { User } from '$types/api-types';
 
 export const user = writable<User | null>(null);
 

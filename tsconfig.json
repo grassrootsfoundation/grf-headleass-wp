@@ -19,8 +19,6 @@
       "unplugin-icons/types/svelte",
       "vitest",
       "vite/client",
-      "node",
-      "vitest/globals",
       "@testing-library/jest-dom"
     ]
   },
