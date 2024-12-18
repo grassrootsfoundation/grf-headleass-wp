@@ -1,40 +1,40 @@
 .badge {
-	box-sizing: border-box;
-	background-color: var(--badge-bg-color);
-	color: var(--badge-color);
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	line-height: var(--leading-none);
-	font-size: var(--badge-text-size, var(--text-xs));
-	font-weight: var(--font-weight-medium);
-	border-radius: var(--badge-radius, var(--radius-full));
-	height: calc(var(--badge-size, var(--size-5)));
-	padding-inline: calc(var(--badge-size, var(--size-5)) / 3);
+  box-sizing: border-box;
+  background-color: var(--badge-bg-color);
+  color: var(--badge-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: var(--leading-none);
+  font-size: var(--badge-text-size, var(--text-xs));
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--badge-radius, var(--radius-full));
+  height: calc(var(--badge-size, var(--size-5)));
+  padding-inline: calc(var(--badge-size, var(--size-5)) / 3);
 
-	&[data-intent='success'] {
-		--badge-color: var(--color-white);
-		--badge-bg-color: var(--color-green-500);
-	}
+  &[data-intent='success'] {
+    --badge-color: var(--color-white);
+    --badge-bg-color: var(--color-green-500);
+  }
 
-	&[data-intent='info'] {
-		--badge-bg-color: var(--color-cyan-700);
-		--badge-color: var(--color-white);
-	}
+  &[data-intent='info'] {
+    --badge-bg-color: var(--color-cyan-700);
+    --badge-color: var(--color-white);
+  }
 
-	&[data-intent='success'] {
-		--badge-bg-color: var(--color-success);
-		--badge-color: var(--color-white);
-	}
+  &[data-intent='success'] {
+    --badge-bg-color: var(--color-success);
+    --badge-color: var(--color-white);
+  }
 
-	&[data-intent='error'] {
-		--badge-bg-color: var(--color-error);
-		--badge-color: var(--color-white);
-	}
+  &[data-intent='error'] {
+    --badge-bg-color: var(--color-error);
+    --badge-color: var(--color-white);
+  }
 
-	&[data-intent='warning'] {
-		--badge-bg-color: var(--color-warning);
-		--badge-color: var(--color-neutral-900);
-	}
+  &[data-intent='warning'] {
+    --badge-bg-color: var(--color-warning);
+    --badge-color: var(--color-neutral-900);
+  }
 }

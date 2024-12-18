@@ -1,54 +1,67 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores'; // To read query params
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores'; // To read query params
 
-	import { resetPassword as apiResetPassword } from '$lib/api/auth/reset-password';
-	import Error from '$src/lib/components/auth/errors/errors.svelte';
+  import { resetPassword as apiResetPassword } from '$lib/api/auth/reset-password';
 
-	let newPassword = '';
-	let confirmNewPassword = '';
-	let token = '';
-	let errorMessages: string[] = [];
+  import Error from '$components/auth/errors/errors.svelte';
 
-	$: token = $page.url.searchParams.get('token') || '';
+  let newPassword = '';
+  let confirmNewPassword = '';
+  let token = '';
+  let errorMessages: string[] = [];
 
-	async function resetPassword() {
-		console.log(newPassword, confirmNewPassword);
-		if (String(newPassword) !== String(confirmNewPassword)) {
-			errorMessages = ['Passwords do not match.'];
-			return;
-		}
+  $: token = $page.url.searchParams.get('token') || '';
 
-		try {
-			const response = await apiResetPassword(token, newPassword, confirmNewPassword);
+  async function resetPassword() {
+    console.log(newPassword, confirmNewPassword);
+    if (String(newPassword) !== String(confirmNewPassword)) {
+      errorMessages = ['Passwords do not match.'];
+      return;
+    }
 
-			if (response.ok) {
-				alert('Password reset successfully. Redirecting to login...');
-				setTimeout(() => goto('/auth/login'), 2000);
-			} else {
-				const errorData = await response.json();
-				errorMessages = errorData.message.message;
-			}
-		} catch (error) {
-			alert('An error occurred while resetting your password, please try again.');
-		}
-	}
+    try {
+      const response = await apiResetPassword(
+        token,
+        newPassword,
+        confirmNewPassword
+      );
+
+      if (response.ok) {
+        alert('Password reset successfully. Redirecting to login...');
+        setTimeout(() => goto('/auth/login'), 2000);
+      } else {
+        const errorData = await response.json();
+        errorMessages = errorData.message.message;
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(
+          'An error occurred while resetting your password, please try again.'
+        );
+      }
+    }
+  }
 </script>
 
 <h1>Password Reset</h1>
 <form on:submit|preventDefault={resetPassword}>
-	<label for="newPassword">New Password:</label>
-	<input type="password" id="newPassword" name="newPassword" bind:value={newPassword} required />
+  <label for="newPassword">New Password:</label>
+  <input
+    type="password"
+    id="newPassword"
+    name="newPassword"
+    bind:value={newPassword}
+    required />
 
-	<label for="confirmPassword">Confirm New Password:</label>
-	<input
-		type="password"
-		id="confirmNewPassword"
-		name="confirmNewPassword"
-		bind:value={confirmNewPassword}
-		required
-	/>
+  <label for="confirmPassword">Confirm New Password:</label>
+  <input
+    type="password"
+    id="confirmNewPassword"
+    name="confirmNewPassword"
+    bind:value={confirmNewPassword}
+    required />
 
-	<button type="submit">Reset Password</button>
-	<Error errors={errorMessages} />
+  <button type="submit">Reset Password</button>
+  <Error errors={errorMessages} />
 </form>

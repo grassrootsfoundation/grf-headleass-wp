@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import Alert from '../alert.svelte';
 
 describe('Alert', () => {
-	it('works', () => {
-		render(Alert, {});
-	});
+  it('works', () => {
+    render(Alert, {});
+  });
 });

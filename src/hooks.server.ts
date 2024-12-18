@@ -4,20 +4,22 @@ import type { User } from './types/api-types';
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const token = event.cookies.get('token');
+  const token = event.cookies.get('token');
 
-	if (token) {
-		try {
-			(event.locals as { user: User | null }).user = token ? getUserFromToken(token) : null;
-		} catch (error) {
-			if (error instanceof Error) {
-				console.error(error);
-				(event.locals as { user: User | null }).user = null;
-			}
-		}
-	} else {
-		(event.locals as { user: User | null }).user = null;
-	}
+  if (token) {
+    try {
+      (event.locals as { user: User | null }).user = token
+        ? getUserFromToken(token)
+        : null;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error);
+        (event.locals as { user: User | null }).user = null;
+      }
+    }
+  } else {
+    (event.locals as { user: User | null }).user = null;
+  }
 
-	return resolve(event);
+  return resolve(event);
 };

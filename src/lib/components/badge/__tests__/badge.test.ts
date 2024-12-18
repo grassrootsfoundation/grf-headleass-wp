@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import Badge from '$components/badge/badge.svelte';
 
 describe('Badge', () => {
-	it('works', () => {
-		render(Badge);
-	});
+  it('works', () => {
+    render(Badge);
+  });
 });

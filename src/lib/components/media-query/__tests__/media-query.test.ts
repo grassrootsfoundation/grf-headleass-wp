@@ -8,10 +8,10 @@ import { useBreakpoints } from '$src/hooks.client';
 const { xs } = useBreakpoints();
 
 describe('MediaQuery', () => {
-	it('Accepts a query string', () => {
-		render(MediaQuery, { props: { query: '(min-width: 1280px)' } });
-	});
-	it('Accepts media query predefined variables', () => {
-		render(MediaQuery, { props: { query: xs } });
-	});
+  it('Accepts a query string', () => {
+    render(MediaQuery, { props: { query: '(min-width: 1280px)' } });
+  });
+  it('Accepts media query predefined variables', () => {
+    render(MediaQuery, { props: { query: xs } });
+  });
 });

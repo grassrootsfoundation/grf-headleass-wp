@@ -1,41 +1,16 @@
 {
-	"useTabs": true,
-	"singleQuote": true,
-	"trailingComma": "es5",
-	"printWidth": 100,
-	"overrides": [
-		{
-			"files": "*.html",
-			"options": {
-				"parser": "html"
-			}
-		},
-		{
-			"files": "*.json",
-			"options": {
-				"parser": "json"
-			}
-		},
-		{
-			"files": "*.css",
-			"options": {
-				"parser": "css"
-			}
-		},
-		{
-			"files": "*.ts",
-			"options": {
-				"parser": "typescript"
-			}
-		},
-		{
-			"files": "*.js",
-			"options": {
-				"parser": "babel"
-			}
-		}
-	],
-	"htmlWhitespaceSensitivity": "ignore",
-	"proseWrap": "never",
-	"endOfLine": "lf"
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "printWidth": 80,
+  "plugins": ["prettier-plugin-svelte"],
+  "svelteSortOrder": "scripts-markup-styles-options",
+  "svelteStrictMode": true,
+  "svelteBracketNewLine": false,
+  "svelteAllowShorthand": true,
+  "svelteIndentScriptAndStyle": true
 }

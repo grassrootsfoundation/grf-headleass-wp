@@ -1,44 +1,48 @@
 <script lang="ts" context="module">
-	export interface ListProps {
-		className?: string;
-		position?: TListPosition;
-		type?: TListType;
-	}
+  export interface ListProps {
+    className?: string;
+    position?: TListPosition;
+    type?: TListType;
+  }
 </script>
 
 <script lang="ts">
-	import clsx from '$utils/clsx';
-	import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import './list.css';
 
-	import './list.css';
+  import clsx from '$utils/clsx';
+  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import type { ResponsiveConfig } from '$utils/components';
 
-	import type { TListPosition, TListType } from '$types/list';
-	import type { ResponsiveConfig } from '$utils/components';
+  import type { TListPosition, TListType } from '$types/list';
 
-	export let position: ListProps['position'] = undefined,
-		type: ListProps['type'] = undefined;
+  export let position: ListProps['position'] = undefined,
+    type: ListProps['type'] = undefined;
 
-	let className: ListProps['className'] = $$restProps.class;
-	export { className as class };
+  let className: ListProps['className'] = $$restProps.class;
+  export { className as class };
 
-	const as = type === 'decimal' ? 'ol' : 'ul';
+  const as = type === 'decimal' ? 'ol' : 'ul';
 
-	const config: ResponsiveConfig = {
-		position: { name: 'list-position', category: 'list' },
-		type: { name: 'list-type', category: 'list' }
-	};
+  const config: ResponsiveConfig = {
+    position: { name: 'list-position', category: 'list' },
+    type: { name: 'list-type', category: 'list' },
+  };
 
-	const mergedStyles = inlineStyles(
-		generateCustomProperties(
-			{
-				position,
-				type
-			},
-			config
-		)
-	);
+  const mergedStyles = inlineStyles(
+    generateCustomProperties(
+      {
+        position,
+        type,
+      },
+      config
+    )
+  );
 </script>
 
-<svelte:element this={as} class={clsx('list', className)} style={mergedStyles} {...$$restProps}>
-	<slot />
+<svelte:element
+  this={as}
+  class={clsx('list', className)}
+  style={mergedStyles}
+  {...$$restProps}>
+  <slot />
 </svelte:element>

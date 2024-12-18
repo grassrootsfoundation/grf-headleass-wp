@@ -12,28 +12,28 @@ const outputDir = path.resolve(__dirname, '../graphql');
 const outputFile = path.join(outputDir, 'schema.graphql');
 
 async function fetchGraphQLSchema() {
-	try {
-		const response = await fetch(backendSchemaUrl);
+  try {
+    const response = await fetch(backendSchemaUrl);
 
-		if (!response.ok) {
-			throw new Error(`Failed to fetch schema: ${response.statusText}`);
-		}
+    if (!response.ok) {
+      throw new Error(`Failed to fetch schema: ${response.statusText}`);
+    }
 
-		const schemaSDL = await response.text();
+    const schemaSDL = await response.text();
 
-		// Ensure output directory exists
-		fs.mkdirSync(outputDir, { recursive: true });
+    // Ensure output directory exists
+    fs.mkdirSync(outputDir, { recursive: true });
 
-		// Write schema to file
-		fs.writeFileSync(outputFile, schemaSDL, 'utf-8');
-		console.log(`GraphQL schema pulled to ${outputFile}`);
-	} catch (error) {
-		if (error instanceof Error) {
-			console.error(`Error fetching schema: ${error.message}`);
-		} else {
-			console.error(`Unexpected error: ${error}`);
-		}
-	}
+    // Write schema to file
+    fs.writeFileSync(outputFile, schemaSDL, 'utf-8');
+    console.log(`GraphQL schema pulled to ${outputFile}`);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(`Error fetching schema: ${error.message}`);
+    } else {
+      console.error(`Unexpected error: ${error}`);
+    }
+  }
 }
 
 fetchGraphQLSchema();

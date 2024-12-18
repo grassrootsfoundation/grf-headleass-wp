@@ -1,65 +1,125 @@
 import eslint from '@eslint/js';
-import prettier from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import'; // Import the plugin
+import prettierConfig from 'eslint-config-prettier';
+import importPlugin from 'eslint-plugin-import';
+import prettier from 'eslint-plugin-prettier';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
+import svelteParser from 'svelte-eslint-parser';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
-	eslint.configs.recommended,
-	...tseslint.configs.recommended,
-	...svelte.configs['flat/recommended'],
-	prettier,
-	...svelte.configs['flat/prettier'],
-	{
-		plugins: {
-			import: importPlugin, // Add the plugin here
-		},
-		languageOptions: {
-			globals: {
-				...globals.browser,
-				...globals.node,
-			},
-		},
-	},
-	{
-		files: ['**/*.svelte'],
-		languageOptions: {
-			parserOptions: {
-				parser: tseslint.parser,
-			},
-		},
-	},
-	{
-		ignores: ['build/', '.svelte-kit/', 'dist/'],
-	},
-	{
-		rules: {
-			'@typescript-eslint/no-unused-vars': [
-				'warn',
-				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-			],
-			'import/order': [
-				'warn',
-				{
-					pathGroups: [
-						{ pattern: '$types/**', group: 'type', position: 'after' },
-						{ pattern: '$utils/**', group: 'internal', position: 'before' },
-						{ pattern: '$components/**', group: 'internal', position: 'before' },
-						{ pattern: './**', group: 'sibling', position: 'before' },
-						{
-							pattern: '*.css',
-							group: 'type',
-							patternOptions: { matchBase: true },
-							position: 'before',
-						},
-					],
-					pathGroupsExcludedImportTypes: ['builtin', 'external', 'type'],
-					groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'type'],
-					'newlines-between': 'always',
-					alphabetize: { order: 'asc', caseInsensitive: true },
-				},
-			],
-		},
-	}
-);
+export default [
+  // Base ESLint recommended rules
+  eslint.configs.recommended,
+
+  // TypeScript configuration
+  {
+    files: [
+      '**/*.ts',
+      '**/*.svelte',
+      '**/*.test.ts',
+      '**/*.test.js',
+      '**/*.spec.ts',
+      '**/*.spec.js',
+    ],
+    languageOptions: {
+      parser: tseslint.parser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        describe: true,
+        it: true,
+        expect: true,
+        beforeEach: true,
+        afterEach: true,
+        beforeAll: true,
+        afterAll: true,
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+    },
+    rules: {
+      'no-undef': 'off',
+      'no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
+
+  // Svelte configuration
+  {
+    files: ['**/*.svelte'],
+    languageOptions: {
+      parser: svelteParser, // Correct parser for Svelte
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: ['.svelte'],
+      },
+    },
+    plugins: {
+      svelte,
+    },
+    rules: {
+      ...svelte.configs.recommended.rules, // Recommended Svelte rules
+    },
+  },
+
+  // Prettier integration to disable conflicting formatting rules
+  {
+    plugins: {
+      prettier: prettier,
+    },
+    rules: {
+      'prettier/prettier': 'warn',
+    },
+  },
+
+  // Prettier formatting configuration
+  prettierConfig,
+
+  // Import plugin configuration
+  {
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      'import/order': [
+        'warn',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'type',
+          ],
+          pathGroups: [
+            { pattern: '$types/**', group: 'type', position: 'after' },
+            { pattern: '$app/**', group: 'builtin', position: 'before' },
+            { pattern: '$utils/**', group: 'internal', position: 'before' },
+            { pattern: '$lib/**', group: 'internal', position: 'before' },
+            {
+              pattern: '$components/**',
+              group: 'internal',
+              position: 'before',
+            },
+            { pattern: '*.css', group: 'type', position: 'before' },
+          ],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
+    },
+  },
+
+  // Ignore specific directories and files
+  {
+    ignores: ['build/', '.svelte-kit/', 'dist/', 'node_modules/'],
+  },
+];

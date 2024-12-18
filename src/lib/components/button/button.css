@@ -1,365 +1,365 @@
 .button {
-	--button-text-gap: var(--size-1-5);
+  --button-text-gap: var(--size-1-5);
 
-	position: relative;
-	appearance: none;
-	cursor: pointer;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	border: none;
-	background-color: var(--color-transparent);
-	gap: var(--button-text-gap);
-	padding-block: var(--button-spacing, var(--size-2));
-	padding-inline: calc(var(--button-spacing, var(--size-2)) * 1.5);
-	color: var(--button-color);
-	font-size: var(--button-text-size, var(--text-md));
-	line-height: var(--button-leading, var(--leading-none));
-	letter-spacing: var(--button-tracking, var(--tracking-snug));
-	text-decoration: none;
-	white-space: nowrap;
+  position: relative;
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--color-transparent);
+  gap: var(--button-text-gap);
+  padding-block: var(--button-spacing, var(--size-2));
+  padding-inline: calc(var(--button-spacing, var(--size-2)) * 1.5);
+  color: var(--button-color);
+  font-size: var(--button-text-size, var(--text-md));
+  line-height: var(--button-leading, var(--leading-none));
+  letter-spacing: var(--button-tracking, var(--tracking-snug));
+  text-decoration: none;
+  white-space: nowrap;
 
-	@media (--media-md) {
-		& {
-			--button-spacing: var(--size-2-5);
-		}
-	}
+  @media (--media-md) {
+    & {
+      --button-spacing: var(--size-2-5);
+    }
+  }
 
-	&:after {
-		background-color: var(--button-bg-color);
-		border: 2px solid var(--button-border-color, var(--button-bg-color));
-		content: '';
-		box-sizing: border-box;
-		position: absolute;
-		border-radius: var(--button-radius);
-		overflow: hidden;
-		inset: 0;
-		z-index: var(--z-0);
-		transition:
-			background-color var(--duration-normal) var(--ease-out),
-			border-color var(--duration-normal) var(--ease-out),
-			color var(--duration-normal) var(--ease-out),
-			opacity var(--duration-normal) var(--ease-out);
-	}
+  &:after {
+    background-color: var(--button-bg-color);
+    border: 2px solid var(--button-border-color, var(--button-bg-color));
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: var(--button-radius);
+    overflow: hidden;
+    inset: 0;
+    z-index: var(--z-0);
+    transition:
+      background-color var(--duration-normal) var(--ease-out),
+      border-color var(--duration-normal) var(--ease-out),
+      color var(--duration-normal) var(--ease-out),
+      opacity var(--duration-normal) var(--ease-out);
+  }
 
-	@media (hover: hover) {
-		&:hover {
-			&:after {
-				opacity: var(--opacity-75);
-			}
-		}
-	}
+  @media (hover: hover) {
+    &:hover {
+      &:after {
+        opacity: var(--opacity-75);
+      }
+    }
+  }
 
-	&:is(:active, [aria-pressed='true']) {
-		&:after {
-			opacity: var(--opacity-100);
-		}
-	}
+  &:is(:active, [aria-pressed='true']) {
+    &:after {
+      opacity: var(--opacity-100);
+    }
+  }
 
-	/* Inverted Hover & Active */
-	&[data-invert='true'] {
-		@media (hover: hover) {
-			&:hover:after {
-				opacity: var(--opacity-40);
-			}
-		}
+  /* Inverted Hover & Active */
+  &[data-invert='true'] {
+    @media (hover: hover) {
+      &:hover:after {
+        opacity: var(--opacity-40);
+      }
+    }
 
-		&:is(:active, [aria-pressed='true']) {
-			&:after {
-				opacity: var(--opacity-100);
-			}
-		}
-	}
+    &:is(:active, [aria-pressed='true']) {
+      &:after {
+        opacity: var(--opacity-100);
+      }
+    }
+  }
 
-	/* Button is disabled */
-	&[data-disabled='true'] {
-		opacity: var(--opacity-50);
-		pointer-events: none;
-	}
+  /* Button is disabled */
+  &[data-disabled='true'] {
+    opacity: var(--opacity-50);
+    pointer-events: none;
+  }
 
-	/* Button fills whole area */
-	&[data-fill='true'] {
-		width: 100%;
-	}
+  /* Button fills whole area */
+  &[data-fill='true'] {
+    width: 100%;
+  }
 
-	/* Variants */
-	&[data-variant='rounded'] {
-		&:after {
-			border-radius: var(--radius-md);
-		}
-	}
+  /* Variants */
+  &[data-variant='rounded'] {
+    &:after {
+      border-radius: var(--radius-md);
+    }
+  }
 
-	&[data-variant='pill'] {
-		--button-spacing: var(--size-1-5);
-		--button-text-gap: 6px;
-		--icon-size: var(--size-2);
+  &[data-variant='pill'] {
+    --button-spacing: var(--size-1-5);
+    --button-text-gap: 6px;
+    --icon-size: var(--size-2);
 
-		&:after {
-			border-radius: var(--radius-full);
-		}
+    &:after {
+      border-radius: var(--radius-full);
+    }
 
-		@media (--media-md) {
-			& {
-				--button-spacing: var(--size-2);
-				--button-text-gap: var(--size-1);
-				--icon-size: var(--size-2-5);
-			}
-		}
+    @media (--media-md) {
+      & {
+        --button-spacing: var(--size-2);
+        --button-text-gap: var(--size-1);
+        --icon-size: var(--size-2-5);
+      }
+    }
 
-		&[data-size='sm'] {
-			--button-spacing: 10px;
-			--button-text-gap: var(--size-0-5);
-			--icon-size: var(--size-2);
+    &[data-size='sm'] {
+      --button-spacing: 10px;
+      --button-text-gap: var(--size-0-5);
+      --icon-size: var(--size-2);
 
-			@media (--media-md) {
-				& {
-					--button-spacing: var(--size-1-5);
-					--button-text-gap: 6px;
-					--icon-size: var(--size-2);
-				}
-			}
-		}
-	}
+      @media (--media-md) {
+        & {
+          --button-spacing: var(--size-1-5);
+          --button-text-gap: 6px;
+          --icon-size: var(--size-2);
+        }
+      }
+    }
+  }
 
-	/* Sizes */
-	&[data-size='xs'] {
-		--button-spacing: var(--size-1);
-		--button-text-size: var(--text-xs);
+  /* Sizes */
+  &[data-size='xs'] {
+    --button-spacing: var(--size-1);
+    --button-text-size: var(--text-xs);
 
-		@media (--media-md) {
-			& {
-				--button-spacing: var(--size-1-5);
-			}
-		}
-	}
+    @media (--media-md) {
+      & {
+        --button-spacing: var(--size-1-5);
+      }
+    }
+  }
 
-	&[data-size='lg'] {
-		--button-text-size: var(--text-lg);
-		--button-spacing: var(--size-2-5);
+  &[data-size='lg'] {
+    --button-text-size: var(--text-lg);
+    --button-spacing: var(--size-2-5);
 
-		@media (--media-md) {
-			& {
-				--button-spacing: var(--size-3);
-			}
-		}
-	}
+    @media (--media-md) {
+      & {
+        --button-spacing: var(--size-3);
+      }
+    }
+  }
 
-	/* Appearances */
-	&[data-appearance='primary'] {
-		--button-color: var(--color-white);
-		--button-bg-color: var(--color-grey-900);
-		--button-border-color: var(--button-bg-color);
+  /* Appearances */
+  &[data-appearance='primary'] {
+    --button-color: var(--color-white);
+    --button-bg-color: var(--color-grey-900);
+    --button-border-color: var(--button-bg-color);
 
-		@media (hover: hover) {
-			&:hover:after {
-				opacity: var(--opacity-65);
-			}
-		}
-		&:is(:active, [aria-pressed='true']) {
-			&:after {
-				opacity: var(--opacity-100);
-			}
-		}
-	}
+    @media (hover: hover) {
+      &:hover:after {
+        opacity: var(--opacity-65);
+      }
+    }
+    &:is(:active, [aria-pressed='true']) {
+      &:after {
+        opacity: var(--opacity-100);
+      }
+    }
+  }
 
-	&[data-appearance='secondary'] {
-		--button-bg-color: var(--color-white);
-		--button-color: var(--color-grey-900);
-		--button-border-color: var(--button-bg-color);
+  &[data-appearance='secondary'] {
+    --button-bg-color: var(--color-white);
+    --button-color: var(--color-grey-900);
+    --button-border-color: var(--button-bg-color);
 
-		@media (hover: hover) {
-			&:hover:after {
-				opacity: var(--opacity-65);
-			}
-		}
-		&:is(:active, [aria-pressed='true']) {
-			&:after {
-				opacity: var(--opacity-100);
-			}
-		}
-	}
+    @media (hover: hover) {
+      &:hover:after {
+        opacity: var(--opacity-65);
+      }
+    }
+    &:is(:active, [aria-pressed='true']) {
+      &:after {
+        opacity: var(--opacity-100);
+      }
+    }
+  }
 
-	&[data-appearance='minimal'] {
-		--button-bg-color: var(--color-grey-900);
-		--button-color: currentColor;
+  &[data-appearance='minimal'] {
+    --button-bg-color: var(--color-grey-900);
+    --button-color: currentColor;
 
-		&:after {
-			opacity: var(--opacity-0);
-		}
+    &:after {
+      opacity: var(--opacity-0);
+    }
 
-		@media (hover: hover) {
-			&:hover {
-				&:after {
-					opacity: var(--opacity-10);
-				}
-			}
-		}
+    @media (hover: hover) {
+      &:hover {
+        &:after {
+          opacity: var(--opacity-10);
+        }
+      }
+    }
 
-		&:is(:active, [aria-pressed='true']) {
-			--button-bg-color: currentColor;
-			&:after {
-				opacity: var(--opacity-20);
-			}
-		}
-	}
+    &:is(:active, [aria-pressed='true']) {
+      --button-bg-color: currentColor;
+      &:after {
+        opacity: var(--opacity-20);
+      }
+    }
+  }
 
-	&[data-appearance='link'] {
-		--button-bg-color: transparent;
-		--button-color: var(--color-grey-900);
-		--button-spacing: none;
+  &[data-appearance='link'] {
+    --button-bg-color: transparent;
+    --button-color: var(--color-grey-900);
+    --button-spacing: none;
 
-		@media (hover: hover) {
-			&:hover {
-				&:after {
-					opacity: var(--opacity-30);
-				}
-			}
-		}
-		&:is(:active, [aria-pressed='true']) {
-			&:after {
-				opacity: var(--opacity-100);
-			}
-		}
-	}
+    @media (hover: hover) {
+      &:hover {
+        &:after {
+          opacity: var(--opacity-30);
+        }
+      }
+    }
+    &:is(:active, [aria-pressed='true']) {
+      &:after {
+        opacity: var(--opacity-100);
+      }
+    }
+  }
 
-	&[data-underline='true'] {
-		--button-radius: none;
-		position: relative;
+  &[data-underline='true'] {
+    --button-radius: none;
+    position: relative;
 
-		&:after {
-			content: '';
-			position: absolute;
-			bottom: calc(var(--size-1) * -1);
-			width: 100%;
-			border: none;
-			border-radius: var(--button-radius);
-			border-bottom: 2px solid currentColor;
-		}
-	}
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: calc(var(--size-1) * -1);
+      width: 100%;
+      border: none;
+      border-radius: var(--button-radius);
+      border-bottom: 2px solid currentColor;
+    }
+  }
 
-	&[data-invert='true'][data-appearance='primary'] {
-		--button-color: var(--color-grey-900);
-		--button-bg-color: var(--color-transparent);
-		--button-border-color: var(--button-color);
+  &[data-invert='true'][data-appearance='primary'] {
+    --button-color: var(--color-grey-900);
+    --button-bg-color: var(--color-transparent);
+    --button-border-color: var(--button-color);
 
-		@media (hover: hover) {
-			&:hover {
-				&:after {
-					opacity: var(--opacity-30);
-				}
-			}
-		}
+    @media (hover: hover) {
+      &:hover {
+        &:after {
+          opacity: var(--opacity-30);
+        }
+      }
+    }
 
-		&:is(:active, [aria-pressed='true']) {
-			&:after {
-				opacity: var(--opacity-100);
-			}
-		}
-	}
+    &:is(:active, [aria-pressed='true']) {
+      &:after {
+        opacity: var(--opacity-100);
+      }
+    }
+  }
 
-	&[data-invert='true'][data-appearance='secondary'] {
-		--button-color: var(--color-white);
-		--button-bg-color: var(--color-transparent);
-		--button-border-color: var(--button-color);
-	}
+  &[data-invert='true'][data-appearance='secondary'] {
+    --button-color: var(--color-white);
+    --button-bg-color: var(--color-transparent);
+    --button-border-color: var(--button-color);
+  }
 
-	&[data-invert='true'][data-appearance='minimal'] {
-		--button-color: var(--color-white);
-		--button-bg-color: var(--color-transparent);
-		--button-border-color: var(--color-transparent);
+  &[data-invert='true'][data-appearance='minimal'] {
+    --button-color: var(--color-white);
+    --button-bg-color: var(--color-transparent);
+    --button-border-color: var(--color-transparent);
 
-		@media (hover: hover) {
-			&:hover {
-				--button-bg-color: currentColor;
-				&:after {
-					opacity: var(--opacity-30);
-				}
-			}
-		}
+    @media (hover: hover) {
+      &:hover {
+        --button-bg-color: currentColor;
+        &:after {
+          opacity: var(--opacity-30);
+        }
+      }
+    }
 
-		&:is(:active, [aria-pressed='true']) {
-			--button-bg-color: currentColor;
-			&:after {
-				opacity: var(--opacity-40);
-			}
-		}
-	}
+    &:is(:active, [aria-pressed='true']) {
+      --button-bg-color: currentColor;
+      &:after {
+        opacity: var(--opacity-40);
+      }
+    }
+  }
 
-	&[data-invert='true'][data-appearance='link'] {
-		--button-bg-color: transparent;
-		--button-color: var(--color-white);
+  &[data-invert='true'][data-appearance='link'] {
+    --button-bg-color: transparent;
+    --button-color: var(--color-white);
 
-		@media (hover: hover) {
-			&:hover:after {
-				opacity: var(--opacity-50);
-			}
-		}
+    @media (hover: hover) {
+      &:hover:after {
+        opacity: var(--opacity-50);
+      }
+    }
 
-		&:is(:active, [aria-pressed='true']) {
-			&:after {
-				opacity: var(--opacity-100);
-			}
-		}
-	}
+    &:is(:active, [aria-pressed='true']) {
+      &:after {
+        opacity: var(--opacity-100);
+      }
+    }
+  }
 
-	/* Shape */
-	&[data-shape='square'],
-	&[data-shape='circle'] {
-		aspect-ratio: 1;
-		overflow: hidden;
-	}
+  /* Shape */
+  &[data-shape='square'],
+  &[data-shape='circle'] {
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
 
-	&[data-shape='circle'] {
-		border-radius: 100%;
-		&:after {
-			overflow: hidden;
-		}
-	}
+  &[data-shape='circle'] {
+    border-radius: 100%;
+    &:after {
+      overflow: hidden;
+    }
+  }
 
-	&[data-busy='true'] {
-		opacity: 1;
+  &[data-busy='true'] {
+    opacity: 1;
 
-		.button-spinner svg {
-			width: var(--size-20);
-		}
-	}
+    .button-spinner svg {
+      width: var(--size-20);
+    }
+  }
 }
 
 .button-text {
-	position: relative;
-	z-index: var(--z-10);
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	color: currentColor;
-	gap: var(--button-text-gap);
+  position: relative;
+  z-index: var(--z-10);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: currentColor;
+  gap: var(--button-text-gap);
 
-	[data-busy='true'] & {
-		visibility: hidden;
-	}
+  [data-busy='true'] & {
+    visibility: hidden;
+  }
 }
 
 .button-spinner {
-	position: absolute;
-	z-index: var(--z-10);
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: var(--z-10);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-	& .spinner > div {
-		left: calc((var(--part-offset) / 2) * -1);
-	}
+  & .spinner > div {
+    left: calc((var(--part-offset) / 2) * -1);
+  }
 }
 
 .button-stack {
-	display: flex;
-	flex-direction: column;
-	gap: var(--size-1-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1-5);
 
-	@media (--media-lg) {
-		& {
-			align-items: normal;
-			flex-direction: row;
-		}
-	}
+  @media (--media-lg) {
+    & {
+      align-items: normal;
+      flex-direction: row;
+    }
+  }
 }

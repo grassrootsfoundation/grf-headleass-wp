@@ -1,41 +1,41 @@
 .list {
-	margin-block: var(--size-2);
-	list-style-type: var(--list-type, var(--list-disc));
-	list-style-position: var(--list-position, var(--list-outside));
+  margin-block: var(--size-2);
+  list-style-type: var(--list-type, var(--list-disc));
+  list-style-position: var(--list-position, var(--list-outside));
 }
 
 .list li,
 .list ul,
 .list ol {
-	margin: 0;
+  margin: 0;
 }
 
 .list.check {
-	list-style: none;
-	padding: 0 0 0 var(--size-0-5);
+  list-style: none;
+  padding: 0 0 0 var(--size-0-5);
 
-	.list-item {
-		&[data-checked='true'] {
-			text-decoration: line-through;
+  .list-item {
+    &[data-checked='true'] {
+      text-decoration: line-through;
 
-			svg {
-				color: var(--color-white);
-				background-color: var(--color-neutral-900);
-			}
-		}
-	}
+      svg {
+        color: var(--color-white);
+        background-color: var(--color-neutral-900);
+      }
+    }
+  }
 
-	.checkbox {
-		position: relative;
-		top: 2px;
-		display: inline-flex;
-		justify-content: center;
-		margin-right: var(--size-0-5);
-		align-items: center;
-		border: 1px solid var(--color-neutral-400);
-		font-size: var(--font-size-sm);
-		border-radius: var(--radius-sm);
-		width: var(--size-2);
-		height: var(--size-2);
-	}
+  .checkbox {
+    position: relative;
+    top: 2px;
+    display: inline-flex;
+    justify-content: center;
+    margin-right: var(--size-0-5);
+    align-items: center;
+    border: 1px solid var(--color-neutral-400);
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-sm);
+    width: var(--size-2);
+    height: var(--size-2);
+  }
 }

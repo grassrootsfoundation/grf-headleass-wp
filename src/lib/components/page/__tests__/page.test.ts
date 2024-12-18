@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import Page from '../page.svelte';
 
 describe('Page', () => {
-	it('works', () => {
-		render(Page, { props: {} });
-	});
+  it('works', () => {
+    render(Page, { props: {} });
+  });
 });

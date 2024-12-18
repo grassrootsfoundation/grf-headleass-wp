@@ -3,5 +3,5 @@
  * @returns string
  */
 export function kebabCase(str: string): string {
-	return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }

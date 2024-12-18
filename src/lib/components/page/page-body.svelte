@@ -2,5 +2,5 @@
 </script>
 
 <main class="page-body">
-	<slot />
+  <slot />
 </main>

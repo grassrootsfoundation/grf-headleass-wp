@@ -3,15 +3,15 @@
  * @returns string
  */
 export function toPx(value: unknown) {
-	if (value == null || value === '') return undefined;
-	return `${String(value).replace(/px$/, '')}px`;
+  if (value == null || value === '') return undefined;
+  return `${String(value).replace(/px$/, '')}px`;
 }
 /**
  * Converts a string toLowerCase() with hyphens.
  * @returns string
  */
 export function toKebabCase(str: string) {
-	return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
 /**
@@ -19,7 +19,7 @@ export function toKebabCase(str: string) {
  * @returns string
  */
 export function toCapsUnderscore(str: string) {
-	return str.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase();
+  return str.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase();
 }
 
 /**
@@ -27,11 +27,11 @@ export function toCapsUnderscore(str: string) {
  * @returns string
  */
 export function convertStringToInitials(str?: string) {
-	return str
-		? str
-				.trim()
-				.split(/\s+/)
-				.map((part) => part[0].toUpperCase())
-				.join('')
-		: undefined;
+  return str
+    ? str
+        .trim()
+        .split(/\s+/)
+        .map((part) => part[0].toUpperCase())
+        .join('')
+    : undefined;
 }

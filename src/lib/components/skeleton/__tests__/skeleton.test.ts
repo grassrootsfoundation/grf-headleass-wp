@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import Skeleton from '$components/skeleton/skeleton.svelte';
 
 describe('Skeleton', () => {
-	it('works', () => {
-		render(Skeleton, {});
-	});
+  it('works', () => {
+    render(Skeleton, {});
+  });
 });

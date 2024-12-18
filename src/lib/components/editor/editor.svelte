@@ -1,134 +1,146 @@
 <script lang="ts">
-	import { saveContent } from '$src/stores/content';
-	import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
 
-	import type { default as EditorJSConstructor, OutputData } from '@editorjs/editorjs';
-	import type { Block, Content } from '$src/types/api-types';
+  import RawHtml from '$components/raw-html/raw-html.svelte';
 
-	export let contentId: string;
-	export let isAuthorized: boolean;
-	export let initialData: Content;
+  import type { Block, Content } from '$src/types/api-types';
+  import type {
+    default as EditorJSConstructor,
+    OutputData,
+  } from '@editorjs/editorjs';
 
-	const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  import { saveContent } from '$src/stores/content';
 
-	let editor: EditorJSConstructor | null = null; // Explicitly use the EditorJS type
-	let isEditorInitialized = false;
+  export let contentId: string;
+  export let isAuthorized: boolean;
+  export let initialData: Content;
 
-	// Initialize the Editor.js instance
-	async function initializeEditor(data: OutputData | undefined) {
-		if (isEditorInitialized) return;
-		isEditorInitialized = true;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-		if (typeof window !== 'undefined' && isAuthorized) {
-			const { default: EditorJS } = await import('@editorjs/editorjs');
-			const Header = (await import('@editorjs/header')).default;
-			const List = (await import('@editorjs/list')).default;
-			const Embed = (await import('@editorjs/embed')).default;
-			const Image = (await import('@editorjs/image')).default;
-			const DragDrop = (await import('editorjs-drag-drop')).default;
+  let editor: EditorJSConstructor | null = null; // Explicitly use the EditorJS type
+  let isEditorInitialized = false;
 
-			editor = new EditorJS({
-				holder: 'editor',
-				tools: {
-					header: Header,
-					list: List,
-					embed: Embed,
-					image: {
-						class: Image,
-						config: {
-							endpoints: {
-								byFile: `${API_BASE_URL}/content/upload`,
-								byUrl: `${API_BASE_URL}/content/fetchUrl`
-							}
-						}
-					}
-				},
-				data,
-				onChange: () => {
-					console.log('Editor content changed');
-				}
-			});
+  // Initialize the Editor.js instance
+  async function initializeEditor(data: OutputData | undefined) {
+    if (isEditorInitialized) return;
+    isEditorInitialized = true;
 
-			// Enable drag-and-drop for reordering blocks
-			new DragDrop(editor);
-		}
-	}
+    if (typeof window !== 'undefined' && isAuthorized) {
+      const { default: EditorJS } = await import('@editorjs/editorjs');
+      const Header = (await import('@editorjs/header')).default;
+      const List = (await import('@editorjs/list')).default;
+      const Embed = (await import('@editorjs/embed')).default;
+      const Image = (await import('@editorjs/image')).default;
+      const DragDrop = (await import('editorjs-drag-drop')).default;
 
-	// Save content to the backend
-	async function saveEditorContent() {
-		if (!editor) return;
+      editor = new EditorJS({
+        holder: 'editor',
+        tools: {
+          header: Header,
+          list: List,
+          embed: Embed,
+          image: {
+            class: Image,
+            config: {
+              endpoints: {
+                byFile: `${API_BASE_URL}/content/upload`,
+                byUrl: `${API_BASE_URL}/content/fetchUrl`,
+              },
+            },
+          },
+        },
+        data,
+        onChange: () => {
+          console.log('Editor content changed');
+        },
+      });
 
-		try {
-			const savedData = await editor.save();
+      // Enable drag-and-drop for reordering blocks
+      new DragDrop(editor);
+    }
+  }
 
-			const transformedData: { blocks: Block[] } = {
-				blocks: savedData.blocks.map((block: any, index: number) => ({
-					id: block.id || `block-${index}`,
-					type: block.type,
-					data: block.data,
-					order: index + 1
-				}))
-			};
+  // Save content to the backend
+  async function saveEditorContent() {
+    if (!editor) return;
 
-			await saveContent(contentId, transformedData, API_BASE_URL);
-			alert('Content saved successfully!');
-		} catch (error) {
-			console.error('Failed to save content:', error);
-		}
-	}
+    try {
+      const savedData = await editor.save();
 
-	onMount(() => {
-		// Initialize the editor only if authorized
-		if (isAuthorized) {
-			initializeEditor(initialData as OutputData);
-		}
+      const transformedData: { blocks: Block[] } = {
+        blocks: savedData.blocks.map((block, index: number) => ({
+          id: block.id || `block-${index}`,
+          type: block.type,
+          data: block.data,
+          order: index + 1,
+        })),
+      };
 
-		// Cleanup on component unmount
-		return () => {
-			editor?.destroy();
-			editor = null;
-			isEditorInitialized = false; // Reset the initialization flag
-		};
-	});
+      await saveContent(contentId, transformedData, API_BASE_URL);
+      alert('Content saved successfully!');
+    } catch (error) {
+      console.error('Failed to save content:', error);
+    }
+  }
+
+  onMount(() => {
+    // Initialize the editor only if authorized
+    if (isAuthorized) {
+      initializeEditor(initialData as OutputData);
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      editor?.destroy();
+      editor = null;
+      isEditorInitialized = false; // Reset the initialization flag
+    };
+  });
 </script>
 
 {#if isAuthorized}
-	<div id="editor"></div>
-	<button on:click={saveEditorContent}>Save Content</button>
+  <div id="editor"></div>
+  <button on:click={saveEditorContent}>Save Content</button>
 {:else}
-	<!-- Render read-only content for unauthorized users -->
-	<div>
-		{#if initialData?.blocks?.length}
-			{#each initialData.blocks ?? [] as block}
-				{#if block?.data?.text}
-					{#if block.type === 'header'}
-						<h1>{@html block.data.text}</h1>
-					{/if}
-				{:else if block.type === 'paragraph' && block?.data?.text}
-					<p>{@html block?.data.text}</p>
-				{:else if block.type === 'list'}
-					<ul>
-						{#each block?.data?.items ?? [] as item}
-							<li>{@html item}</li>
-						{/each}
-					</ul>
-				{:else}
-					<p>Unsupported block type: {block.type}</p>
-				{/if}
-			{/each}
-		{/if}
-	</div>
+  <!-- Render read-only content for unauthorized users -->
+  <div>
+    {#if initialData?.blocks?.length}
+      {#each initialData.blocks ?? [] as block}
+        {#if block?.data?.text}
+          {#if block.type === 'header'}
+            <h1>
+              <RawHtml html={block.data.text} />
+            </h1>
+          {/if}
+        {:else if block.type === 'paragraph' && block.data?.text}
+          <p>
+            <RawHtml html={block.data.text} />
+          </p>
+        {:else if block.type === 'list'}
+          <ul>
+            {#each block?.data?.items ?? [] as item}
+              <li>
+                <RawHtml html={item} />
+              </li>
+            {/each}
+          </ul>
+        {:else}
+          <p>Unsupported block type: {block.type}</p>
+        {/if}
+      {/each}
+    {/if}
+  </div>
 {/if}
 
 <style>
-	#editor {
-		border: 1px solid #ccc;
-		padding: 16px;
-		border-radius: 8px;
-		background-color: #fff;
-		min-height: 300px;
-	}
-	button {
-		margin-top: 16px;
-	}
+  #editor {
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #fff;
+    min-height: 300px;
+  }
+  button {
+    margin-top: 16px;
+  }
 </style>

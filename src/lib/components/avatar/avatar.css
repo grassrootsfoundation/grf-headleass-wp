@@ -1,24 +1,24 @@
 .avatar {
-	position: relative;
-	box-sizing: border-box;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--avatar-bg-color, var(--color-neutral-100));
-	color: var(--avatar-color, var(--color-neutral-900));
-	height: var(--avatar-size, var(--size-8));
-	width: var(--avatar-size, var(--size-8));
-	aspect-ratio: var(--aspect-square);
-	font-size: var(--avatar-text-size, var(--text-md));
-	filter: var(--accordion-shadow, var(--shadow-none));
-	font-weight: var(--font-weight-bold);
-	overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--avatar-bg-color, var(--color-neutral-100));
+  color: var(--avatar-color, var(--color-neutral-900));
+  height: var(--avatar-size, var(--size-8));
+  width: var(--avatar-size, var(--size-8));
+  aspect-ratio: var(--aspect-square);
+  font-size: var(--avatar-text-size, var(--text-md));
+  filter: var(--accordion-shadow, var(--shadow-none));
+  font-weight: var(--font-weight-bold);
+  overflow: hidden;
 
-	&[data-shape='rounded'] {
-		border-radius: var(--radius-md);
-	}
+  &[data-shape='rounded'] {
+    border-radius: var(--radius-md);
+  }
 
-	&[data-shape='circle'] {
-		border-radius: var(--radius-full);
-	}
+  &[data-shape='circle'] {
+    border-radius: var(--radius-full);
+  }
 }

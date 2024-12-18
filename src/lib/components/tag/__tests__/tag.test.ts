@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import Tag from '$components/tag/tag.svelte';
 
 describe('Tag', () => {
-	it('works', () => {
-		render(Tag, { props: {} });
-	});
+  it('works', () => {
+    render(Tag, { props: {} });
+  });
 });

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import './page.css';
+  import './page.css';
 </script>
 
 <div class="page">
-	<slot />
+  <slot />
 </div>

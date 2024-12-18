@@ -127,7 +127,6 @@ export type StackAsProp =
   | 'form'
   | 'label'
   | 'header'
-  | 'footer'
   | 'ul'
   | 'li'
   | 'a';

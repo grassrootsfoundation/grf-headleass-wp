@@ -69,29 +69,29 @@ const directory = kebabCase(name);
 const output = path.join.bind(import.meta.dirname, 'src/components');
 
 async function run() {
-	try {
-		fs.mkdirSync(output(directory));
-		fs.mkdirSync(output(directory, '__tests__'));
+  try {
+    fs.mkdirSync(output(directory));
+    fs.mkdirSync(output(directory, '__tests__'));
 
-		fs.writeFileSync(
-			output(directory, `${kebabCase(name)}.css`),
-			await format(CSS_TEMPLATE(name), { parser: 'css' })
-		);
-		fs.writeFileSync(
-			output(directory, `${kebabCase(name)}.svelte`),
-			await format(COMPONENT_TEMPLATE(name), { parser: 'html' })
-		);
-		fs.writeFileSync(
-			output(directory, `${kebabCase(name)}.story.svelte`),
-			await format(STORY_TEMPLATE(name), { parser: 'html' })
-		);
-		fs.writeFileSync(
-			output(directory, '__tests__', `${kebabCase(name)}.test.ts`),
-			await format(TEST_TEMPLATE(name), { parser: 'typescript' })
-		);
-	} catch (error) {
-		console.error(error);
-	}
+    fs.writeFileSync(
+      output(directory, `${kebabCase(name)}.css`),
+      await format(CSS_TEMPLATE(name), { parser: 'css' })
+    );
+    fs.writeFileSync(
+      output(directory, `${kebabCase(name)}.svelte`),
+      await format(COMPONENT_TEMPLATE(name), { parser: 'html' })
+    );
+    fs.writeFileSync(
+      output(directory, `${kebabCase(name)}.story.svelte`),
+      await format(STORY_TEMPLATE(name), { parser: 'html' })
+    );
+    fs.writeFileSync(
+      output(directory, '__tests__', `${kebabCase(name)}.test.ts`),
+      await format(TEST_TEMPLATE(name), { parser: 'typescript' })
+    );
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 void run();

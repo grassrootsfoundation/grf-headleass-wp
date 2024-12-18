@@ -1,47 +1,50 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { setUser } from '$src/stores/auth';
+  import { goto } from '$app/navigation';
 
-	import { login as apiLogin } from '$lib/api/auth/login';
+  import { login as apiLogin } from '$lib/api/auth/login';
 
-	import Error from '$components/auth/errors/errors.svelte';
-	import RequestReset from '$components/auth/request-reset/request-reset.svelte';
+  import Error from '$components/auth/errors/errors.svelte';
+  import RequestReset from '$components/auth/request-reset/request-reset.svelte';
 
-	let email = '';
-	let password = '';
-	let errorMessages: string[] = [];
+  import { setUser } from '$src/stores/auth';
 
-	export async function login() {
-		try {
-			const response = await apiLogin(email, password);
+  let email = '';
+  let password = '';
+  let errorMessages: string[] = [];
 
-			if (response.ok) {
-				const { user } = await response.json();
+  export async function login() {
+    try {
+      const response = await apiLogin(email, password);
 
-				setUser(user);
-				window.location.reload();
+      if (response.ok) {
+        const { user } = await response.json();
 
-				goto('/');
-			} else {
-				const errorData = await response.json();
-				errorMessages = errorData.message.message;
-			}
-		} catch (error) {
-			alert('An error occurred while logging in, please try again.');
-		}
-	}
+        setUser(user);
+        window.location.reload();
+
+        goto('/');
+      } else {
+        const errorData = await response.json();
+        errorMessages = errorData.message.message;
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        alert('An error occurred while logging in, please try again.');
+      }
+    }
+  }
 </script>
 
 <form on:submit|preventDefault={login}>
-	<label for="email">Email:</label>
-	<input type="email" name="email" id="email" bind:value={email} />
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" bind:value={email} />
 
-	<label for="password">Password:</label>
-	<input type="password" name="password" id="password" bind:value={password} />
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password" bind:value={password} />
 
-	<button type="submit" name="submit">Login</button>
+  <button type="submit" name="submit">Login</button>
 
-	<Error errors={errorMessages} />
+  <Error errors={errorMessages} />
 </form>
 
 <RequestReset />
