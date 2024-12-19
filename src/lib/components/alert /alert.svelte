@@ -1,14 +1,8 @@
 <script lang="ts" context="module">
-  export interface AlertProps {
-    bgColor?: TColor;
-    className?: string;
-    color?: TColor;
+  export interface AlertProps extends CommonStyledProps {
     icon?: string;
     intent?: Extract<TIntent, 'success' | 'error' | 'warning' | 'info'>;
     onDismiss?: () => void;
-    radius?: TRadius;
-    shadow?: TShadow;
-    spacing?: TSize;
     textSize?: TTextSize;
     visible: boolean;
   }
@@ -18,7 +12,10 @@
   import { fade } from 'svelte/transition';
 
   import clsx from '$utils/clsx';
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
   import UnstyledButton from '$components/button/button-unstyled.svelte';
   import Text from '$components/text/text.svelte';
@@ -26,12 +23,9 @@
 
   import './alert.css';
 
-  import type { TColor } from '$types/color';
+  import type { CommonStyledProps } from '$types/component';
   import type { TIntent } from '$types/intent';
-  import type { TRadius } from '$types/radius';
   import type { ResponsiveConfig } from '$types/responsive-config';
-  import type { TShadow } from '$types/shadow';
-  import type { TSize } from '$types/size';
   import type { TTextSize } from '$types/text';
 
   export let bgColor: AlertProps['bgColor'] = undefined,
@@ -58,7 +52,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         bgColor,
         color,

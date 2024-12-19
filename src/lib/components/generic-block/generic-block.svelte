@@ -1,16 +1,7 @@
 <script lang="ts" context="module">
-  export interface GenericBlockProps {
+  export interface GenericBlockProps extends CommonStyledProps {
     as?: keyof HTMLElementTagNameMap;
     appearance?: 'card' | 'tile';
-    bgColor?: TColor;
-    borderColor?: TColor;
-    className?: string;
-    color?: TColor;
-    gap?: TSize;
-    radius?: TRadius;
-    shadow?: TShadow;
-    spacingBlock?: TSize;
-    spacingInline?: TSize;
   }
 </script>
 
@@ -18,13 +9,13 @@
   import './generic-block.css';
 
   import clsx from '$utils/clsx';
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
-  import type { TColor } from '$types/color';
-  import type { TRadius } from '$types/radius';
+  import type { CommonStyledProps } from '$types/component';
   import type { ResponsiveConfig } from '$types/responsive-config';
-  import type { TShadow } from '$types/shadow';
-  import type { TSize } from '$types/size';
 
   export let appearance: GenericBlockProps['appearance'] = undefined,
     as: GenericBlockProps['as'] = 'div',
@@ -33,8 +24,8 @@
     color: GenericBlockProps['color'] = undefined,
     gap: GenericBlockProps['gap'] = undefined,
     shadow: GenericBlockProps['shadow'] = undefined,
-    spacingBlock: GenericBlockProps['spacingBlock'] = undefined,
-    spacingInline: GenericBlockProps['spacingInline'] = undefined,
+    spacingBottom: GenericBlockProps['spacingBlockEnd'] = undefined,
+    spacingTop: GenericBlockProps['spacingBlockStart'] = undefined,
     radius: GenericBlockProps['radius'] = undefined;
 
   let className: GenericBlockProps['className'] = $$restProps.class;
@@ -47,12 +38,12 @@
     gap: { name: 'block-gap', category: 'size' },
     radius: { name: 'block-radius', category: 'radius' },
     shadow: { name: 'block-shadow', category: 'shadow' },
-    spacingBlock: { name: 'block-spacing-block', category: 'size' },
-    spacingInline: { name: 'block-spacing-inline', category: 'size' },
+    spacingBottom: { name: 'block-spacing-block-end', category: 'size' },
+    spacingTop: { name: 'block-spacing-block-start', category: 'size' },
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         bgColor,
         borderColor,
@@ -60,8 +51,8 @@
         gap,
         radius,
         shadow,
-        spacingBlock,
-        spacingInline,
+        spacingBottom,
+        spacingTop,
       },
       config
     )

@@ -54,7 +54,7 @@
   let className: TextProps['className'] = $$restProps.class;
   export { className as class };
 
-  function generateCustomProperties(props: TextProps) {
+  function generateResponsiveCSSProperties(props: TextProps) {
     const { align, color, leading, preset, size, tracking, transform, weight } =
       props;
     const vars: Record<string, string> = {};
@@ -84,7 +84,7 @@
   }
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties({
+    generateResponsiveCSSProperties({
       ...PRESET_PROPS[preset || 'default'],
       ...definedProps({
         align,

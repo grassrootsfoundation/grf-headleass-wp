@@ -13,7 +13,10 @@
 
 <script lang="ts">
   import clsx from '$utils/clsx';
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
   import { createInitials } from '$utils/create-initials';
 
   import Image from '$components/image/image.svelte';
@@ -46,7 +49,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         bgColor,
         color,

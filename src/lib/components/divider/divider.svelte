@@ -1,12 +1,6 @@
 <script lang="ts" context="module">
-  export interface DividerProps {
+  export interface DividerProps extends CommonStyledProps {
     appearance?: 'solid' | 'dotted' | 'dashed';
-    className?: string;
-    color?: TColor;
-    gap?: TSize;
-    height?: TSize;
-    spacing?: TSize;
-    width?: TSize;
   }
 </script>
 
@@ -14,11 +8,13 @@
   import './divider.css';
 
   import clsx from '$utils/clsx';
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
-  import type { TColor } from '$types/color';
+  import type { CommonStyledProps } from '$types/component';
   import type { ResponsiveConfig } from '$types/responsive-config';
-  import type { TSize } from '$types/size';
 
   export let appearance: DividerProps['appearance'] = undefined,
     color: DividerProps['color'] = undefined,
@@ -39,7 +35,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         color,
         gap,

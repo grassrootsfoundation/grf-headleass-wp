@@ -17,7 +17,10 @@
   import './badge.css';
 
   import clsx from '$utils/clsx';
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
   import type { TColor } from '$types/color';
   import type { TIntent } from '$types/intent';
@@ -49,7 +52,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         bgColor,
         color,

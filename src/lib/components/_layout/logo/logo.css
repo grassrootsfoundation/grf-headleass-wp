@@ -1,40 +1,35 @@
 .logo {
-  --logo-color-light: #27af4b;
-  --logo-color-medium: #1b6e38;
-  --logo-color-dark: #123f20;
-  --logo-color-offset: var(--color-white);
-  --logo-height: var(--size-4);
 
   .color-light {
-    fill: var(--logo-color-light);
+    fill: var(--color-branding-light);
   }
   .color-medium {
-    fill: var(--logo-color-medium);
+    fill: var(--color-branding-medium);
   }
   .color-dark {
-    fill: var(--logo-color-dark);
+    fill: var(--color-branding-dark);
   }
   .color-primary-offset {
-    fill: var(--logo-color-offset);
+    fill: var(--color-branding-offset);
   }
 
   svg {
-    height: var(--logo-height);
+    height: var(--logo-size);
   }
 
   &[data-appearance='dark'] {
-    --logo-color-offset: var(--logo-color-dark);
+    --color-branding-offset: var(--color-branding-dark);
   }
   &[data-size='xs'] svg {
-    --logo-hright: var(--size-3);
+    --logo-size: var(--size-6);
   }
   &[data-size='sm'] svg {
-    --logo-hright: var(--size-4);
+    --logo-size: var(--size-8);
   }
   &[data-size='md'] svg {
-    --logo-hright: var(--size-5);
+    --logo-size: var(--size-10);
   }
   &[data-size='lg'] svg {
-    --logo-hright: var(--size-6);
+    --logo-size: var(--size-14);
   }
 }

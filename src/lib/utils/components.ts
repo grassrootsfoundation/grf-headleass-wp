@@ -1,14 +1,10 @@
 import { SUPPORTED_BREAKPOINT_KEYS } from './constants';
 import { tok } from './style';
 
-import type { TColor } from '$types/color';
 import type { ResponsiveProp } from '$types/media';
-import type { TRadius } from '$types/radius';
 import type { ResponsiveConfig } from '$types/responsive-config';
-import type { TShadow } from '$types/shadow';
-import type { TSize } from '$types/size';
-import type { TTextSize } from '$types/text';
 
+type Breakpoint = (typeof SUPPORTED_BREAKPOINT_KEYS)[number];
 /**
  * Filters out undefined props.
  */
@@ -22,27 +18,6 @@ export function definedProps(props = {}): typeof props {
  * Determines if a prop conforms to the responsive prop
  * config shape.
  */
-
-export function createResponsivePropCSSProperties<T = unknown>(
-  prop: ResponsiveProp<T>,
-  config: { name: string }
-): Record<string, string | T | undefined> {
-  if (!prop || typeof prop !== 'object') {
-    // If not an object, create a single CSS variable
-    return { [config.name]: prop as T };
-  }
-
-  // If it's a responsive object, map keys to CSS variables
-  return Object.keys(prop).reduce(
-    (acc, key) => {
-      if (SUPPORTED_BREAKPOINT_KEYS.includes(key as never)) {
-        acc[`${config.name}-${key}`] = (prop as Record<string, T>)[key];
-      }
-      return acc;
-    },
-    {} as Record<string, string | T | undefined>
-  );
-}
 
 export function inlineStyles(styles: Record<string, unknown>): string {
   return Object.entries(styles)
@@ -58,45 +33,55 @@ export function inlineStyles(styles: Record<string, unknown>): string {
     .join(' ');
 }
 
-export function generateCustomProperties(
-  props: Partial<Record<string, ResponsiveProp<string | number> | undefined>>,
-  config: ResponsiveConfig
+/**
+ * Generates props in single or responsive form
+ */
+
+export function generateResponsiveCSSProperties<T = unknown>(
+  props: Partial<Record<string, ResponsiveProp<T> | undefined>>,
+  config: Record<string, { name: string; category?: string }>
 ): Record<string, string> {
+  type Breakpoint = (typeof SUPPORTED_BREAKPOINT_KEYS)[number];
   const vars: Record<string, string> = {};
 
-  for (const [propName, propValue] of Object.entries(props)) {
-    // Check if the prop value is defined and in the config
-    if (propValue !== undefined && config[propName]) {
-      const { name, category } = config[propName];
+  // Built-in `tok` logic for formatting
+  const tok = (category: string | undefined, value: T): string =>
+    category ? `var(--${category}-${value})` : `${value}`;
 
-      // Process single or responsive property
+  for (const [propName, propValue] of Object.entries(props)) {
+    const propConfig = config[propName];
+
+    if (propValue !== undefined && propConfig) {
+      const { name, category } = propConfig;
+
+      // Track the last defined value for cascading
+      let lastValue: string | undefined;
+
       if (typeof propValue === 'object' && propValue !== null) {
-        for (const [breakpoint, value] of Object.entries(propValue)) {
-          if (value !== undefined) {
-            vars[`--${name}-${breakpoint}`] = tok(category, value);
+        for (const [breakpoint, value] of Object.entries(propValue) as [
+          Breakpoint,
+          T,
+        ][]) {
+          if (
+            value !== undefined &&
+            SUPPORTED_BREAKPOINT_KEYS.includes(breakpoint)
+          ) {
+            const currentValue = tok(category, value);
+            vars[`--${name}-${breakpoint}`] = currentValue;
+            lastValue = currentValue;
           }
         }
+
+        // If no default value is explicitly set, use the last defined value
+        if (!vars[`--${name}-default`] && lastValue) {
+          vars[`--${name}-default`] = lastValue;
+        }
       } else if (propValue !== null) {
+        // Handle non-responsive value as a global default
         vars[`--${name}`] = tok(category, propValue);
       }
     }
   }
 
   return vars;
-}
-
-export interface CommonProps {
-  className?: string;
-}
-
-export interface CommonStyledProps extends CommonProps {
-  bgColor?: TColor;
-  borderColor?: TColor;
-  color?: TColor;
-  gap?: TSize;
-  radius?: TRadius;
-  shadow?: TShadow;
-  spacingBlock?: TSize;
-  spacingInline?: TSize;
-  textSize?: TTextSize;
 }

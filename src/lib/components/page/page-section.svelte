@@ -1,30 +1,49 @@
+<script lang="ts" context="module">
+  export interface PageSectionProps extends CommonStyledProps {
+    as?: keyof HTMLElementTagNameMap;
+    container?: 'prose' | 'page' | 'none';
+  }
+</script>
+
 <script lang="ts">
   import './page.css';
 
-  import type { TSizeLabel } from '$types/size';
+  import type { ResponsiveConfig } from '$src/lib/types/responsive-config';
 
-  interface PageSectionProps {
-    as?: keyof HTMLElementTagNameMap;
-    container: 'prose' | 'page' | 'none';
-    spacingTop?:
-      | Extract<TSizeLabel, 'sm' | 'md' | 'lg' | 'xl' | '2xl'>
-      | 'none';
-    spacingBottom?:
-      | Extract<TSizeLabel, 'sm' | 'md' | 'lg' | 'xl' | '2xl'>
-      | 'none';
-  }
+  import clsx from '$utils/clsx';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
+
+  import type { CommonStyledProps } from '$types/component';
+
   export let as: PageSectionProps['as'] = 'div',
     container: PageSectionProps['container'] = 'page',
-    spacingBottom: PageSectionProps['spacingBottom'] = 'none',
-    spacingTop: PageSectionProps['spacingTop'] = 'none';
+    spacingBlockEnd: PageSectionProps['spacingBlockEnd'] = 'none',
+    spacingBlockStart: PageSectionProps['spacingBlockStart'] = 'none';
+
+  let className: PageSectionProps['className'] = $$restProps.class;
+  export { className as class };
+
+  const config: ResponsiveConfig = {
+    spacingBlockEnd: { name: 'page-section-block-end', category: 'size' },
+    spacingBlockStart: { name: 'page-section-block-start', category: 'size' },
+  };
+
+  const mergedStyles = inlineStyles(
+    generateResponsiveCSSProperties(
+      { spacingBlockEnd, spacingBlockStart },
+      config
+    )
+  );
 </script>
 
 <svelte:element
   this={as}
-  class="page-section"
-  data-spacing-bottom={spacingBottom}
-  data-spacing-top={spacingTop}
+  class={clsx('page-section', className)}
   data-container={container}
+  style={mergedStyles}
   {...$$restProps}>
   <slot />
 </svelte:element>

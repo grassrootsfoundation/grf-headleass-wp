@@ -8,7 +8,10 @@
 <script lang="ts">
   import './tag.css';
 
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
   import type { ResponsiveConfig } from '$types/responsive-config';
 
@@ -21,7 +24,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         bgColor,
         color,

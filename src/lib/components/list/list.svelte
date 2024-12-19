@@ -10,7 +10,10 @@
   import './list.css';
 
   import clsx from '$utils/clsx';
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
   import type { TListPosition, TListType } from '$types/list';
   import type { ResponsiveConfig } from '$types/responsive-config';
@@ -29,7 +32,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         position,
         type,

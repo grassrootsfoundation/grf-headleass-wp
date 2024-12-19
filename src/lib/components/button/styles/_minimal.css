@@ -1,0 +1,33 @@
+.button {
+	&[data-invert='false'][data-appearance='minimal'] {
+		--button-color: var(--button-base);
+		--button-bg-color: var(--color-transparent);
+		--button-border-color: var(--color-transparent);
+
+		@media (hover: hover) {
+			&:hover {
+				--button-bg-color: color-mix(in srgb, var(--button-base) 5%, transparent);
+			}
+		}
+
+		&:is(:active, [aria-pressed='true']) {
+			--button-bg-color: color-mix(in srgb, var(--button-base) 10%, transparent);
+		}
+	}
+
+	&[data-invert='true'][data-appearance='minimal'] {
+		--button-color: var(--color-white);
+		--button-bg-color: var(--color-transparent);
+		--button-border-color: var(--color-transparent);
+
+		@media (hover: hover) {
+			&:hover {
+				--button-bg-color: color-mix(in srgb, var(--button-color) 5%, transparent);
+			}
+		}
+
+		&:is(:active, [aria-pressed='true']) {
+			--button-bg-color: color-mix(in srgb, var(--button-color) 10%, transparent);
+		}
+	}
+}

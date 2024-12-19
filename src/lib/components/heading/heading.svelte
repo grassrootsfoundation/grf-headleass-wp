@@ -22,7 +22,10 @@
 </script>
 
 <script lang="ts">
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
   import './heading.css';
 
@@ -45,7 +48,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         align,
         color,

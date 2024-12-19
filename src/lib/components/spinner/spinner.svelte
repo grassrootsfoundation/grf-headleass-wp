@@ -1,12 +1,13 @@
+<script lang="ts" context="module">
+  import type { TSizeLabel } from '$types/size';
+  export interface SpinnerProps {
+    invert?: boolean;
+    size?: Extract<TSizeLabel, 'xs' | 'sm' | 'md' | 'lg'>;
+  }
+</script>
+
 <script lang="ts">
   import './spinner.css';
-
-  import type { SizeProp } from '$types/component';
-
-  interface SpinnerProps {
-    invert?: boolean;
-    size?: Extract<SizeProp, 'xs' | 'sm' | 'md' | 'lg'>;
-  }
 
   export let invert: SpinnerProps['invert'] = false,
     size: SpinnerProps['size'] = undefined;

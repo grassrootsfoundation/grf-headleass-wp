@@ -1,3 +1,5 @@
+import type { TColor } from './color';
+
 export interface NavProps {
   label?: string;
   slug?: string;
@@ -17,6 +19,25 @@ export interface CommonProps {
   id?: string;
   className?: string;
   style?: string;
+}
+
+export interface CommonStyledProps extends CommonProps {
+  color?: TColor;
+  bgColor?: TColor;
+  borderColor?: TColor;
+  gap?: TSize;
+  height?: TSize;
+  radius?: TRadius;
+  shadow?: TShadow;
+  spacing?: TSize | ResponsiveProp<TSize>;
+  spacingBlock?: TSize | ResponsiveProp<TSize>;
+  spacingBlockEnd?: TSize | ResponsiveProp<TSize>;
+  spacingBlockStart?: TSize | ResponsiveProp<TSize>;
+  spacingInline?: TSize | ResponsiveProp<TSize>;
+  spacingInlineEnd?: TSize | ResponsiveProp<TSize>;
+  spacingInlineStart?: TSize | ResponsiveProp<TSize>;
+  textSize?: TTextSize;
+  width?: TSize;
 }
 
 export type ResponsivePropObject<T> = {

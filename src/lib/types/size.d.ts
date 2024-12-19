@@ -82,5 +82,4 @@ export type TSizeLabel =
   | '7xl'
   | '8xl'
   | '9xl'
-  | '10xl'
-  | string;
+  | '10xl';

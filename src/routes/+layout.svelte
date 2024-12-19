@@ -1,9 +1,10 @@
 <script lang="ts">
-  import '@fontsource/almarai';
+  import '@fontsource-variable/sora';
   import 'trusty-css/dist/index.css';
 
   import '$src/public/globals.css';
 
+  import Divider from '$src/lib/components/divider/divider.svelte';
   import { setUser, user } from '$src/stores/auth';
 
   import Logo from '$components/_layout/logo/logo.svelte';
@@ -33,12 +34,10 @@
 </script>
 
 <Page>
-  <GenericBlock
-    as="header"
-    spacingBlock="3"
-    spacingInline="3"
-    bgColor="neutral-200">
-    <PageSection as="header">
+  <GenericBlock as="header" spacingTop="8" bgColor="red-200">
+    <PageSection
+      spacingBlockStart={{ default: '2', lg: '4' }}
+      spacingBlockEnd={{ default: '2', lg: '4' }}>
       <Stack direction="row" align="center" justify="space-between">
         <ButtonUnstyled href="/">
           <Heading
@@ -46,7 +45,7 @@
             display="3"
             weight="black"
             data-label="Grass Roots Foundation">
-            <Logo width="100" />
+            <Logo variant="acronym" size="xs" />
           </Heading>
         </ButtonUnstyled>
 
@@ -66,6 +65,7 @@
       </Stack>
     </PageSection>
   </GenericBlock>
+  <Divider spacing="none" appearance="solid" />
   <PageBody>
     <PageSection>
       {#if $user}

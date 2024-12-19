@@ -1,26 +1,16 @@
 <script lang="ts" context="module">
-  import type { TColor } from '$types/color';
-  import type { TShadow } from '$types/shadow';
-  import type { TSize } from '$types/size';
-  import type { TTextSize } from '$types/text';
+  import type { TSizeLabel } from '$types/size';
 
-  export interface ButtonProps {
+  export interface ButtonProps extends CommonStyledProps {
     active?: boolean;
     appearance?: 'primary' | 'secondary' | 'minimal' | 'link';
     busy?: boolean;
-    bgColor?: TColor;
-    color?: TColor;
-    className?: string;
     fill?: boolean;
     disabled?: boolean;
     hidden?: boolean;
     invert?: boolean;
-    radius?: TRadius;
-    shadow?: TShadow;
     shape?: 'square' | 'circle';
-    spacing?: TSize;
-    size?: TSize;
-    textSize?: TTextSize;
+    size?: Extract<TSizeLabel, 'xs' | 'sm' | 'md' | 'lg'>;
     underline?: boolean;
     variant?: 'pill' | 'rounded';
   }
@@ -30,12 +20,15 @@
   import './button.css';
 
   import clsx from '$utils/clsx';
-  import { generateCustomProperties, inlineStyles } from '$utils/components';
+  import {
+    generateResponsiveCSSProperties,
+    inlineStyles,
+  } from '$utils/components';
 
   import Spinner from '$components/spinner/spinner.svelte';
   import When from '$components/when/when.svelte';
 
-  import type { TRadius } from '$types/radius';
+  import type { CommonStyledProps } from '$types/component';
   import type { ResponsiveConfig } from '$types/responsive-config';
 
   export let active: ButtonProps['active'] = undefined,
@@ -50,7 +43,10 @@
     radius: ButtonProps['radius'] = undefined,
     shape: ButtonProps['shape'] = undefined,
     shadow: ButtonProps['shadow'] = undefined,
-    size: ButtonProps['size'] = 'md',
+    size: ButtonProps['size'] = 'md' as Extract<
+      TSizeLabel,
+      'xs' | 'sm' | 'md' | 'lg'
+    >,
     spacing: ButtonProps['spacing'] = undefined,
     textSize: ButtonProps['textSize'] = undefined,
     underline: ButtonProps['underline'] = undefined,
@@ -69,7 +65,7 @@
   };
 
   const mergedStyles = inlineStyles(
-    generateCustomProperties(
+    generateResponsiveCSSProperties(
       {
         bgColor,
         color,
@@ -86,9 +82,10 @@
    * Determines the size of the spinner based on the size of
    * the button.
    */
-  function getSpinnerSize(size?: ButtonProps['size']): ButtonProps['size'] {
+  function getSpinnerSize(size: ButtonProps['size']): ButtonProps['size'] {
     switch (size) {
       case 'xs':
+        return 'xs';
       case 'sm':
         return 'xs';
       case 'md':
