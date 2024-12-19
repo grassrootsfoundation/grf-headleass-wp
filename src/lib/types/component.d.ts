@@ -29,7 +29,6 @@ export interface CommonStyledProps extends CommonProps {
   height?: TSize;
   radius?: TRadius;
   shadow?: TShadow;
-  spacing?: TSize | ResponsiveProp<TSize>;
   spacingBlock?: TSize | ResponsiveProp<TSize>;
   spacingBlockEnd?: TSize | ResponsiveProp<TSize>;
   spacingBlockStart?: TSize | ResponsiveProp<TSize>;

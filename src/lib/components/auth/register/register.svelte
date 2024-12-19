@@ -3,7 +3,7 @@
 </script>
 
 <Button
-  bgColor="red-200"
+  appearance="primary"
   href="/auth/register"
   aria-label="Navigate to the registration page">
   Register

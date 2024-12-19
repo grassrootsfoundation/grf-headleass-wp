@@ -34,10 +34,10 @@
 </script>
 
 <Page>
-  <GenericBlock as="header" spacingTop="8" bgColor="red-200">
+  <GenericBlock as="header">
     <PageSection
-      spacingBlockStart={{ default: '2', lg: '4' }}
-      spacingBlockEnd={{ default: '2', lg: '4' }}>
+      spacingBlockStart={{ default: '2', lg: '3' }}
+      spacingBlockEnd={{ default: '2', lg: '3' }}>
       <Stack direction="row" align="center" justify="space-between">
         <ButtonUnstyled href="/">
           <Heading

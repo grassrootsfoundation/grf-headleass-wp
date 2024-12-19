@@ -4,7 +4,6 @@ import { tok } from './style';
 import type { ResponsiveProp } from '$types/media';
 import type { ResponsiveConfig } from '$types/responsive-config';
 
-type Breakpoint = (typeof SUPPORTED_BREAKPOINT_KEYS)[number];
 /**
  * Filters out undefined props.
  */
@@ -13,11 +12,6 @@ export function definedProps(props = {}): typeof props {
     Object.entries(props).filter(([_, v]) => v !== undefined)
   );
 }
-
-/**
- * Determines if a prop conforms to the responsive prop
- * config shape.
- */
 
 export function inlineStyles(styles: Record<string, unknown>): string {
   return Object.entries(styles)
@@ -33,6 +27,36 @@ export function inlineStyles(styles: Record<string, unknown>): string {
     .join(' ');
 }
 
+/**
+ * Determines if a prop conforms to the responsive prop
+ * config shape.
+ */
+export function generateCustomProperties(
+  props: Partial<Record<string, ResponsiveProp<string | number> | undefined>>,
+  config: ResponsiveConfig
+): Record<string, string> {
+  const vars: Record<string, string> = {};
+
+  for (const [propName, propValue] of Object.entries(props)) {
+    // Check if the prop value is defined and in the config
+    if (propValue !== undefined && config[propName]) {
+      const { name, category } = config[propName];
+
+      // Process single or responsive property
+      if (typeof propValue === 'object' && propValue !== null) {
+        for (const [breakpoint, value] of Object.entries(propValue)) {
+          if (value !== undefined) {
+            vars[`--${name}-${breakpoint}`] = tok(category, value);
+          }
+        }
+      } else if (propValue !== null) {
+        vars[`--${name}`] = tok(category, propValue);
+      }
+    }
+  }
+
+  return vars;
+}
 /**
  * Generates props in single or responsive form
  */

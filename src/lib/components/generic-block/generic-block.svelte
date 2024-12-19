@@ -24,8 +24,8 @@
     color: GenericBlockProps['color'] = undefined,
     gap: GenericBlockProps['gap'] = undefined,
     shadow: GenericBlockProps['shadow'] = undefined,
-    spacingBottom: GenericBlockProps['spacingBlockEnd'] = undefined,
-    spacingTop: GenericBlockProps['spacingBlockStart'] = undefined,
+    spacingBlockEnd: GenericBlockProps['spacingBlockEnd'] = undefined,
+    spacingBlockStart: GenericBlockProps['spacingBlockStart'] = undefined,
     radius: GenericBlockProps['radius'] = undefined;
 
   let className: GenericBlockProps['className'] = $$restProps.class;
@@ -38,8 +38,8 @@
     gap: { name: 'block-gap', category: 'size' },
     radius: { name: 'block-radius', category: 'radius' },
     shadow: { name: 'block-shadow', category: 'shadow' },
-    spacingBottom: { name: 'block-spacing-block-end', category: 'size' },
-    spacingTop: { name: 'block-spacing-block-start', category: 'size' },
+    spacingBlockEnd: { name: 'block-spacing-block-end', category: 'size' },
+    spacingBlockStart: { name: 'block-spacing-block-start', category: 'size' },
   };
 
   const mergedStyles = inlineStyles(
@@ -51,8 +51,8 @@
         gap,
         radius,
         shadow,
-        spacingBottom,
-        spacingTop,
+        spacingBlockEnd,
+        spacingBlockStart,
       },
       config
     )
