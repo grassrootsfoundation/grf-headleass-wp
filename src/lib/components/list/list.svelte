@@ -2,7 +2,7 @@
   export interface ListProps {
     className?: string;
     position?: TListPosition;
-    type?: TListType;
+    listStyle?: TListType;
   }
 </script>
 
@@ -19,23 +19,23 @@
   import type { ResponsiveConfig } from '$types/responsive-config';
 
   export let position: ListProps['position'] = undefined,
-    type: ListProps['type'] = undefined;
+    listStyle: ListProps['listStyle'] = undefined;
 
   let className: ListProps['className'] = $$restProps.class;
   export { className as class };
 
-  const as = type === 'decimal' ? 'ol' : 'ul';
+  const as = listStyle === 'ordered' ? 'ol' : 'ul';
 
   const config: ResponsiveConfig = {
     position: { name: 'list-position', category: 'list' },
-    type: { name: 'list-type', category: 'list' },
+    listStyle: { name: 'list-type', category: 'list' },
   };
 
   const mergedStyles = inlineStyles(
     generateResponsiveCSSProperties(
       {
         position,
-        type,
+        listStyle,
       },
       config
     )

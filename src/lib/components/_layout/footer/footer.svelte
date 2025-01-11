@@ -1,10 +1,11 @@
 <script lang="ts">
+  import PageSection from '$src/lib/components/page/_page-section.svelte';
+
   import { tok } from '$lib/utils/style';
 
   import Divider from '$components/divider/divider.svelte';
   import GenericBlock from '$components/generic-block/generic-block.svelte';
   import Grid from '$components/grid/grid.svelte';
-  import PageSection from '$components/page/page-section.svelte';
   import Stack from '$components/stack/stack.svelte';
   import Text from '$components/text/text.svelte';
 

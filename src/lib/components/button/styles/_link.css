@@ -1,32 +1,9 @@
 .button {
-	&[data-appearance='link'] {
-		--button-color: var(--button-base);
-		--button-bg-color: var(--color-transparent);
-		--button-border-color: var(--color-transparent);
-
-		@media (hover: hover) {
-			&:hover {
-				&:after {
-					background-color: color-mix(in srgb, var(--button-base) 85%, transparent);
-				}
-			}
-		}
-
-		&:is(:active, [aria-pressed='true']) {
-			&:after {
-				background-color: var(--color-transparent);
-			}
-		}
-
-		&:after {
-			content: '';
-			position: absolute;
-			bottom: calc(var(--button-spacing-block) - var(--size-0-5));
-			left: var(--button-spacing-inline);
-			right: var(--button-spacing-inline);
-			height: 2px;
-			background-color: var(--color-transparent);
-			transition: background-color var(--button-duration) var(--button-ease);
-		}
-	}
+  &[data-appearance='link'] {
+    @apply decoration-2
+			no-underline
+			decoration-solid
+			underline-offset-4
+			hover:underline;
+  }
 }

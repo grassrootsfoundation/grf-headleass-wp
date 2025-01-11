@@ -22,7 +22,15 @@
       "@testing-library/jest-dom"
     ]
   },
-  "include": ["./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.svelte"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.d.ts",
+    "./src/**/*.svelte",
+    "src/lib/components/editor/blocks/layout-block.js",
+    "src/lib/components/editor/blocks/layout-block.js",
+    "src/lib/components/editor/blocks/layout-block.js",
+    "src/lib/components/editor/blocks/layout-block.js"
+  ],
   "exclude": ["node_modules", "build", "dist", "./svelte-kit"]
 
   // Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias

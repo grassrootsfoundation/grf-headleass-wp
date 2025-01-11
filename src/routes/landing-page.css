@@ -1,0 +1,10 @@
+.landing-page {
+  @apply grid
+  gap-6;
+
+  h2 {
+    @apply font-slab
+    text-5xl
+    font-semibold;
+  }
+}

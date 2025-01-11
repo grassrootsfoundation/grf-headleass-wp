@@ -1,32 +1,28 @@
 .button {
-	/* Size */
+  @apply text-base;
 
-	--button-spacing-block: calc(var(--button-spacing-inline) / 2);
-	--button-gap: var(--size-1);
+  &[data-size='lg'] {
+    @apply text-base
+			py-3
+			px-9;
+  }
 
-	/* Text */
-	--button-text-size: var(--text-md);
-	--button-font-weight: var(--font-weight-medium);
-	--icon-size: var(--button-text-size);
+  &[data-size='md'] {
+    @apply text-base
+			py-2
+			px-6;
+  }
 
-	&[data-size='lg'] {
-		--button-text-size: var(--text-lg);
-		--button-spacing-inline: var(--size-6);
-	}
+  &[data-size='sm'] {
+    @apply text-sm
+			py-1
+			px-3;
+  }
 
-	&[data-size='md'] {
-		--button-text-size: var(--text-md);
-		--button-spacing-inline: var(--size-5);
-	}
-
-	&[data-size='sm'] {
-		--button-text-size: var(--text-sm);
-		--button-spacing-inline: var(--size-3-5);
-	}
-
-	&[data-size='xs'] {
-		--button-text-size: var(--text-xs);
-		--button-spacing-inline: var(--size-2);
-		--button-text-gap: var(--size-1-5);
-	}
+  &[data-size='xs'] {
+    @apply text-xs
+			py-0.5
+			px-2.5
+			gap-1;
+  }
 }

@@ -1,7 +1,3 @@
-<script lang="ts">
-  import { tok } from '$lib/utils/style';
-</script>
-
 <svg
   class="logo-icon"
   xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +7,7 @@
     d="M60.34,0H0v32.08h.01c.23,16.46,13.64,29.73,30.15,29.73s29.92-13.27,30.15-29.73h.03V0Z"
   ></path>
   <path
-    style="fill:{tok('color', 'white')};"
+    class="color-primary-offset"
     d="M2.24,2.22v29.41h-.01c0,15.43,12.51,27.94,27.94,27.94s27.64-12.23,27.92-27.41h.01V2.22H2.24Z"
   ></path>
   <path
@@ -28,11 +24,11 @@
   <rect class="color-medium" x="4.28" y="4.31" width="24.65" height="22.57"
   ></rect>
   <path
-    style="fill:{tok('color', 'white')};"
+    class="color-primary-offset"
     d="M44.08,16.3c-7.71-7.71-20.19-7.74-27.88-.05-7.68,7.68-7.66,20.17.05,27.88,7.71,7.71,20.19,7.74,27.88.05,7.68-7.68,7.66-20.17-.05-27.88Z"
   ></path>
   <path
-    style="fill:{tok('color', 'white')};"
+    class="color-primary-offset"
     d="M42.34,17.98c-6.77-6.77-17.72-6.79-24.46-.04-6.74,6.74-6.72,17.7.04,24.46,6.77,6.77,17.72,6.79,24.46.04,6.74-6.74,6.72-17.7-.04-24.46Z"
   ></path>
   <g>

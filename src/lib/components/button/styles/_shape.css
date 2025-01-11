@@ -1,23 +1,22 @@
 .button {
-	&[data-shape='circle'],
-	&[data-shape='pill'],
-	&[data-shape='rounded'],
-	&[data-shape='square'] {
-		display: flex;
-		overflow: hidden;
-	}
+  &[data-shape='circle'],
+  &[data-shape='pill'],
+  &[data-shape='rounded'],
+  &[data-shape='square'] {
+    @apply overflow-hidden;
+  }
 
-	&[data-shape='square'],
-	&[data-shape='circle'] {
-		aspect-ratio: 1;
-	}
+  &[data-shape='square'],
+  &[data-shape='circle'] {
+    @apply aspect-square;
+  }
 
-	&[data-shape='pill'],
-	&[data-shape='circle'] {
-		--button-radius: var(--radius-full);
-	}
+  &[data-shape='pill'],
+  &[data-shape='circle'] {
+    @apply rounded-full;
+  }
 
-	&[data-shape='rounded'] {
-		--button-radius: var(--radius-md);
-	}
+  &[data-shape='rounded'] {
+    @apply rounded-md;
+  }
 }

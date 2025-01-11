@@ -1,6 +1,6 @@
-import { writable } from 'svelte/store';
+import { writable, type Writable } from 'svelte/store';
 
-import type { Block, Content } from '$types/api-types';
+import type { Content, Block } from '$src/lib/types/content';
 
 // Define the initial state of the store with proper typing
 interface ContentStoreState {
@@ -16,7 +16,7 @@ const initialState: ContentStoreState = {
 };
 
 // Create the store with proper typing
-export const contentStore = writable<ContentStoreState>(initialState);
+export const contentStore: Writable<ContentStoreState> = writable(initialState);
 
 // Fetch content function
 export async function fetchContent(

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Main from './page-body.svelte';
-  import Section from './page-section.svelte';
+  import Main from './_page-body.svelte';
+  import Section from './_page-section.svelte';
   import Page from './page.svelte';
 
   export let Hst;

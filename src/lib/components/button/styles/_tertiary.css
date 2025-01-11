@@ -1,0 +1,15 @@
+.button {
+  &[data-appearance='tertiary'] {
+    @apply bg-tertiary-600
+    text-white
+			hover:bg-tertiary-600/65
+			active:bg-tertiary-600/85;
+  }
+  &[data-invert='true'][data-appearance='tertiary'] {
+    @apply border-tertiary-600
+    text-tertiary-600
+			bg-transparent
+			hover:bg-tertiary-600/5
+			active:bg-tertiary-600/15;
+  }
+}

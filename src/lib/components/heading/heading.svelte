@@ -1,72 +1,30 @@
 <script lang="ts" context="module">
-  import type { TColor } from '$types/color';
-  import type { ResponsiveConfig } from '$types/responsive-config';
-  import type {
-    TFontWeight,
-    THeadingLevel,
-    TLeading,
-    TTextAlign,
-    TTextSize,
-    TTracking,
-  } from '$types/text';
-  export interface HeadingProps {
-    align?: TTextAlign;
-    color?: TColor;
+  import type { CommonProps } from '$types/component';
+  import type { THeadingLevel } from '$types/text';
+
+  export interface HeadingProps extends CommonProps {
     display?: THeadingLevel;
     level?: THeadingLevel;
-    leading?: TLeading;
-    textSize?: TTextSize;
-    tracking?: TTracking;
-    weight?: TFontWeight;
+    preset?: 'prose' | 'page';
   }
 </script>
 
 <script lang="ts">
-  import {
-    generateResponsiveCSSProperties,
-    inlineStyles,
-  } from '$utils/components';
+  import clsx from '$utils/clsx';
 
   import './heading.css';
 
-  export let align: HeadingProps['align'] = undefined,
-    color: HeadingProps['color'] = undefined,
-    display: HeadingProps['display'] = '1',
-    leading: HeadingProps['leading'] = undefined,
-    level: HeadingProps['level'] = '1',
-    textSize: HeadingProps['textSize'] = undefined,
-    tracking: HeadingProps['tracking'] = undefined,
-    weight: HeadingProps['weight'] = undefined;
+  export let display: HeadingProps['display'] = '1',
+    level: HeadingProps['level'] = '1';
 
-  const config: ResponsiveConfig = {
-    align: { name: 'heading-text-align', category: 'text-align' },
-    color: { name: 'heading-color', category: 'color' },
-    leading: { name: 'heading-leading', category: 'leading' },
-    textSize: { name: 'heading-text-size', category: 'text' },
-    tracking: { name: 'heading-tracking', category: 'color' },
-    weight: { name: 'heading-font-weight', category: 'font-weight' },
-  };
-
-  const mergedStyles = inlineStyles(
-    generateResponsiveCSSProperties(
-      {
-        align,
-        color,
-        leading,
-        textSize,
-        tracking,
-        weight,
-      },
-      config
-    )
-  );
+  let className: HeadingProps['className'] = $$restProps.class;
+  export { className as class };
 </script>
 
 <svelte:element
   this={`h${level}`}
-  data-level={display}
-  style={mergedStyles}
-  class="heading"
+  data-display={display}
+  class={clsx('heading', className)}
   {...$$restProps}>
   <slot />
 </svelte:element>

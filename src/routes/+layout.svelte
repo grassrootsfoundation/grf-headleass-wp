@@ -1,87 +1,207 @@
 <script lang="ts">
-  import '@fontsource-variable/sora';
-  import 'trusty-css/dist/index.css';
+  import '@fontsource/roboto';
+  import '@fontsource-variable/roboto-slab';
+  import Icon from '@iconify/svelte';
+  import { onMount } from 'svelte';
+  import { cubicOut } from 'svelte/easing';
+  import { fly, scale } from 'svelte/transition';
 
   import '$src/public/globals.css';
 
-  import Divider from '$src/lib/components/divider/divider.svelte';
-  import { setUser, user } from '$src/stores/auth';
+  import clsx from '$src/lib/utils/clsx';
+  import { site } from '$src/site.config';
 
   import Logo from '$components/_layout/logo/logo.svelte';
-  import Login from '$components/auth/login/login.svelte';
-  import Logout from '$components/auth/logout/logout.svelte';
-  import Register from '$components/auth/register/register.svelte';
-  import ButtonUnstyled from '$components/button/button-unstyled.svelte';
-  import Button from '$components/button/button.svelte';
-  import GenericBlock from '$components/generic-block/generic-block.svelte';
-  import Heading from '$components/heading/heading.svelte';
-  import PageBody from '$components/page/page-body.svelte';
-  import PageSection from '$components/page/page-section.svelte';
-  import Page from '$components/page/page.svelte';
-  import Stack from '$components/stack/stack.svelte';
+  import ButtonUnstyled from '$components/button/button.svelte';
 
-  import type { UserDocument } from '$types/api-types';
+  import './layout.css';
 
-  export let data: { user: UserDocument | null };
+  let isMenuToggled: boolean = false;
+  export let originX: number = 100;
+  export let originY: number = 0;
 
-  $: {
-    if (data && data.user) {
-      setUser(data.user);
+  function toggleMenu() {
+    isMenuToggled = !isMenuToggled;
+
+    if (isMenuToggled) {
+      document.body.style.overflow = 'hidden';
     } else {
-      console.warn('data.user is undefined or null');
+      document.body.style.overflow = '';
     }
   }
+
+  // Function to handle the Escape key press
+  function handleKeydown(event: { key: string }) {
+    if (event.key === 'Escape' && isMenuToggled) {
+      toggleMenu();
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleKeydown);
+
+    // Cleanup the event listener when the component is destroyed
+    return () => {
+      window.removeEventListener('keydown', handleKeydown);
+    };
+  });
+
+  export let data: {
+    primaryMenu: { label: string; url: string }[];
+    footerCommunityMenu: { label: string; url: string }[];
+    footerServicesMenu: { label: string; url: string }[];
+    footerContactMenu: { label: string; url: string }[];
+  };
 </script>
 
-<Page>
-  <GenericBlock as="header">
-    <PageSection
-      spacingBlockStart={{ default: '2', lg: '3' }}
-      spacingBlockEnd={{ default: '2', lg: '3' }}>
-      <Stack direction="row" align="center" justify="space-between">
-        <ButtonUnstyled href="/">
-          <Heading
-            level="1"
-            display="3"
-            weight="black"
-            data-label="Grass Roots Foundation">
-            <Logo variant="acronym" size="xs" />
-          </Heading>
-        </ButtonUnstyled>
+<div class="layout">
+  <header class="header">
+    <menu class="contain">
+      <a href="/">
+        <Logo size="xs" />
+      </a>
+      <div class="flex gap-3 items-center">
+        <nav>
+          {#each data.primaryMenu as item}
+            <a href={item.url}><span>{item.label}</span></a>
+          {/each}
+        </nav>
+        <div>
+          <ButtonUnstyled class="give-button">Give</ButtonUnstyled>
+        </div>
+        <div class="nav-mobile mobile-nav-inline">
+          <ButtonUnstyled class="nav-menu-toggle" on:click={toggleMenu}>
+            {#if !isMenuToggled}
+              <Icon icon="mdi:menu" />
+            {/if}
+          </ButtonUnstyled>
+        </div>
+      </div>
+    </menu>
+  </header>
 
-        {#if $user}
-          <Stack direction="row">
-            <Button href="/">Home</Button>
-            <Button href="/dashboard">Dashboard</Button>
-            <Logout />
-          </Stack>
-        {:else}
-          <Stack direction="row">
-            <Button href="/">Home</Button>
-            <Login />
-            <Register />
-          </Stack>
-        {/if}
-      </Stack>
-    </PageSection>
-  </GenericBlock>
-  <Divider spacing="none" appearance="solid" />
-  <PageBody>
-    <PageSection>
-      {#if $user}
-        <Heading level="2" display="5">Welcome, {$user.role}!</Heading>
-      {:else}
-        <Heading level="1" display="1">You are not logged in.</Heading>
-      {/if}
-    </PageSection>
-
+  <div class="content-wrapper">
     <slot />
-  </PageBody>
-  <GenericBlock as="footer" spacingBlock="8">
-    <PageSection>Test Footer</PageSection>
-  </GenericBlock>
-</Page>
+  </div>
 
-<main>
-  <h1>SvelteKit Layout</h1>
-</main>
+  <footer class="footer">
+    <div class="contain">
+      <div class="footer-wrapper">
+        <div class="footer-slogan-block">
+          <div class="footer-logo">
+            <Logo variant="icon" />
+            <div class="footer-slogan">
+              {site.branding.slogan}
+            </div>
+          </div>
+        </div>
+        <div class="full-navigation">
+          <menu>
+            <h4>Community</h4>
+            <nav>
+              {#each data.footerCommunityMenu as item}
+                <div>
+                  <a href={item.url} title={item.label}>{item.label}</a>
+                </div>
+              {/each}
+            </nav>
+          </menu>
+          <menu>
+            <h4>Services</h4>
+            <nav>
+              {#each data.footerServicesMenu as item}
+                <div>
+                  <a href={item.url} title={item.label}>{item.label}</a>
+                </div>
+              {/each}
+            </nav>
+          </menu>
+          <menu>
+            <h4>Get In Touch</h4>
+            <nav>
+              {#each data.footerContactMenu as item}
+                <div>
+                  <a href={item.url} title={item.label}>{item.label}</a>
+                </div>
+              {/each}
+              <div><a href="/" title="">Give</a></div>
+            </nav>
+          </menu>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="footer-copyright-wrapper">
+        {site.branding.longname} | &copy;
+        {new Date().getFullYear()}
+      </div>
+    </div>
+    <div class="shape-one"></div>
+    <div class="shape-two"></div>
+  </footer>
+
+  <div class="layout-bg-decor layout-bg-left">
+    <div class="layout-bg-decor-primary"></div>
+    <div class="layout-bg-decor-secondary"></div>
+    <div class="layout-bg-decor-tertiary"></div>
+  </div>
+  <div class="layout-bg-decor layout-bg-right">
+    <div class="layout-bg-decor-tertiary"></div>
+    <div class="layout-bg-decor-primary"></div>
+    <div class="layout-bg-decor-secondary"></div>
+  </div>
+
+  {#if isMenuToggled}
+    <div
+      class="full-navigation mobile-navigation"
+      transition:fly={{ x: -500, duration: 250 }}>
+      <menu transition:fly={{ x: -500, duration: 900 }}>
+        <h4>Community</h4>
+        <nav>
+          {#each data.footerCommunityMenu as item}
+            <div>
+              <a href={item.url} title={item.label}>{item.label}</a>
+            </div>
+          {/each}
+        </nav>
+      </menu>
+      <menu transition:fly={{ x: -600, duration: 950 }}>
+        <h4>Services</h4>
+        <nav>
+          {#each data.footerServicesMenu as item}
+            <div>
+              <a href={item.url} title={item.label}>{item.label}</a>
+            </div>
+          {/each}
+        </nav>
+      </menu>
+      <menu transition:fly={{ x: -700, duration: 1000 }}>
+        <h4>Get In Touch</h4>
+        <nav>
+          {#each data.footerContactMenu as item}
+            <div>
+              <a href={item.url} title={item.label}>{item.label}</a>
+            </div>
+          {/each}
+          <div><a href="/" title="">Give</a></div>
+        </nav>
+      </menu>
+    </div>
+  {/if}
+  {#if isMenuToggled}
+    <div
+      class="backdrop-overlay"
+      transition:scale={{ duration: 400, easing: cubicOut }}
+      style="transform-origin: {originX}% {originY}%;">
+    </div>
+  {/if}
+  <div class="nav-mobile nav-mobile-close">
+    <ButtonUnstyled
+      class={clsx('nav-menu-toggle', isMenuToggled && 'nav-menu-toggle-active')}
+      on:click={toggleMenu}>
+      {#if isMenuToggled}
+        <Icon icon="mdi:close" />
+      {/if}
+    </ButtonUnstyled>
+  </div>
+</div>

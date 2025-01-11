@@ -1,0 +1,28 @@
+.hero {
+  @apply grid
+  grid-cols-12
+  gap-4
+  lg:gap-20
+  py-8
+  flex-row;
+}
+.hero-content {
+  @apply grid
+  order-2
+  col-span-9
+  items-center
+  lg:col-span-6
+  lg:order-1;
+}
+.hero-image {
+  @apply bg-neutral-300
+  rounded-lg
+  aspect-square
+  col-span-3
+  order-1
+  w-full
+  lg:justify-start
+  lg:col-span-6
+  lg:order-2
+  lg:aspect-video;
+}

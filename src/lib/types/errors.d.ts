@@ -1,1 +1,1 @@
-export type Errors = string[] | string | { [key: string]: unknown };
+export type Errors = string[] | string | { [key: string]: unknown } | undefined;

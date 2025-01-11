@@ -1,43 +1,15 @@
 .button {
-	&[data-invert='false'][data-appearance='primary'] {
-		--button-bg-color: var(--button-base);
-		--button-border-color: var(--button-border-color var(--button-base));
-
-		@media (hover: hover) {
-			&:hover {
-				--button-bg-color: color-mix(in srgb, var(--button-base) 85%, transparent);
-				--button-border-color: color-mix(
-					in srgb,
-					var(--button-border-color var(--button-base)) 0%,
-					transparent
-				);
-			}
-		}
-
-		&:is(:active, [aria-pressed='true']) {
-			--button-bg-color: var(--button-base);
-			--button-border-color: var(--button-border-color var(--button-base));
-		}
-	}
-
-	&[data-invert='true'][data-appearance='primary'] {
-		--button-color: var(--button-base);
-		--button-bg-color: var(--color-transparent);
-		--button-border-color: var(--button-border-color var(--button-base));
-
-		@media (hover: hover) {
-			&:hover {
-				--button-bg-color: color-mix(in srgb var(--button-base) 5%, transparent);
-				--button-border-color: color-mix(
-					in srgb,
-					var(--button-border-color var(--button-base)) 0%,
-					transparent
-				);
-			}
-		}
-
-		&:is(:active, [aria-pressed='true']) {
-			--button-border-color: var(--button-border-color var(--button-base));
-		}
-	}
+  &[data-appearance='primary'] {
+    @apply bg-primary-700
+    text-white
+			hover:bg-primary-700/75
+			active:bg-primary-700/85;
+  }
+  &[data-invert='true'][data-appearance='primary'] {
+    @apply border-primary-700
+    text-primary-700
+			bg-transparent
+			hover:bg-primary-700/15
+			active:bg-primary-700/25;
+  }
 }

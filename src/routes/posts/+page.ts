@@ -1,11 +1,27 @@
-import type { PageLoad } from './$types';
+import { gql } from 'graphql-request';
 
-export const load: PageLoad = async ({ parent }) => {
-  const data = await parent();
+import { client } from '$lib/graphql/client';
 
-  if (data?.user) {
-    // console.log(data?.user);
+const GET_POSTS = gql`
+  query GetPosts {
+    posts {
+      nodes {
+        id
+        title
+        content
+      }
+    }
+  }
+`;
+
+export async function load() {
+  const data: any = await client.request(GET_POSTS);
+
+  if (!data || !data.posts) {
+    throw new Error('Failed to fetch posts');
   }
 
-  return {};
-};
+  return {
+    posts: data.posts.nodes,
+  };
+}

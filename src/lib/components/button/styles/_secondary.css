@@ -1,0 +1,14 @@
+.button {
+  &[data-appearance='secondary'] {
+    @apply bg-secondary-500
+			hover:bg-secondary-500/65
+			active:bg-secondary-500/85;
+  }
+  &[data-invert='true'][data-appearance='secondary'] {
+    @apply border-secondary-500
+    text-secondary-500
+			bg-transparent
+			hover:bg-secondary-500/15
+			active:bg-secondary-500/25;
+  }
+}

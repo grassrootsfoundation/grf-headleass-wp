@@ -26,6 +26,9 @@ export default defineConfig({
     },
   },
   server: {
+    watch: {
+      ignored: ['**/node_modules/**', '**/.git/**'], // Ignore unnecessary folders
+    },
     headers: {
       'Content-Security-Policy':
         "default-src 'self'; script-src 'self'; style-src 'self';",

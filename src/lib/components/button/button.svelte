@@ -3,13 +3,20 @@
 
   export interface ButtonProps extends CommonStyledProps {
     active?: boolean;
-    appearance?: 'primary' | 'secondary' | 'minimal' | 'link';
+    appearance?:
+      | 'primary'
+      | 'secondary'
+      | 'tertiary'
+      | 'dark'
+      | 'light'
+      | 'minimal'
+      | 'link';
     busy?: boolean;
     fill?: boolean;
     disabled?: boolean;
     hidden?: boolean;
     invert?: boolean;
-    shape?: 'square' | 'circle';
+    shape?: 'square' | 'circle' | 'pill' | 'rounded';
     size?: Extract<TSizeLabel, 'xs' | 'sm' | 'md' | 'lg'>;
     underline?: boolean;
     variant?: 'pill' | 'rounded';
@@ -20,63 +27,28 @@
   import './button.css';
 
   import clsx from '$utils/clsx';
-  import {
-    generateResponsiveCSSProperties,
-    inlineStyles,
-  } from '$utils/components';
 
   import Spinner from '$components/spinner/spinner.svelte';
   import When from '$components/when/when.svelte';
 
   import type { CommonStyledProps } from '$types/component';
-  import type { ResponsiveConfig } from '$types/responsive-config';
 
   export let active: ButtonProps['active'] = undefined,
     appearance: ButtonProps['appearance'] = undefined,
-    bgColor: ButtonProps['bgColor'] = undefined,
     busy: ButtonProps['busy'] = undefined,
-    color: ButtonProps['color'] = undefined,
     fill: ButtonProps['fill'] = undefined,
     disabled: ButtonProps['disabled'] = undefined,
     hidden: ButtonProps['hidden'] = undefined,
     invert: ButtonProps['invert'] = undefined,
-    radius: ButtonProps['radius'] = undefined,
     shape: ButtonProps['shape'] = undefined,
-    shadow: ButtonProps['shadow'] = undefined,
     size: ButtonProps['size'] = 'md' as Extract<
       TSizeLabel,
       'xs' | 'sm' | 'md' | 'lg'
     >,
-    spacing: ButtonProps['spacing'] = undefined,
-    textSize: ButtonProps['textSize'] = undefined,
-    underline: ButtonProps['underline'] = undefined,
     variant: ButtonProps['variant'] = undefined;
 
   let className: ButtonProps['className'] = $$restProps.class;
   export { className as class };
-
-  const config: ResponsiveConfig = {
-    bgColor: { name: 'button-bg-color', category: 'color' },
-    color: { name: 'button-color', category: 'color' },
-    radius: { name: 'button-radius', category: 'radius' },
-    shadow: { name: 'button-shadow', category: 'shadow' },
-    spacing: { name: 'button-spacing', category: 'size' },
-    textSize: { name: 'button-text-size', category: 'text' },
-  };
-
-  const mergedStyles = inlineStyles(
-    generateResponsiveCSSProperties(
-      {
-        bgColor,
-        color,
-        radius,
-        shadow,
-        spacing,
-        textSize,
-      },
-      config
-    )
-  );
 
   /**
    * Determines the size of the spinner based on the size of
@@ -128,9 +100,7 @@
     data-invert={invert}
     data-shape={shape}
     data-size={size}
-    data-underline={underline}
     data-variant={variant}
-    style={mergedStyles}
     {hidden}
     {...$$restProps}>
     <When condition={Boolean($$slots && $$slots.default)}>
@@ -164,9 +134,7 @@
     data-invert={invert}
     data-shape={shape}
     data-size={size}
-    data-underline={underline}
     data-variant={variant}
-    style={mergedStyles}
     {hidden}
     {...$$restProps}>
     <When condition={Boolean($$slots && $$slots.default)}>

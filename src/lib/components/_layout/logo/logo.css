@@ -1,35 +1,81 @@
 .logo {
-
   .color-light {
-    fill: var(--color-branding-light);
+    @apply fill-primary-500;
   }
   .color-medium {
-    fill: var(--color-branding-medium);
+    @apply fill-primary-700;
   }
   .color-dark {
-    fill: var(--color-branding-dark);
+    @apply fill-primary-900;
   }
   .color-primary-offset {
-    fill: var(--color-branding-offset);
+    @apply fill-white;
+  }
+
+  .logo-text,
+  .logo-text-center,
+  .logo-acronym {
+    path,
+    polygon,
+    rect {
+      @apply fill-inherit;
+    }
   }
 
   svg {
-    height: var(--logo-size);
+    @apply h-5;
   }
 
   &[data-appearance='dark'] {
     --color-branding-offset: var(--color-branding-dark);
   }
   &[data-size='xs'] svg {
-    --logo-size: var(--size-6);
+    &.logo-text,
+    &.logo-text-center {
+      @apply h-6;
+    }
+    &.logo-acronym {
+      @apply h-4;
+    }
+    &.logo-icon {
+      @apply h-6;
+    }
   }
   &[data-size='sm'] svg {
-    --logo-size: var(--size-8);
+    &.logo-text,
+    &.logo-text-center {
+      @apply h-8;
+    }
+    &.logo-acronym {
+      @apply h-6;
+    }
+    &.logo-icon {
+      @apply h-8;
+    }
   }
   &[data-size='md'] svg {
-    --logo-size: var(--size-10);
+    &.logo-text,
+    &.logo-text-center {
+      @apply h-10;
+    }
+
+    &.logo-acronym {
+      @apply h-8;
+    }
+    &.logo-icon {
+      @apply h-10;
+    }
   }
   &[data-size='lg'] svg {
-    --logo-size: var(--size-14);
+    &.logo-text,
+    &.logo-text-center {
+      @apply h-12;
+    }
+    &.logo-acronym {
+      @apply h-10;
+    }
+    &.logo-icon {
+      @apply h-12;
+    }
   }
 }

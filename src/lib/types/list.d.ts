@@ -1,2 +1,2 @@
-export type TListType = 'none' | 'disc' | 'decimal';
+export type TListType = 'none' | 'ordered' | 'unordered';
 export type TListPosition = 'inside' | 'outside';

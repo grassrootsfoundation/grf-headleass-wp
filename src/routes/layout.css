@@ -1,0 +1,394 @@
+.layout {
+  @apply flex
+  relative
+  z-0
+  flex-col
+  min-h-screen;
+
+  .layout-bg-decor {
+    @apply fixed
+    -z-10
+    top-0
+    bottom-0
+    grid
+    grid-flow-row;
+  }
+
+  .layout-bg-decor-primary,
+  .layout-bg-decor-secondary,
+  .layout-bg-decor-tertiary {
+    @apply relative
+      w-3
+      sm:w-4
+      xl:w-6
+      to-transparent
+      after:content-['']
+      after:absolute
+      after:inset-y-0
+      after:from-stone-100
+      after:to-stone-100/50;
+  }
+
+  .layout-bg-decor-primary {
+    @apply from-primary-200;
+  }
+
+  .layout-bg-decor-secondary {
+    @apply from-secondary-200;
+  }
+
+  .layout-bg-decor-tertiary {
+    @apply from-tertiary-200;
+  }
+
+  .layout-bg-left {
+    @apply left-0;
+
+    .layout-bg-decor-primary,
+    .layout-bg-decor-secondary,
+    .layout-bg-decor-tertiary {
+      @apply bg-gradient-to-l
+      after:left-0
+      after:right-0.5
+      after:bg-gradient-to-r;
+    }
+  }
+
+  .layout-bg-right {
+    @apply right-0;
+
+    .layout-bg-decor-primary,
+    .layout-bg-decor-secondary,
+    .layout-bg-decor-tertiary {
+      @apply bg-gradient-to-r
+      after:left-0.5
+      after:right-0
+      after:bg-gradient-to-l;
+    }
+  }
+
+  .header {
+    @apply z-0
+    sticky
+    top-0
+    left-0
+    right-0
+    px-3
+    sm:px-5
+    bg-gradient-to-b
+    from-stone-100/90
+    via-stone-100/50
+    to-stone-100/10;
+
+    menu {
+      @apply flex
+      py-3
+      relative
+      rounded-xl
+      gap-3
+      items-center
+      justify-between
+      bg-gradient-to-b
+    from-stone-100/90
+    via-stone-100/50
+    to-stone-100/10;
+    }
+
+    .give-button {
+      @apply bg-jungle-green-500
+        text-sulu-100
+        text-base
+        leading-tight
+        py-1
+        px-2.5
+        transition-colors
+        duration-300
+        ease-out
+        hover:text-sulu-200
+        hover:bg-jungle-green-400
+        active:bg-jungle-green-700
+        rounded-lg;
+    }
+
+    nav {
+      @apply hidden
+      sm:flex gap-2;
+
+      a {
+        @apply font-semibold
+        tracking-wider
+        break-keep
+        py-1
+        px-3
+        rounded-lg
+        transition-colors
+        duration-300
+        ease-out
+        bg-white
+        hover:bg-sulu-200
+        active:bg-sulu-300;
+
+        span {
+          @apply w-full whitespace-nowrap;
+        }
+      }
+    }
+
+    .logo svg {
+      @apply h-6
+      lg:h-8;
+    }
+
+    .navbar {
+      @apply flex
+      flex-1
+      justify-end
+      gap-4;
+    }
+  }
+
+  .content-wrapper {
+    @apply flex-1
+  bg-white/10
+    py-8
+    text-lg
+    md:text-xl
+    /* min-h-[2000px] */
+    md:pt-24
+    md:pb-32;
+  }
+
+  .footer {
+    @apply relative
+    z-0
+    overflow-x-clip
+    bg-gradient-to-b
+    from-slate-900
+    to-slate-700
+    border-t-4
+    border-t-secondary-400;
+
+    .shape-one,
+    .shape-two {
+      @apply before:content-['']
+      before:absolute
+      before:-z-10
+      before:-top-0
+      before:right-0
+      overflow-x-clip
+      before:from-transparent
+      before:via-transparent
+      before:h-4
+      before:-left-2
+      xl:before:-top-2;
+    }
+
+    .shape-two {
+      @apply before:bg-gradient-to-l
+      before:rotate-1
+      before:to-primary-400/75
+      xl:before:rotate-0;
+    }
+
+    .shape-one {
+      @apply before:bg-gradient-to-r
+      before:-rotate-1
+      before:to-secondary-400/75
+      xl:before:rotate-0;
+    }
+
+    .footer-wrapper {
+      @apply pt-10
+      pb-12
+      lg:pt-24
+      grid
+      lg:grid-cols-2
+      gap-12
+      lg:gap-8;
+    }
+
+    .footer-slogan-block {
+      @apply grid
+      gap-2
+      border-b
+      border-danube-900
+      lg:border-transparent
+      pb-8
+      items-center;
+
+      .footer-logo {
+        @apply flex
+        md:gap-4
+        lg:gap-0
+        justify-center
+        items-center;
+
+        .logo svg {
+          @apply h-16 lg:h-20;
+        }
+      }
+
+      .footer-slogan {
+        @apply relative
+        text-white
+        font-serif
+        tracking-wider
+        text-xl
+        md:text-2xl
+        max-w-lg
+        pl-6
+        md:pl-0
+        lg:pl-6;
+      }
+    }
+
+    .footer-copyright {
+      @apply border-t
+      border-slate-900
+      bg-slate-800;
+    }
+
+    .footer-copyright-wrapper {
+      @apply py-2
+      px-3
+      flex
+      justify-center
+      md:justify-end
+      gap-2
+      text-sm
+      text-secondary-200;
+    }
+  }
+
+  .full-navigation {
+    @apply grid
+      flex-col
+      gap-8
+      lg:gap-0
+      sm:grid-flow-col;
+
+    nav {
+      @apply grid
+        gap-2
+        mt-4;
+    }
+
+    h4 {
+      @apply relative
+        inline-flex
+        leading-tight
+        text-white
+        font-slab
+        text-lg
+        md:text-xl
+        tracking-wider
+        after:content-['']
+        after:absolute
+        after:-bottom-1.5
+        after:left-0
+        after:right-0
+        after:h-0.5
+        after:bg-tertiary-300;
+    }
+
+    nav a {
+      @apply relative
+        text-secondary-50
+        tracking-wide
+        break-keep
+        uppercase
+        text-sm
+        md:text-base
+        -left-1
+        py-1
+        px-2
+        rounded-lg
+        transition-colors
+        duration-300
+        ease-out
+        hover:text-sulu-300
+        hover:bg-white/10;
+    }
+  }
+
+  .nav-mobile {
+    &.nav-mobile-close {
+      @apply fixed
+      right-7
+      md:right-14
+      lg:right-16
+      top-3.5;
+    }
+
+    &.mobile-nav-inline {
+      .nav-menu-toggle {
+        @apply bg-white;
+      }
+    }
+
+    .nav-menu-toggle {
+      @apply relative
+      cursor-pointer
+      z-50
+      bg-transparent
+      transition-colors
+      duration-300
+      ease-out
+      rounded-full
+      p-0
+      w-11
+      h-11;
+
+      &.nav-menu-toggle-active {
+        @apply bg-sulu-200
+        flex;
+      }
+
+      svg {
+        @apply text-jungle-green-500
+        transition-colors
+        duration-300
+        ease-out
+        hover:text-primary-700
+        active:text-primary-950
+        w-8
+        h-8;
+      }
+    }
+  }
+
+  .mobile-navigation {
+    @apply fixed
+    z-10
+    left-[10%]
+    top-[6%]
+    xl:left-[25%]
+    grid-flow-row
+    gap-8;
+  }
+
+  .backdrop-overlay {
+    @apply fixed
+      z-0
+      bg-jungle-green-700
+      inset-0
+      w-screen
+      h-screen;
+  }
+}
+
+.contain {
+  @apply mx-auto
+    w-full
+    px-4
+    md:px-8
+    lg:px-12;
+}
+
+.page {
+  @apply max-w-screen-2xl;
+}
+
+.prose {
+  @apply max-w-screen-lg;
+}

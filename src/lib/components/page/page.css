@@ -20,7 +20,7 @@
     var(--page-section-block-start-default)
   );
 
-  &:not([data-container='none']) {
+  /* &:not([data-container='none']) {
     margin-left: auto;
     margin-right: auto;
     padding-inline-start: var(--space-3);
@@ -33,7 +33,7 @@
 
   &[data-container='prose'] {
     max-width: var(--breakpoint-lg);
-  }
+  } */
 
   @media (--media-sm) {
     & {

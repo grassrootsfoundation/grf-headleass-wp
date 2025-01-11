@@ -3,7 +3,7 @@
   import type { TSizeLabel } from '$types/size';
   export interface LogoProps extends CommonProps {
     appearance?: 'light' | 'dark';
-    variant?: 'icon' | 'acronym' | 'text-center' | 'text';
+    variant?: 'icon' | 'acronym' | 'text-center' | 'text' | 'default';
     size?: Extract<TSizeLabel, 'xs' | 'sm' | 'md' | 'lg'>;
   }
 </script>
@@ -15,6 +15,7 @@
   import LogoIcon from './_logo-icon.svelte';
   import LogoTextCenter from './_logo-text-center.svelte';
   import LogoText from './_logo-text.svelte';
+  import LogoDefault from './_logo.svelte';
 
   import './logo.css';
 
@@ -36,7 +37,9 @@
     <LogoTextCenter />
   {:else if variant === 'text'}
     <LogoText />
-  {:else}
+  {:else if variant === 'icon'}
     <LogoIcon />
+  {:else}
+    <LogoDefault />
   {/if}
 </div>

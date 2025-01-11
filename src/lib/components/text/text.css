@@ -1,14 +1,9 @@
 .text {
-  position: relative;
-  color: var(--text-color);
-  font-family: var(--font-sans);
-  font-size: var(--text-font-size);
-  font-weight: var(--text-font-weight, var(--font-weight-normal));
-  line-height: var(--text-leading, var(--leading-relaxed));
-  text-transform: var(--text-transform);
-  letter-spacing: var(--text-tracking, var(--tracking-normal));
-  text-align: var(--text-align);
-  margin: 0;
+  @apply relative
+  font-normal
+  tracking-normal
+  text-pretty
+  leading-relaxed;
 
   &[data-underline='true'] {
     text-decoration: underline;
@@ -16,5 +11,51 @@
 
   a {
     color: inherit;
+  }
+
+  &[data-preset='caption'] {
+    @apply leading-snug;
+
+    &[data-size='xs'] {
+      @apply text-xs md:text-sm;
+    }
+    &[data-size='sm'] {
+      @apply text-sm md:text-base;
+    }
+    &[data-size='md'] {
+      @apply text-base md:text-lg;
+    }
+    &[data-size='lg'] {
+      @apply text-lg md:text-xl;
+    }
+    &[data-size='xl'] {
+      @apply text-xl md:text-2xl;
+    }
+    &[data-size='2xl'] {
+      @apply text-2xl md:text-3xl;
+    }
+  }
+
+  &[data-preset='display'] {
+    @apply leading-tight tracking-normal font-semibold;
+
+    &[data-size='xs'] {
+      @apply text-sm md:text-base;
+    }
+    &[data-size='sm'] {
+      @apply text-base md:text-xl;
+    }
+    &[data-size='md'] {
+      @apply text-xl md:text-3xl;
+    }
+    &[data-size='lg'] {
+      @apply text-3xl md:text-4xl;
+    }
+    &[data-size='xl'] {
+      @apply text-4xl md:text-5xl;
+    }
+    &[data-size='2xl'] {
+      @apply text-5xl md:text-6xl leading-none font-bold;
+    }
   }
 }

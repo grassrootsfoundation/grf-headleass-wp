@@ -1,0 +1,9 @@
+query GetArticles {
+  posts {
+    nodes {
+      id
+      title
+      content
+    }
+  }
+}

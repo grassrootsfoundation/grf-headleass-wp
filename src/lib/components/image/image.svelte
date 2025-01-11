@@ -1,9 +1,8 @@
 <script lang="ts" context="module">
-  export interface ImageProps {
+  export interface ImageProps extends CommonProps {
     alt?: string;
     aspectRatio?: TAspectRatio;
     cover?: boolean;
-    className?: boolean;
     fill?: boolean;
     radius?: TRadius;
     url?: string;
@@ -22,6 +21,7 @@
   import When from '$components/when/when.svelte';
 
   import type { TAspectRatio } from '$types/aspect-ratio';
+  import type { CommonProps } from '$types/component';
   import type { TRadius } from '$types/radius';
   import type { ResponsiveConfig } from '$types/responsive-config';
 

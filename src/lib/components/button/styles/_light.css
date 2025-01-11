@@ -1,0 +1,14 @@
+.button {
+  &[data-appearance='light'] {
+    @apply bg-white
+			hover:bg-white/65
+			active:bg-white/85;
+  }
+  &[data-invert='true'][data-appearance='light'] {
+    @apply border-white
+    text-white
+			bg-transparent
+			hover:bg-white/15
+			active:bg-white/25;
+  }
+}
