@@ -8,7 +8,7 @@
     "clean": "rimraf dist",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "codegen:schema": "npx tsx src/scripts/codegen-graphql.ts",
+    "codegen:schema": "graphql-codegen --verbose",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -39,7 +39,9 @@
     "@graphql-codegen/typescript": "^4.1.2",
     "@graphql-codegen/typescript-operations": "^4.4.0",
     "@iconify/svelte": "^4.1.0",
+    "@parcel/watcher": "^2.5.0",
     "@playwright/test": "^1.49.1",
+    "@rollup/plugin-graphql": "^2.0.5",
     "@sveltejs/adapter-auto": "^3.3.1",
     "@sveltejs/kit": "^2.13.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
@@ -60,8 +62,10 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-svelte": "^2.46.1",
+    "get-graphql-schema": "2.1.2",
     "globals": "^15.14.0",
     "graphql-request": "^7.1.2",
+    "graphql-tag": "^2.12.6",
     "jsonwebtoken": "^9.0.2",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.49",
@@ -84,6 +88,7 @@
     "yup": "^1.6.1"
   },
   "dependencies": {
+    "@graphql-tools/schema": "^10.0.16",
     "svelte-forms-lib": "^2.0.1",
     "vite": "^6.0.4"
   },

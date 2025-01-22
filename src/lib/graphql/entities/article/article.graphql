@@ -1,0 +1,9 @@
+query GetArticle($slug: String!) {
+  postBy(slug: $slug) {
+    id
+    title
+    content
+    date
+    slug
+  }
+}

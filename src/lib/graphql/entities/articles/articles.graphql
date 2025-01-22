@@ -1,0 +1,29 @@
+query GetArticles {
+  posts(first: 10) {
+    nodes {
+      id
+      title
+      excerpt
+      date
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
+      author {
+        node {
+          id
+          name
+          email
+          slug
+          description
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '@fontsource/roboto';
+  import '@fontsource-variable/open-sans';
   import '@fontsource-variable/roboto-slab';
   import Icon from '@iconify/svelte';
   import { onMount } from 'svelte';
@@ -56,7 +56,7 @@
 
 <div class="layout">
   <header class="header">
-    <menu class="contain">
+    <menu class="contain page">
       <a href="/">
         <Logo size="xs" />
       </a>
@@ -85,7 +85,7 @@
   </div>
 
   <footer class="footer">
-    <div class="contain">
+    <div class="contain page">
       <div class="footer-wrapper">
         <div class="footer-slogan-block">
           <div class="footer-logo">

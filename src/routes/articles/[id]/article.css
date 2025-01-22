@@ -1,0 +1,205 @@
+.article {
+  @apply relative
+  grid
+  gap-24
+  grid-flow-row
+  lg:grid-cols-6;
+
+  .content {
+    @apply px-4
+    lg:col-span-4;
+  }
+
+  aside {
+    @apply sticky
+    min-w-96
+    bg-stone-50
+    max-w-sm
+    shadow-sm
+    rounded-lg
+    lg:col-span-2
+    pt-8
+    pb-6
+    px-6;
+
+    .table-of-contents {
+      @apply flex
+      flex-col;
+
+      a {
+        @apply text-base
+        inline-flex;
+      }
+    }
+  }
+
+  section {
+    @apply grid gap-4;
+  }
+
+  .title-block {
+    @apply relative;
+  }
+
+  .title-tag {
+    @apply relative
+    gap-2
+    inline-flex
+    text-base
+    tracking-wider
+    /* font-slab */
+    mb-7
+    uppercase
+    before:content-['']
+    before:-bottom-2.5
+    before:absolute
+    before:left-0
+    before:right-0
+    before:self-center
+    before:bg-tertiary-200
+    before:h-2.5
+    after:content-['']
+    after:-bottom-1
+    after:absolute
+    after:left-0
+    after:right-0
+    after:self-center
+    after:bg-stone-100
+    after:h-0.5;
+  }
+
+  h1 {
+    @apply text-5xl
+    md:text-6xl
+    lg:text-7xl
+    text-primary-950
+
+    font-normal
+    font-slab;
+  }
+  h2 {
+    @apply text-4xl
+    md:text-5xl
+    lg:text-6xl
+    font-bold
+    font-slab
+    py-3;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+
+    &:not(:first-child) {
+      @apply py-3;
+    }
+  }
+
+  p {
+    @apply relative
+    text-xl
+    leading-relaxed
+    font-light
+    font-slab
+    pl-1;
+
+    a {
+      @apply relative
+      text-primary-400
+      inline-flex
+      font-normal
+      after:content-['']
+      after:absolute
+      after:opacity-0
+      after:transition-opacity
+      after:duration-300
+      after:ease-out
+      after:bg-primary-200
+      after:h-0.5
+      after:left-0
+      after:right-1
+      after:bottom-0.5
+      hover:after:text-primary-950
+      hover:after:opacity-100;
+    }
+
+    &:not(:last-child) {
+      @apply mb-6
+      md:mb-8;
+    }
+  }
+
+  .wp-block-image {
+    @apply pb-6;
+  }
+
+  .wp-block-table {
+    @apply my-6;
+
+    table {
+      @apply w-full;
+    }
+
+    tr {
+      @apply border
+      border-tertiary-200;
+
+      &:first-of-type {
+        @apply bg-gradient-to-b
+        from-tertiary-100
+        to-tertiary-50;
+      }
+    }
+    td {
+      @apply border-l
+    border-tertiary-200
+      p-2;
+    }
+  }
+  /* Post Author */
+  .wp-block-post-author {
+    @apply flex
+    gap-3
+    mb-6;
+
+    .wp-block-post-author__avatar {
+      @apply inline
+      overflow-hidden
+      rounded-full;
+    }
+
+    .wp-block-post-author__content {
+      @apply flex
+      flex-col
+      justify-center
+      gap-1;
+    }
+
+    .wp-block-post-author__byline,
+    .wp-block-post-author__name {
+      @apply m-0
+      p-0
+      text-xs;
+    }
+
+    .wp-block-post-author__byline {
+      @apply font-bold;
+    }
+    .wp-block-post-author__name {
+    }
+  }
+
+  /* Image Gallery */
+  .wp-block-gallery {
+    @apply grid
+    gap-3
+    grid-cols-3;
+    figure {
+      @apply flex;
+    }
+  }
+}

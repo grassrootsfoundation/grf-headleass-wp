@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 
+import graphql from '@rollup/plugin-graphql';
 import { sveltekit } from '@sveltejs/kit/vite';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vitest/config';
@@ -16,6 +17,7 @@ export default defineConfig({
       compiler: 'svelte',
       autoInstall: true,
     }) as unknown as PluginOption[],
+    graphql(),
   ],
   resolve: {
     alias: {

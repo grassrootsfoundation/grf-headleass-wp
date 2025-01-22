@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { GetArticleQuery } from '$lib/graphql/types';
 
+  import Heading from '$components/heading/heading.svelte';
   import RawHtml from '$components/raw-html/raw-html.svelte';
 
   import './article.css';
