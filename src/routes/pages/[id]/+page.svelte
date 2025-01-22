@@ -3,7 +3,7 @@
 
   import RawHtml from '$components/raw-html/raw-html.svelte';
 
-  import './article.css';
+  import './page.css';
 
   export let data: { post: GetArticleQuery['postBy'] };
 </script>
