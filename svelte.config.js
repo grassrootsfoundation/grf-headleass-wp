@@ -16,7 +16,7 @@ const config = {
     adapter: adapter({
       pages: 'build', // Directory for static files
       assets: 'build', // Directory for assets
-      fallback: 'index.html', // Optional for SPAs
+      fallback: null, // Optional for SPAs
     }),
     prerender: {
       entries: ['*'], // Pre-render all routes
