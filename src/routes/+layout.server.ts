@@ -90,9 +90,9 @@ export const load: LayoutServerLoad = async ({ request, parent }) => {
 
     primaryMenu: data?.primaryMenu.menuItems.nodes,
     secondaryMenu: data?.secondaryMenu.menuItems.nodes,
-    footerCommunityMenu: data?.footerCommunityMenu.menuItems.nodes,
-    footerServicesMenu: data?.footerServicesMenu.menuItems.nodes,
-    footerContactMenu: data?.footerContactMenu.menuItems.nodes,
+    communityMenu: data?.communityMenu.menuItems.nodes,
+    servicesMenu: data?.servicesMenu.menuItems.nodes,
+    contactMenu: data?.contactMenu.menuItems.nodes,
     isLoggedIn,
   };
 };

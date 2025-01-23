@@ -48,9 +48,9 @@
 
   export let data: {
     primaryMenu: { label: string; url: string }[];
-    footerCommunityMenu: { label: string; url: string }[];
-    footerServicesMenu: { label: string; url: string }[];
-    footerContactMenu: { label: string; url: string }[];
+    communityMenu: { label: string; url: string }[];
+    servicesMenu: { label: string; url: string }[];
+    contactMenu: { label: string; url: string }[];
   };
 </script>
 
@@ -99,7 +99,7 @@
           <menu>
             <h4>Community</h4>
             <nav>
-              {#each data.footerCommunityMenu as item}
+              {#each data.communityMenu as item}
                 <div>
                   <a href={item.url} title={item.label}>{item.label}</a>
                 </div>
@@ -109,7 +109,7 @@
           <menu>
             <h4>Services</h4>
             <nav>
-              {#each data.footerServicesMenu as item}
+              {#each data.servicesMenu as item}
                 <div>
                   <a href={item.url} title={item.label}>{item.label}</a>
                 </div>
@@ -119,7 +119,7 @@
           <menu>
             <h4>Get In Touch</h4>
             <nav>
-              {#each data.footerContactMenu as item}
+              {#each data.contactMenu as item}
                 <div>
                   <a href={item.url} title={item.label}>{item.label}</a>
                 </div>
@@ -154,12 +154,11 @@
   {#if isMenuToggled}
     <div
       class="full-navigation mobile-navigation"
-      transition:fly={{ x: -500, duration: 250 }}
-    >
+      transition:fly={{ x: -500, duration: 250 }}>
       <menu transition:fly={{ x: -500, duration: 900 }}>
         <h4>Community</h4>
         <nav>
-          {#each data.footerCommunityMenu as item}
+          {#each data.communityMenu as item}
             <div>
               <a href={item.url} title={item.label}>{item.label}</a>
             </div>
@@ -169,7 +168,7 @@
       <menu transition:fly={{ x: -600, duration: 950 }}>
         <h4>Services</h4>
         <nav>
-          {#each data.footerServicesMenu as item}
+          {#each data.servicesMenu as item}
             <div>
               <a href={item.url} title={item.label}>{item.label}</a>
             </div>
@@ -179,7 +178,7 @@
       <menu transition:fly={{ x: -700, duration: 1000 }}>
         <h4>Get In Touch</h4>
         <nav>
-          {#each data.footerContactMenu as item}
+          {#each data.contactMenu as item}
             <div>
               <a href={item.url} title={item.label}>{item.label}</a>
             </div>
@@ -193,14 +192,13 @@
     <div
       class="backdrop-overlay"
       transition:scale={{ duration: 400, easing: cubicOut }}
-      style="transform-origin: {originX}% {originY}%;"
-    ></div>
+      style="transform-origin: {originX}% {originY}%;">
+    </div>
   {/if}
   <div class="nav-mobile nav-mobile-close">
     <ButtonUnstyled
       class={clsx('nav-menu-toggle', isMenuToggled && 'nav-menu-toggle-active')}
-      on:click={toggleMenu}
-    >
+      on:click={toggleMenu}>
       {#if isMenuToggled}
         <Icon icon="mdi:close" />
       {/if}
