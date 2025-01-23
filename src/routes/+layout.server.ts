@@ -22,7 +22,7 @@ const GET_MENUS = gql`
         }
       }
     }
-    footerCommunityMenu: menu(id: "footer-community", idType: LOCATION) {
+    communityMenu: menu(id: "footer-community", idType: LOCATION) {
       menuItems {
         nodes {
           label
@@ -30,7 +30,7 @@ const GET_MENUS = gql`
         }
       }
     }
-    footerServicesMenu: menu(id: "footer-services", idType: LOCATION) {
+    servicesMenu: menu(id: "footer-services", idType: LOCATION) {
       menuItems {
         nodes {
           label
@@ -38,7 +38,7 @@ const GET_MENUS = gql`
         }
       }
     }
-    footerContactMenu: menu(id: "footer-contact", idType: LOCATION) {
+    contactMenu: menu(id: "footer-contact", idType: LOCATION) {
       menuItems {
         nodes {
           label
@@ -61,9 +61,9 @@ export interface LayoutGQLDataMenu {
 export interface LayoutGQLData {
   primaryMenu: LayoutGQLDataMenu;
   secondaryMenu: LayoutGQLDataMenu;
-  footerCommunityMenu: LayoutGQLDataMenu;
-  footerServicesMenu: LayoutGQLDataMenu;
-  footerContactMenu: LayoutGQLDataMenu;
+  communityMenu: LayoutGQLDataMenu;
+  servicesMenu: LayoutGQLDataMenu;
+  contactMenu: LayoutGQLDataMenu;
 }
 export const load: LayoutServerLoad = async ({ request, parent }) => {
   // Access cookies from the request

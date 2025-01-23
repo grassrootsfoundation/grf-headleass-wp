@@ -45,13 +45,10 @@ importers:
       '@eslint/js':
         specifier: ^9.17.0
         version: 9.17.0
-      '@fontsource-variable/inter':
+      '@fontsource-variable/open-sans':
         specifier: ^5.1.0
-        version: 5.1.0
-      '@fontsource-variable/roboto-slab':
-        specifier: ^5.1.1
         version: 5.1.1
-      '@fontsource/roboto':
+      '@fontsource-variable/roboto-slab':
         specifier: ^5.1.1
         version: 5.1.1
       '@graphql-codegen/cli':
@@ -1267,14 +1264,11 @@ packages:
     resolution: {integrity: sha512-zSkKow6H5Kdm0ZUQUB2kV5JIXqoG0+uH5YADhaEHswm664N9Db8dXSi0nMJpacpMf+MyyglF1vnZohpEg5yUtg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/inter@5.1.0':
-    resolution: {integrity: sha512-Wj2dUGP0vUpxRGQTXQTCNJO+aLcFcQm+gUPXfj/aS877bQkEPBPv9JvZJpwdm2vzelt8NTZ+ausKlBCJjh2XIg==}
+  '@fontsource-variable/open-sans@5.1.1':
+    resolution: {integrity: sha512-5YCCAAt6t8b9T1UehgGuD0z1mZ8orrygrWC8PrA7hAIDdyQRZXYmT6A+9qG7hnhFRHR3KTSIcvBodO0EsRxZrA==}
 
   '@fontsource-variable/roboto-slab@5.1.1':
     resolution: {integrity: sha512-+Uhj6ZG56JQdwp3LzQqIwEKCHzfuJFyl/JmuyOAtTahpjVh2dYP1m+v0aCURN+k0cfLKoIJ0ToMmWyUylrUQ0g==}
-
-  '@fontsource/roboto@5.1.1':
-    resolution: {integrity: sha512-XwVVXtERDQIM7HPUIbyDe0FP4SRovpjF7zMI8M7pbqFp3ahLJsJTd18h+E6pkar6UbV3btbwkKjYARr5M+SQow==}
 
   '@graphql-codegen/add@5.0.3':
     resolution: {integrity: sha512-SxXPmramkth8XtBlAHu4H4jYcYXM/o3p01+psU+0NADQowA8jtYkK6MW5rV6T+CxkEaNZItfSmZRPgIuypcqnA==}
@@ -5939,11 +5933,9 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@fontsource-variable/inter@5.1.0': {}
+  '@fontsource-variable/open-sans@5.1.1': {}
 
   '@fontsource-variable/roboto-slab@5.1.1': {}
-
-  '@fontsource/roboto@5.1.1': {}
 
   '@graphql-codegen/add@5.0.3(graphql@16.10.0)':
     dependencies:
