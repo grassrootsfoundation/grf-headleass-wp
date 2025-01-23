@@ -31,6 +31,7 @@
   style:--stack-direction={direction}
   style:--stack-gap={typeof gap === 'number' ? toPx(gap) : gap}
   style:--stack-justify={justify}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </svelte:element>

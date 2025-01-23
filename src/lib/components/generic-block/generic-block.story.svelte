@@ -16,7 +16,8 @@
       spacingInline="6"
       spacingBlock="9"
       radius="md"
-      bgColor="neutral-100">
+      bgColor="neutral-100"
+    >
       <Text as="p" preset="display" leading="loose" underline>Properties</Text>
       <List type="decimal">
         <ListItem>
@@ -27,7 +28,8 @@
           <List type="disc">
             <ListItem>
               <Text
-                ><Text as="span" weight="bold" color="blue-500">as:</Text> accepts</Text>
+                ><Text as="span" weight="bold" color="blue-500">as:</Text> accepts</Text
+              >
             </ListItem>
           </List>
         </ListItem>
@@ -45,7 +47,8 @@
         <Text preset="display">Card</Text>
         <GenericBlock appearance="card" gap="4">
           <Text preset="caption" size="xs" transform="uppercase"
-            >Supertitle</Text>
+            >Supertitle</Text
+          >
           <Text preset="display">Card Ttitle</Text>
           <Text preset="caption" size="md">Text in a card</Text>
         </GenericBlock>
@@ -59,7 +62,8 @@
           bgColor="light-blue-50"
           borderColor="light-blue-200"
           spacingBlock="4"
-          spacingInline="3">
+          spacingInline="3"
+        >
           <Text preset="caption">
             The generic block has many features and can be used for multiple
             uses.

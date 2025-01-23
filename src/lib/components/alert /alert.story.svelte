@@ -13,7 +13,8 @@
       radius="md"
       spacing="3"
       visible={true}
-      onDismiss={() => console.log('closed')}>
+      onDismiss={() => console.log('closed')}
+    >
       An alert that displays Info intent and fades on toggle.
     </Alert>
     <Divider />
@@ -22,7 +23,8 @@
       radius="md"
       spacing="3"
       visible={true}
-      onDismiss={() => console.log('closed')}>
+      onDismiss={() => console.log('closed')}
+    >
       You did it! Congratulations.
     </Alert>
     <Divider />
@@ -31,7 +33,8 @@
       radius="md"
       spacing="3"
       visible={true}
-      onDismiss={() => console.log('closed')}>
+      onDismiss={() => console.log('closed')}
+    >
       You have been warned.
     </Alert>
     <Divider />
@@ -40,7 +43,8 @@
       radius="md"
       spacing="3"
       visible={true}
-      onDismiss={() => console.log('closed')}>
+      onDismiss={() => console.log('closed')}
+    >
       Oh no, what have you done!?
     </Alert>
     <Divider />

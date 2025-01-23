@@ -24,7 +24,8 @@
   <div
     class={clsx('skeleton', className)}
     transition:fade
-    style:--skeleton-width={width}>
+    style:--skeleton-width={width}
+  >
     <slot />
   </div>
 {/if}

@@ -45,6 +45,7 @@
    "@type": "Website",
    "name": "{title} | {url}",
    "url": "${url}/${page}",
-   "logo": ${image}  }`} />
+   "logo": ${image}  }`}
+  />
   <slot />
 </svelte:head>

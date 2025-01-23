@@ -102,7 +102,8 @@
     data-size={size}
     data-variant={variant}
     {hidden}
-    {...$$restProps}>
+    {...$$restProps}
+  >
     <When condition={Boolean($$slots && $$slots.default)}>
       <span class="button-text">
         <slot />
@@ -113,7 +114,8 @@
       <div class="button-spinner">
         <Spinner
           size={getSpinnerSize(size)}
-          invert={getSpinnerInvertedness(invert)} />
+          invert={getSpinnerInvertedness(invert)}
+        />
       </div>
     </When>
   </a>
@@ -136,7 +138,8 @@
     data-size={size}
     data-variant={variant}
     {hidden}
-    {...$$restProps}>
+    {...$$restProps}
+  >
     <When condition={Boolean($$slots && $$slots.default)}>
       <span class="button-text">
         <slot />
@@ -147,7 +150,8 @@
       <div class="button-spinner">
         <Spinner
           size={getSpinnerSize(size)}
-          invert={getSpinnerInvertedness(invert)} />
+          invert={getSpinnerInvertedness(invert)}
+        />
       </div>
     </When>
   </button>

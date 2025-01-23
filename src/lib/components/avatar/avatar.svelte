@@ -65,7 +65,8 @@
   class={clsx('avatar', className)}
   data-shape={shape}
   style={mergedStyles}
-  {...$$restProps}>
+  {...$$restProps}
+>
   {#if url}
     <Image alt={name} {url} fill={true} cover={true} />
   {:else}

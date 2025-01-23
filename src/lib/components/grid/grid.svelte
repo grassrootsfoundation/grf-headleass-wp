@@ -51,6 +51,7 @@
   style:--grid-column-count-lg={mergedStyles['--grid-column-count-lg']}
   style:--grid-column-count-xl={mergedStyles['--grid-column-count-xl']}
   style:--grid-gap={mergedStyles['--grid-gap']}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </div>

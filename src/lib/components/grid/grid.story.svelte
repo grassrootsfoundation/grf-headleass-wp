@@ -14,21 +14,24 @@
     <Grid columns={{ md: 2, lg: 3 }} gap={tok('space', 4)}>
       <GenericBlock
         bgcolor={tok('color', 'success')}
-        style={`padding: ${tok('space', 6)}`}>
+        style={`padding: ${tok('space', 6)}`}
+      >
         <Text>
           The box in cell <strong>One</strong>
         </Text>
       </GenericBlock>
       <GenericBlock
         bgcolor={tok('color', 'warning')}
-        style={`padding: ${tok('space', 6)}`}>
+        style={`padding: ${tok('space', 6)}`}
+      >
         <Text>
           The box in cell <strong>Two</strong>
         </Text>
       </GenericBlock>
       <GenericBlock
         bgcolor={tok('color', 'error')}
-        style={`padding: ${tok('space', 6)}`}>
+        style={`padding: ${tok('space', 6)}`}
+      >
         <Text>
           The box in cell <strong>Three</strong>
         </Text>

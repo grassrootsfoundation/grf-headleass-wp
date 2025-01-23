@@ -39,7 +39,8 @@
           --avatar-width="100px"
           font-size={tok('text', '4xl')}
           --avatar-bgcolor={tok('color', 'green-300')}
-          --avatar-color={tok('color', 'white')} />
+          --avatar-color={tok('color', 'white')}
+        />
         <Stack gap={tok('size', 1)}>
           <Text preset="display">
             This is a title on display for all

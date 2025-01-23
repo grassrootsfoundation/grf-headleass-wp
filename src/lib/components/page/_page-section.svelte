@@ -44,6 +44,7 @@
   class={clsx('page-section', className)}
   data-container={container}
   style={mergedStyles}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </svelte:element>

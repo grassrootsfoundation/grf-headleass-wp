@@ -70,7 +70,8 @@
   class={clsx('badge', className)}
   data-intent={intent}
   style={mergedStyles}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <span bind:this={content}>
     <slot />
   </span>

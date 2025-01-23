@@ -19,6 +19,7 @@
   {id}
   role="tab"
   type="button"
-  on:click={$$restProps.handleClick}>
+  on:click={$$restProps.handleClick}
+>
   <slot />
 </Button>

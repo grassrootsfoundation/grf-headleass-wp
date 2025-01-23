@@ -18,6 +18,7 @@
   on:focus
   on:mouseenter
   on:mouseleave
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </button>

@@ -52,5 +52,5 @@
   class={clsx('divider', className)}
   data-appearance={appearance}
   style={mergedStyles}
-  {...$$restProps}>
-</div>
+  {...$$restProps}
+></div>

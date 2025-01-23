@@ -18,12 +18,14 @@
           name="Morgan"
           bgColor="lime-300"
           color="neutral-900"
-          size="10" />
+          size="10"
+        />
         <Avatar
           name="Adrian Segura"
           bgColor="deep-purple-200"
           color="deep-purple-900"
-          size="12" />
+          size="12"
+        />
       </Stack>
 
       <Divider appearance="dashed" gap="8" />
@@ -33,24 +35,28 @@
           name="Happy Go Lucky"
           shape="rounded"
           bgColor="teal-300"
-          color="neutral-900" />
+          color="neutral-900"
+        />
         <Avatar
           name="Morgan"
           bgColor="lime-300"
           color="neutral-900"
           shape="rounded"
-          size="10" />
+          size="10"
+        />
         <Avatar
           name="Adrian Segura"
           bgColor="deep-purple-200"
           color="deep-purple-900"
           shape="rounded"
-          size="12" />
+          size="12"
+        />
         <Avatar
           name="Adrian Segura"
           bgColor="deep-orange-200"
           shape="rounded"
-          size="14" />
+          size="14"
+        />
       </Stack>
       <Divider appearance="dashed" gap="8" />
       <Stack direction="row" align="center">
@@ -58,24 +64,28 @@
           name="Happy Go Lucky"
           shape="circle"
           bgColor="teal-300"
-          color="neutral-900" />
+          color="neutral-900"
+        />
         <Avatar
           name="Morgan"
           bgColor="lime-300"
           color="neutral-900"
           shape="circle"
-          size="10" />
+          size="10"
+        />
         <Avatar
           name="Adrian Segura"
           bgColor="deep-purple-200"
           color="deep-purple-900"
           shape="circle"
-          size="12" />
+          size="12"
+        />
         <Avatar
           name="Adrian Segura"
           bgColor="deep-orange-200"
           shape="circle"
-          size="14" />
+          size="14"
+        />
       </Stack>
       <Divider appearance="dashed" gap="8" />
       <Stack direction="row" align="center">

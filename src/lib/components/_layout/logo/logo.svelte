@@ -30,7 +30,8 @@
 <div
   class={clsx('logo', className)}
   data-appearance={appearance}
-  data-size={size}>
+  data-size={size}
+>
   {#if variant === 'acronym'}
     <LogoAcronym />
   {:else if variant === 'text-center'}

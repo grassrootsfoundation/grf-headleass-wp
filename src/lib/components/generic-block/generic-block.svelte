@@ -64,6 +64,7 @@
   class={clsx('generic-block', className)}
   data-appearance={appearance}
   style={mergedStyles}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </svelte:element>

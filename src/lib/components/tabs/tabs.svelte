@@ -35,13 +35,15 @@
     class="tabs-head"
     role="tablist"
     data-direction={direction}
-    data-invert={invert}>
+    data-invert={invert}
+  >
     {#each tabItems as item}
       <TabsSelector
         active={Boolean(item.id === activeTab)}
         handleClick={handleClick(item.id)}
         {activeTab}
-        id={item.id}>
+        id={item.id}
+      >
         {item.label}
       </TabsSelector>
     {/each}

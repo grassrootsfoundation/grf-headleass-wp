@@ -25,6 +25,7 @@
   this={`h${level}`}
   data-display={display}
   class={clsx('heading', className)}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </svelte:element>

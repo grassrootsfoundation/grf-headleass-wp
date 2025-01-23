@@ -16,7 +16,8 @@
 <svelte:component this={Hst.Story} title="Component/MediaQuery">
   <svelte:component this={Hst.Variant} title="default">
     <div
-      style={`background-color: ${tok('color', 'neutral-100')}; padding: ${tok('space', 4)}`}>
+      style={`background-color: ${tok('color', 'neutral-100')}; padding: ${tok('space', 4)}`}
+    >
       <Heading level="1" display="1">This heading is responsive.</Heading>
       <Text preset="caption" height="loose">
         You are viewing this content at

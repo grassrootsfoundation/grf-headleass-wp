@@ -56,7 +56,8 @@
     data-cover={cover}
     data-fill={fill}
     data-title={alt}
-    style={mergedStyles}>
+    style={mergedStyles}
+  >
     <img src={url} {alt} {...$$restProps} />
   </div>
 </When>

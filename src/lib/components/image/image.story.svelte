@@ -19,7 +19,8 @@
   </svelte:component>
   <svelte:component this={Hst.Variant} title="Cover">
     <GenericBlock
-      style={`max-width: ${tok('size', 35)};  max-height: ${tok('size', 35)};`}>
+      style={`max-width: ${tok('size', 35)};  max-height: ${tok('size', 35)};`}
+    >
       <Image alt="Always needs an alt" cover url={image} />
     </GenericBlock>
   </svelte:component>
@@ -35,79 +36,92 @@
       }}
       gap={{
         default: '4',
-      }}>
+      }}
+    >
       <Image alt="Always needs an alt" cover url={image} aspectRatio="square" />
       <Image
         alt="Always needs an alt"
         cover
         radius="xs"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
       <Image
         alt="Always needs an alt"
         cover
         radius="sm"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
       <Image
         alt="Always needs an alt"
         cover
         radius="md"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
       <Image
         alt="Always needs an alt"
         cover
         radius="lg"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
       <Image
         alt="Always needs an alt"
         cover
         radius="xl"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
       <Image
         alt="Always needs an alt"
         cover
         radius="2xl"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
       <Image
         alt="Always needs an alt"
         cover
         radius="3xl"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
       <Image
         alt="Always needs an alt"
         cover
         radius="full"
         url={image}
-        aspectRatio="square" />
+        aspectRatio="square"
+      />
     </Grid>
   </svelte:component>
   <svelte:component this={Hst.Variant} title="Aspect Ratio">
     <Grid cols={{ default: 12 }}>
       <GridCell
         colStart={{ default: tok('col-start', 1) }}
-        colEnd={{ default: tok('col-end', 5) }}>
+        colEnd={{ default: tok('col-end', 5) }}
+      >
         <Image
           alt="Always needs an alt"
           cover
           radius="xl"
           url={image}
-          aspectRatio="square" />
+          aspectRatio="square"
+        />
       </GridCell>
       <GridCell
         colStart={{ default: tok('col-start', 5) }}
-        colEnd={{ default: tok('col-end', 13) }}>
+        colEnd={{ default: tok('col-end', 13) }}
+      >
         <Image
           alt="Always needs an alt"
           cover
           radius="xl"
           url={image}
-          aspectRatio="video" />
+          aspectRatio="video"
+        />
       </GridCell>
     </Grid>
   </svelte:component>

@@ -15,7 +15,8 @@
               <img
                 class="thumbnail"
                 src={post.featuredImage.node.sourceUrl}
-                alt={post.featuredImage.node.altText} />
+                alt={post.featuredImage.node.altText}
+              />
             </div>
           {/if}
           <div>

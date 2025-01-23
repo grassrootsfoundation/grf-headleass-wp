@@ -46,6 +46,7 @@
   this={as}
   class={clsx('list', className)}
   style={mergedStyles}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </svelte:element>

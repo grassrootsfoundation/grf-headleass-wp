@@ -27,6 +27,7 @@
   data-preset={preset}
   data-size={size}
   class={clsx('text', className)}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </svelte:element>

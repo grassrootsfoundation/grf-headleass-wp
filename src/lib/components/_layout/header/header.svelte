@@ -15,7 +15,8 @@
       direction="row"
       justify="space-between"
       align="center"
-      style="padding-top: {tok('size', 2)}; ">
+      style="padding-top: {tok('size', 2)}; "
+    >
       <a href="/">
         <Logo variant="acronym" size="xs" />
       </a>
