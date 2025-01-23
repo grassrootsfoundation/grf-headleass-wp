@@ -15,8 +15,10 @@ const config = {
     // See https://svelte.dev/docs/kit/adapters for more information about adapters.
     adapter: azure({
       output: '.svelte-kit/azure-tmp',
-      ssr: true,
     }),
+    prerender: {
+      entries: [], // No prerendering by default (or specify routes explicitly)
+    },
     alias: {
       '$src/*': './src/*',
       '$lib/*': './src/lib/*',
