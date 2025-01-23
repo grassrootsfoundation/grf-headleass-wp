@@ -14,9 +14,6 @@ importers:
       set-cookie-parser:
         specifier: ^2.7.1
         version: 2.7.1
-      svelte-forms-lib:
-        specifier: ^2.0.1
-        version: 2.0.1
       vite:
         specifier: ^6.0.4
         version: 6.0.4(@types/node@22.10.2)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1)
@@ -4673,9 +4670,6 @@ packages:
     peerDependenciesMeta:
       svelte:
         optional: true
-
-  svelte-forms-lib@2.0.1:
-    resolution: {integrity: sha512-kwbJ3ynsepsrrJyAMrvSc0Lj/myc9vfI2DL8OKxgArZimrNYsRh1gENYhvrcKEI3BiZrv8q3VFfmGo/GMyk7Zg==}
 
   svelte@5.14.5:
     resolution: {integrity: sha512-Qk4LbKHo8K6RtdSuiwI7w66Q+Ypab0V8E7WSZHEKKym4em8n+a0rl3VyRBpGV+/MnNmoi7xlGEjS2omwe0RzhA==}
@@ -9938,10 +9932,6 @@ snapshots:
       postcss-scss: 4.0.9(postcss@8.4.49)
     optionalDependencies:
       svelte: 5.14.5
-
-  svelte-forms-lib@2.0.1:
-    dependencies:
-      dequal: 2.0.3
 
   svelte@5.14.5:
     dependencies:

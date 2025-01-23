@@ -90,7 +90,6 @@
   "dependencies": {
     "@graphql-tools/schema": "^10.0.16",
     "set-cookie-parser": "^2.7.1",
-    "svelte-forms-lib": "^2.0.1",
     "vite": "^6.0.4"
   },
   "engines": {
