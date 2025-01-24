@@ -27,3 +27,7 @@ jobs:
           action: 'upload'
           app_location: 'build' # Directory where static files are generated
           api_location: ''
+        env:
+          API_BASE_URL: 'https://white-stone-0f2ea1e0f.4.azurestaticapps.net'
+          JWT_SECRET: '987089120938102uwoeifhjwoief098sdf09'
+          SERVER_URL: 'https://grf-headless-fbeeesahfucac3a9.westus2-01.azurewebsites.net'
