@@ -1,10 +1,12 @@
 <script lang="ts">
   // import Heading from '$components/heading/heading.svelte';
+  import type { Page } from '$lib/graphql/types';
+
   import RawHtml from '$components/raw-html/raw-html.svelte';
 
   import './landing-page.css';
 
-  export let data: { page: { title: string; content: string } };
+  export let data: { page: Page };
 </script>
 
 <main class="contain page">

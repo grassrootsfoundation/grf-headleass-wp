@@ -154,8 +154,7 @@
   {#if isMenuToggled}
     <div
       class="full-navigation mobile-navigation"
-      transition:fly={{ x: -500, duration: 250 }}
-    >
+      transition:fly={{ x: -500, duration: 250 }}>
       <menu transition:fly={{ x: -500, duration: 900 }}>
         <h4>Community</h4>
         <nav>
@@ -193,14 +192,13 @@
     <div
       class="backdrop-overlay"
       transition:scale={{ duration: 400, easing: cubicOut }}
-      style="transform-origin: {originX}% {originY}%;"
-    ></div>
+      style="transform-origin: {originX}% {originY}%;">
+    </div>
   {/if}
   <div class="nav-mobile nav-mobile-close">
     <ButtonUnstyled
       class={clsx('nav-menu-toggle', isMenuToggled && 'nav-menu-toggle-active')}
-      on:click={toggleMenu}
-    >
+      on:click={toggleMenu}>
       {#if isMenuToggled}
         <Icon icon="mdi:close" />
       {/if}

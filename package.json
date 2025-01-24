@@ -14,7 +14,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "postbuild": "cp -R build/static/* build && rm -rf build/static",
     "typecheck": "tsc --noEmit",
     "test": "pnpm test:unit -- --run && pnpm test:e2e",
     "test:unit": "vitest",
