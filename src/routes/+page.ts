@@ -12,15 +12,18 @@ const GET_LANDING_PAGE = gql`
 `;
 
 export async function load() {
-  const data: any = await client.request(GET_LANDING_PAGE, {
-    slug: '/',
-  });
-
-  if (!data || !data.page) {
-    throw new Error('Failed to fetch content');
+  try {
+    const data: any = await client.request(GET_LANDING_PAGE, {
+      slug: '/',
+    });
+    if (!data || !data.page) {
+      throw new Error('Failed to fetch content');
+    }
+    return {
+      page: data.page,
+    };
+  } catch (error) {
+    const err = error as Error;
+    console.error('GraphQL Error:', err.message);
   }
-
-  return {
-    page: data.page,
-  };
 }

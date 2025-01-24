@@ -12,21 +12,26 @@ export async function load({ params }) {
     };
   }
 
-  const { postBy }: { postBy: GetArticleQuery } = await client.request(
-    GetArticle,
-    {
-      slug,
+  try {
+    const { postBy }: { postBy: GetArticleQuery } = await client.request(
+      GetArticle,
+      {
+        slug,
+      }
+    );
+
+    if (!postBy) {
+      return {
+        status: 404,
+        error: new Error('Post not found'),
+      };
     }
-  );
 
-  if (!postBy) {
     return {
-      status: 404,
-      error: new Error('Post not found'),
+      post: postBy,
     };
+  } catch (error) {
+    const err = error as Error;
+    console.error('GraphQL Error:', err.message);
   }
-
-  return {
-    post: postBy,
-  };
 }

@@ -76,23 +76,28 @@ export const load: LayoutServerLoad = async ({ request, parent }) => {
   const isLoggedIn = cookies.includes('session=');
 
   // Query for Menus
-  const data: LayoutGQLData = await client.request(GET_MENUS);
+  try {
+    const data: LayoutGQLData = await client.request(GET_MENUS);
 
-  // console.log({ request });
+    // console.log({ request });
 
-  if (!data) {
-    throw new Error('Failed to fetch menus');
+    if (!data) {
+      throw new Error('Failed to fetch menus');
+    }
+
+    // Merge the child route's data with the layout's data
+    return {
+      ...childData,
+
+      primaryMenu: data?.primaryMenu.menuItems.nodes,
+      secondaryMenu: data?.secondaryMenu.menuItems.nodes,
+      communityMenu: data?.communityMenu.menuItems.nodes,
+      servicesMenu: data?.servicesMenu.menuItems.nodes,
+      contactMenu: data?.contactMenu.menuItems.nodes,
+      isLoggedIn,
+    };
+  } catch (error) {
+    const err = error as Error;
+    console.error('GraphQL Error:', err.message);
   }
-
-  // Merge the child route's data with the layout's data
-  return {
-    ...childData,
-
-    primaryMenu: data?.primaryMenu.menuItems.nodes,
-    secondaryMenu: data?.secondaryMenu.menuItems.nodes,
-    communityMenu: data?.communityMenu.menuItems.nodes,
-    servicesMenu: data?.servicesMenu.menuItems.nodes,
-    contactMenu: data?.contactMenu.menuItems.nodes,
-    isLoggedIn,
-  };
 };
