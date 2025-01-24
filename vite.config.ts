@@ -39,8 +39,8 @@ export default defineConfig({
       allow: ['src'],
     },
     proxy: {
-      '/api': {
-        target: process.env.VITE_API_BASE_URL,
+      '/graphql': {
+        target: process.env.VITE_SERVER_URL,
         changeOrigin: true,
       },
     },
